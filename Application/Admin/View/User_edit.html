@@ -1,0 +1,172 @@
+<include file="Public:header" />
+<script type="text/javascript" src="__PUBLIC__/statics/js/common.js"></script>
+<script type="text/javascript" src="__PUBLIC__/statics/js/pinyin.js"></script>
+<script type="text/javascript" src="__PUBLIC__/statics/js/area.js" charset="gbk"></script>
+<script type="text/javascript" src="/js/areaw.js" charset="gbk"></script>
+
+
+<script type="text/javascript" src="__PUBLIC__/statics/js/common.js"></script>
+<script type="text/javascript" src="__PUBLIC__/statics/js/pinyin.js"></script>
+
+<script type="text/javascript">
+$(function(){
+
+	
+	
+})
+
+
+
+
+</script>
+
+<input type="hidden" id="PRO_CATS" value="{$user.pro_cats}" />
+               
+<form action="{:U('User/edit')}" method="post" name="myform" id="form1_add" enctype="multipart/form-data" style="margin-top:10px;">
+  <div class="pad-10">
+  <div class="col-tab">
+  <ul class="tabBut cu-li">
+    <li id="tab_setting_1" class="on" onClick="SwapTab('setting','on','',2,1);">基本信息</li> 
+  </ul>
+  <div id="div_setting_1" class="contentList pad-10">
+    <table width="100%" cellpadding="2" cellspacing="1" class="table_form">
+      <tr>
+        <th width="100">用户昵称 :</th>
+        <td ><input type="text" name="NICKNAME" id="NICKNAME" class="input-text" size="60" value="{$user.nickname}"></td>
+      </tr>
+	   <tr>
+        
+        <th width="100">用户类型 :</th>
+        <td>
+			<select name="UTYPE" onchange="show(this.value)">
+            		
+                    <option value="1" <if condition="$use['utype'] eq 1">selected="selected"</if> >机构用户</option>
+					<option  value="0" <if condition="$use['utype'] eq 0">selected="selected"</if> >个人用户</option>
+            	</select>
+		</td>
+      </tr>
+	  <tr>
+        
+        <th width="100">单位名称：</th>
+        <td><input type="text" name="COMPANYNAME" id="COMPANYNAME" class="input-text" size="60" value="{$user.companyname}"></td>
+      </tr>
+	  <if condition="$use['utype'] eq 1">
+      <tr >
+            <td width="100">组织机构代码证号：</td>
+            <td><input class="text3 validate[required]" name="CERTIFICATECODE" id="CERTIFICATECODE"/><span>注：请填写正式信息，我们会验证您单位的正式性</span></td>
+          </tr>
+	  </if>
+	  <tr>
+        <th width="100">（从业）单位性质 :</th>
+        <td >
+			<select >
+                    <option value="1" <if condition="$user['unitnature'] eq 1">selected="selected"</if>>企业</option>
+					<option value="2" <if condition="$user['unitnature'] eq 2">selected="selected"</if>>科研机构</option>
+					<option value="3" <if condition="$user['unitnature'] eq 3">selected="selected"</if>>社会团体及服务机构</option>
+					<option value="4" <if condition="$user['unitnature'] eq 4">selected="selected"</if>>政府机构</option>
+            </select>
+		</td>
+        
+      </tr>
+	 <tr>
+	  <th width="100">国家/地区:</th>
+       <td>
+		<input class="radio_style" name="UCOUNTRY" type="radio" value="0" <if condition="$user['ucountry'] eq 0">checked="checked"</if> class="radioBox"/>&nbsp;&nbsp;国内&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+         <input  class="radio_style" name="UCOUNTRY" type="radio" value="1" <if condition="$user['ucountry'] eq 1">checked="checked"</if>/>&nbsp;&nbsp;国内<br />
+		<input type="hidden" id="coun" value="{$user['ucountry']}"/>
+		</td>
+	</tr>
+	  <tr>
+        <th width="100"></th>
+        <td >
+			
+					      <span id="guonei">
+							<select style="height:30px" name="GN_PROV" id="s_province" va="1" class="input-text validate[required]"></select>
+							<select style="height:30px" name="GN_CITY" id="s_city" va="1" class="input-text validate[required]"></select>
+							<select style="height:30px" name="GN_COUNTRY" id="s_county" va="1" class="input-text validate[required]"></select>
+                      </span>
+                       <span id="guowai" style="display:none">
+                    Region<select id="region" name="GW_PROV" style="width:100px;height:25px" onChange="set_country(this,country,city_state)">
+							<option value="" selected="selected">Select Region</option>
+							<script type="text/javascript"> setRegions(this); </script>
+						</select>
+					Country<select id="country" name="GW_CITY"  style="width:100px;height:25px"  disabled="disabled" onChange="set_city_state(this,city_state)"></select>
+					State<select id="city_state" name="GW_COUNTRY" style="width:100px;height:25px"   disabled="disabled"></select>
+                </span>
+					
+		</td>
+        
+      </tr>
+     
+      <tr>
+            <td width="100">联系地址：</td>
+            <td><input class="input-text validate[required]" name="ADDRESS" id="ADDRESS" value="{$user['address']}"/></td>
+          </tr>
+          <tr>
+            <td width="100">邮编：</td>
+            <td><input class="input-text validate[required,custom[postnum]]" name="CODE" id="CODE" value="{$user['code']}"/></td>
+          </tr>
+          <tr>
+            <td  width="100">所在行业：</td>
+            <td>
+            	 <span id="hyname">{$user['industry']|gethyname} &nbsp;&nbsp;&nbsp;</span>
+            </td>
+          </tr>
+          <tr>
+            <td width="100">联系人姓名：</td>
+            <td><input class="input-text validate[required]" name="LXRNAME" value="{$user['lxrname']}"/></td>
+          </tr>
+		 
+          <tr>
+            <td width="100">性别：</td>
+            <td><input type="radio" name="sex" id="sex" class="radio_style" value="1" <if condition="$article['sex'] neq '0'">checked="checked"</if> > &nbsp;男&nbsp;&nbsp;&nbsp;
+        	             <input type="radio" name="sex" id="sex" class="radio_style" value="0" <if condition="$article['sex'] eq '0'">checked="checked"</if>> &nbsp;女
+						</td>
+          </tr>
+          <tr>
+            <td width="100">电话：</td>
+            <td><input class="input-text validate[required,custom[phone1]]" name="PHONE" value="{$user['phone']}"/></td>
+          </tr>
+          <tr>
+            <td width="100">手机号：</td>
+            <td><input class="input-text validate[required,custom[shouji]]" name="LXRTELPHONE" value="{$user['lxrtelphone']}"/></td>
+          </tr>
+          <tr>
+            <td width="100">部门：</td>
+            <td><input class="input-text validate[required]" name="DEPARTMENT" value="{$user['department']}"/></td>
+          </tr>
+          <tr>
+            <td width="100">职位：</td>
+            <td><input class="input-text validate[required]" name="POSITION" value="{$user['position']}"/></td>
+          </tr>
+          <tr>
+            <td width="100">邮箱：</td>
+            <td><input class="input-text validate[required,custom[email]]" name="EMAIL" value="{$user['email']}"/></td>
+          </tr>
+         
+                   
+                
+	
+	 
+      
+      <tr><td>审核状态</td> <td colspan="3">
+      	<input type="radio" name="STATUS" id="STATUS" value="1" <if condition="$user.status eq '1'">checked</if> />审核
+      	<input type="radio" name="STATUS" id="STATUS" value="0" <if condition="$user.status eq '0'">checked</if> />未审核
+      </td>
+      
+    </table>
+  </div>
+
+ <input type="hidden" name="id" value="{$user.id}" id="ID"/>
+  <div class="bk15"></div>
+  <div class="btn">
+    <input type="submit" value="提交" name="submit" class="button" id="submit">
+  </div>
+
+ 
+
+</div>
+</div>
+
+</form>
+</body></html>

@@ -1,0 +1,364 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<title>申请对接_在线对接会_科济天下网</title>
+<link href="/css/Online/Weixin/jquery.mobile-1.4.2.css" rel="stylesheet">
+<link href="/css/Online/Weixin/index.css" rel="stylesheet" type="text/css">
+<script src="/js/Online/Weixin/jquery.js"></script>
+<script src="/js/Online/Weixin/jquery.mobile-1.4.2.min.js"></script>
+<script src="/js/Online/Weixin/common.js"></script>
+<script src="/js/Online/Weixin/swipe.js"></script>
+<script type="text/javascript" src="/js/Online/jquery-1.7.2.min.js"></script>
+<link href="/css/validationEngine.jquery.css" rel="stylesheet" type="text/css" />
+<script src="/js/Online/jquery.validationEngine.js" type="text/javascript"></script>
+<script src="/js/Online/jquery.validationEngine-zh_CN.js" type="text/javascript" charset="UTF-8"></script>
+<script type="text/javascript">
+$(function(){
+	$("form").validationEngine();
+	$("#chongzhi").click(function(){
+		$(".text").val("");
+		
+	 })
+})
+
+</script>
+</head>
+
+<body>
+<div data-role="page" id="Activity"  class="index">
+	<form action="{:U('weixin/apply_b')}" id="form1" method="post"  target="_self">
+	<div data-role="header" data-position="fixed" class="header" id="menber"  data-tap-toggle="false">
+         <div class="xiangqing">
+            <div class="xiangqing01">
+                <div class="xiangqing02">
+                    <a href="{:U('Weixin/index')}" target="_self"><img src="/images/Online/Weixin/imegs/home.png">
+                    <span>首页</span></a>
+                </div>
+                <div class="xiangqing03">
+                    <span>在线对接申请表</span>
+                </div>
+            </div>
+      	</div>
+		<div class="branch01tt">
+			<ul>
+			  <li><a href="{:U('weixin/apply_c')}" target="_self">专家/观众(个人)对接申请</a></li>
+			  
+			  <li  class="current"><a href="{:U('weixin/apply_b')}" target="_self">参展商对接申请</a></li>
+			  
+			</ul>
+			<div class="clear"></div>
+		</div>
+		<div class="yin">
+			<img src="/images/Online/Weixin/imegs/-06.png">
+		</div>
+	</div>   
+	 <div data-role="content" class="Main">
+		<div class="jointtt">
+	    	<div class="joint">
+		    	<div class="joint01">
+		        	<div class="joint02">
+		            	<p><span>注：</span>公司中英文名称、公司中英文简介、电话，电子信箱，公
+		司网站为展商手册必备信息。</p>
+		            </div>
+		        </div>
+		    </div>
+		    <div class="fill">
+		    	<div class="fill01">
+		        	<div class="fill02">
+		            	<span>公司中文名称：</span>
+		            </div>
+		            <div class="fill03">
+		            	<input type="text" name='company_cname' value="<?php echo $onlineUser['company_cname'];?>" class="text"  data-role="none">
+		            </div>
+		        </div>
+		        <div class="fill01">
+		        	<div class="fill02">
+		            	<span>公司英文名称：</span>
+		            </div>
+		            <div class="fill03">
+		            	<input type="text" name='company_ename' value="<?php echo $onlineUser['company_ename'];?>" class="text"  data-role="none">
+		            </div>
+		        </div>
+		        <div class="fill01">
+		        	<div class="fill02">
+		            	<span>地址：</span>
+		            </div>
+		            <div class="fill03">
+		            	<input type="text" name='company_address' value="{$onlineUser['company_address']}" class="text"  data-role="none">
+		            </div>
+		        </div>
+		        <div class="fill01">
+		        	<div class="fill02">
+		            	<span>展位号：</span>
+		            </div>
+		            <div class="fill03">
+		            	<input type="text" name='exhibition_number' value="{$onlineUser['exhibition_number']}" class="text"  data-role="none">
+		            </div>
+		        </div>
+		        <div class="fill01">
+		        	<div class="fill02">
+		            	<span>电话：</span>
+		            </div>
+		            <div class="fill03">
+		            	<input type="text" name='company_tel' value="{$onlineUser['company_tel']}" class="text validate[required]"  data-role="none">
+		            </div>
+		        </div>
+		        <div class="fill01">
+		        	<div class="fill02">
+		            	<span>传真：</span>
+		            </div>
+		            <div class="fill03">
+		            	<input type="text" name='company_fax' value="{$onlineUser['company_fax']}" class="text"  data-role="none">
+		            </div>
+		        </div>
+		        <div class="fill01">
+		        	<div class="fill02">
+		            	<span>电子信箱：</span>
+		            </div>
+		            <div class="fill03">
+		            	<input type="text" name='company_email' value="{$onlineUser['company_email']}" class="text validate[required]"  data-role="none">
+		            </div>
+		        </div>
+		        <div class="fill01">
+		        	<div class="fill02">
+		            	<span>网站：</span>
+		            </div>
+		            <div class="fill03">
+		            	<input type="text" name='company_website' value="{$onlineUser['company_website']}" class="text"  data-role="none">
+		            </div>
+		        </div>
+		        <div class="fill01">
+		        	<div class="fill02">
+		            	<span>公司中文简介：</span>
+		            </div>
+		            <div class="fill03">
+		            	<textarea  data-role="none" name="company_cinfo" class="text wenben validate[required]">{$onlineUser['company_cinfo']}</textarea>
+		            </div>
+		        </div>
+		        <div class="fill01">
+		        	<div class="fill02">
+		            	<span>公司英文简介：</span>
+		            </div>
+		            <div class="fill03">
+		            	<textarea  data-role="none" name="company_einfo" class="text wenben">{$onlineUser['company_einfo']}</textarea>
+		            </div>
+		        </div>
+		        
+		    </div>
+	    
+		</div>    
+		<div class="ziliao">
+			<div class="ziliao01">
+		    	<div class="ziliao02">
+		        	<span>企业联系人详细资料</span>
+		        </div>
+		        <div class="fill01">
+		        	<div class="fill02">
+		            	<span>性别：</span>
+		            </div>
+		            <div class="fill03">
+		            	<span><input class="radio" name="gender" type="radio" value="M" class="radio" data-role="none" <?php if($onlineUser['gender']=='M' || !isset($onlineUser['gender'])){ echo 'checked="checked"';} ?> />男</span>
+                        <span><input class="radio" name="gender" type="radio" value="F" class="radio" data-role="none" <?php if($onlineUser['gender']=='F'){ echo 'checked="checked"';} ?> />女</span>
+		            </div>
+		        </div>
+		         <div class="fill01">
+		        	<div class="fill02">
+		            	<span>姓名：</span>
+		            </div>
+		            <div class="fill03">
+		            	<input type="text"  name='name' value="{$onlineUser['name']}" class="text validate[required]"  data-role="none">
+		            </div>
+		        </div>
+		         <div class="fill01">
+		        	<div class="fill02">
+		            	<span>职位：</span>
+		            </div>
+		            <div class="fill03">
+		            	<input type="text" name='position' value="{$onlineUser['position']}" class="text"  data-role="none">
+		            </div>
+		        </div>
+		        <div class="fill01">
+		        	<div class="fill02">
+		            	<span>手机：</span>
+		            </div>
+		            <div class="fill03">
+		            	<input type="text" name='mobile' value="{$onlineUser['mobile']}" class="text validate[required]"  data-role="none">
+		            </div>
+		        </div>
+		         <div class="fill01">
+		        	<div class="fill02">
+		            	<span>直拨电话：</span>
+		            </div>
+		            <div class="fill03">
+		            	<input type="text" name='tel' value="{$onlineUser['tel']}" class="text"  data-role="none">
+		            </div>
+		        </div> <div class="fill01">
+		        	<div class="fill02">
+		            	<span>传真：</span>
+		            </div>
+		            <div class="fill03">
+		            	<input type="text" name='fax' value="{$onlineUser['fax']}" class="text"  data-role="none">
+		            </div>
+		        </div> <div class="fill01">
+		        	<div class="fill02">
+		            	<span>电子信箱：</span>
+		            </div>
+		            <div class="fill03">
+		            	<input type="text" name='email' value="{$onlineUser['email']}" class="text validate[required]"  data-role="none">
+		            </div>
+		        </div>
+		    </div>
+		</div>
+	    <div class="option">
+	    	<div class="option01">
+	        	<div class="option02">
+	            	<p>贵公司可以为客户提供的具体产品技术及服务/ PRODICTS 
+	AND SERVICES OFFERED<font color="red">*</font><span>最多可选30项</span></p>
+	            </div>
+	        </div>
+	    </div>
+	    <?php
+        	$i = 0;
+            foreach($fatherList as $father_k => $father_v){
+				$i++;
+				if($i != 11){
+        ?>
+	    <div class="unfold">
+	    	<div class="unfold01">
+	        	<div class="unfold02">
+	            	<div class="unfold03">
+	                	<p>▪&nbsp;&nbsp;<php>echo $father_v['cname'];</php><php>if($father_v['ename'] != ''){ echo '/'.$father_v['ename'];}</php></p>
+	                </div>
+	                <div class="unfold04">
+	                	<img src="/images/Online/Weixin/imegs/-22.png">
+	                </div>
+	                <div class="unfold0401">
+	                	<img src="/images/Online/Weixin/imegs/-23.png">
+	                </div>
+	            </div>
+	            <div class="xiangmu">
+	            	<?php
+                		foreach($childList[$father_v['id']] as $child_k => $child_v){
+					?>
+	            	<div class="xiangmutt">
+	                    <div class="submit02gg">
+	                        <div class="fangzu02tt">
+	                            <span class="picon04">
+	                            <img src="/images/Online/Weixin/imegs/-24.png"  data-value="{$child_v['id']}" name="chose_a" chose_a="<?php echo in_array($child_v['id'],$cidList) ? '1' : '0'; ?>" data-a="/images/Online/Weixin/imegs/-24.png" data-b="/images/Online/Weixin/imegs/-25.png" />
+	                            
+	                            <!-- <a href="#" data-value="{$child_v['id']}" class="<?php echo in_array($child_v['id'],$cidList) ? 'show02tt' : 'hide01tt01'; ?>"><img src="/images/Online/Weixin/imegs/-25.png"></a>
+	                            <a href="#" data-value="{$child_v['id']}" class="<?php echo in_array($child_v['id'],$cidList) ? 'hide01tt01' : 'show02tt'; ?>"><img class="none03" src="/images/Online/Weixin/imegs/-24.png"></a>
+	                             -->
+	                            </span>
+	                        </div>
+		                    <div class="fangzu03tt">
+		                        <a href="">{$child_v['cname']}{$child_v['ename']}</a>
+		                    </div>
+	                    </div>
+		            </div>
+		            <?php
+                  	}
+                  	?>
+	        	</div>
+	    	</div>
+	    </div>
+	    <?php } 
+        	} 
+        ?>
+	    <div class="other">
+	    	<div class="other01">
+	        	<div class="other02">
+	            	<span><php>echo $fatherList[10]['cname'];</php><php>if($fatherList[10]['ename'] != ''){ echo '/'.$fatherList[10]['ename'];}</php>: </span>
+	            </div>
+	            <div class="other03">
+	            	<input type="text" name="other_category" value="{$onlineUser['other_category']}" class="text" data-role="none">
+	            </div>
+	        </div>
+	    </div>
+	    
+	    <div class="shangwu">
+	    	<div class="shangwu01">
+	        	<div class="shangwu02">
+	            	<span>B2B 商务洽谈</span>
+	            </div>
+	            <div class="shangwu03">
+	            	<p>请认真填写贵公司的合作需求（如希望在展会约见相关展商或
+	关键人，请在此处详细列出，组委会将尽力为您实现）：</p>
+	            </div>
+	            <div class="shangwu04">
+	            	<p>▪&nbsp;&nbsp;能提供的核心产品及技术合作：</p>
+	            </div>
+	            <div class="shangwu05">
+	            	<textarea data-role="none" name="cooperation_offer" class="text validate[required]">{$onlineUser['cooperation_offer']}</textarea>
+	            </div>
+	            <div class="shangwu04">
+	            	<p>▪&nbsp;&nbsp;已实现的应用：</p>
+	            </div>
+	            <div class="shangwu05">
+	            	<textarea data-role="none" name="implemented_application" class="text">{$onlineUser['implemented_application']}</textarea>
+	            </div>
+	
+	            <div class="shangwu04">
+	            	<p>▪&nbsp;&nbsp;需要何种合作或帮助：</p>
+	            </div>
+	            <div class="shangwu05">
+	            	<textarea data-role="none" name="cooperation_need" class="text validate[required]">{$onlineUser['cooperation_need']}</textarea>
+	            </div>
+	            <div class="shangwu04">
+	            	<p>▪&nbsp;&nbsp;是否有投融资需求（如有需求组委会会尽力为您安排与投融资机构面谈）：</p>
+	            </div>
+	            
+	            <div class="anniu">
+	            	<div class="anniu01">
+	                	<div class="anniu02">
+	                    	<div class="anniu03">
+	                        	<div class="anniu04">
+	                            	<input class="radio" name="fund_demand" type="radio" value="1" <?php if($onlineUser['fund_demand']==1 || !isset($onlineUser['fund_demand'])){ echo 'checked="checked"';} ?>   data-role="none" >
+	                            </div>
+	                            <div class="anniu05">
+	                            	<span>是</span>
+	                            </div>
+	                        </div>
+	                        <div class="anniu03">
+	                        	<div class="anniu04">
+	                            	<input class="radio" name="fund_demand" type="radio" value="0" <?php if($onlineUser['fund_demand']==0){ echo 'checked="checked"';} ?>  data-role="none" >
+	                            </div>
+	                            <div class="anniu05">
+	                            	<span>否</span>
+	                            </div>
+	                        </div>
+	                        
+	                    </div>
+	                    <div class="many">
+	                    	<div class="many01">
+	                        	<input type="text" class="text" name="fund_amount" value="{$onlineUser['fund_amount']}"  data-role="none" >
+	                        </div>
+	                        <div class="many02">
+	                        	<p>万元（RMB）</p>
+	                        </div>
+	                    </div>
+	                </div>
+	            </div>
+	
+	        </div>
+	    </div>
+	    <div class="chongzhi">
+   	<div class="chongzhi01">
+       	<div class="chongzhi02">
+       		<input type='hidden' name='id' value="{$onlineUser['id']}"/>
+       		<input type='hidden' name='category' value="<?php echo implode(',', $cidList); ?>" id="category"/>
+           	<input type="submit" class="btn" value="下一步" data-role="none">
+           </div>
+           <div class="chongzhi03">
+           	<input type="button" class="btn" value="重置内容" data-role="none" id="chongzhi">
+           </div>
+       </div>
+   </div>
+   
+	</div>
+	</form>
+</div>
+</body>
+</html>

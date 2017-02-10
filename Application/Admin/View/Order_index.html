@@ -1,0 +1,89 @@
+<include file="Public:header" />
+
+<script type="text/javascript">
+	function status(id,type,utype){
+		if(!utype){
+			alert('用户必须完善信息才能审核');
+			return;	
+		}
+	    $.get("{:u('User/status')}", { id: id, type: type }, function(data){
+			$("#"+id+" img").attr('src', '__PUBLIC__/statics/images/status_'+data.data+'.gif')
+		},"json"); 
+	}
+</script>
+
+</head>
+<div class="pad-10" >
+    <form name="searchform" action="" method="get" >
+    <input name="a" type="hidden" value="index">
+    <input name="m" type="hidden" value="User">
+    <input name="g" type="hidden" value="Admin">
+    <table width="100%" cellspacing="0" class="search-form">
+        <tbody>
+            <tr>
+            <td>
+            <div class="explain-col">
+				订单号 :
+                <input name="keyword" type="text" class="input-text" size="25" value="{$keyword}" />
+				
+                <input type="submit" name="search" class="button" value="搜索" />
+        	</div>
+            </td>
+            </tr>
+        </tbody>
+    </table>
+    </form>
+	
+    <form id="myform" name="myform" action="{:u('Order/delete')}" method="post" onsubmit="return check();">
+    <div class="table-list">
+    <table width="100%" cellspacing="0">
+        <thead>
+            <tr>
+			    <th width="60">序号</th>  
+                <th width="33"><input type="checkbox" value="" id="check_box" onclick="selectall('id[]');"></th> 
+                <th width="479">会议名称</th>
+				<th width="74">会议费用</th>
+				<th width="150">报名人员</th>
+				<th width="75">参会人数</th>
+				<th width="75">是否参展</th>
+				<th width="84">支付方式</th>
+				<th width="75">费用总额</th>
+                <th width="106">操作</th>
+            </tr>
+        </thead>
+    	<tbody>
+        <volist name="list" id="val" >
+        <tr>
+        	<td align="center">{$val.id}</td>
+            <td align="center"><input type="checkbox" value="{$val.id}" name="id[]"></td>
+          <td align="center">{$val.mid|meet}</td>
+		  <td align="center">{$val.mid|userpay}</td>
+		   <td align="center">{$val.uid|user}</td>
+		  <td align="center">{$val.num}</td>
+		  <td align="center"><if condition="$val['is_cz'] eq 1">是<else/>否</if></td>
+		   <td align="center"><if condition="$val['paytype'] eq 1">现场支付<else/>在线支付</if></td>
+          <td align="center">{$val.pay}</td>
+		   <td  align="center"><a href="{:U('Admin/Order/add?id='.$val['id'])}" >查看</a>&nbsp;
+           <if condition="$val['is_cancel'] eq 0 && $val['status'] eq 0">
+		   <a href="{:U('Order/submit?id='.$val['id'])}">确认</a>&nbsp;<a  onclick="if(!confirm('确定取消吗？')){return false;}" href="{:U('Order/cancel?id='.$val['id'])}" >取消</a>&nbsp;
+		   <elseif condition="$val['is_cancel'] eq 0 && $val['status'] eq 1"/>
+		   已确认参会
+		   <else/>
+		   已取消
+		   </if> 
+				</td>
+		</tr>
+	   </volist>
+    	</tbody>
+    </table>
+    <div class="btn">
+    	<label for="check_box" style="float:left;">全选/取消</label>
+    	<input type="submit" class="button" name="submit" value="删除" style="float:left;margin:0 10px 0 10px;"/>
+    	
+    </div>
+    </div>
+    </form>
+	<div id="pages">{$page}</div>
+</div>
+</body>
+</html>

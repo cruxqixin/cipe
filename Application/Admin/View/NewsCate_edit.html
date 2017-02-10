@@ -1,0 +1,92 @@
+<include file="Public:header" />
+
+<script type="text/javascript">
+	$(document).ready(function(){
+		$("#submit").click(function(){
+			if($("#name").val()==0){
+			   alert('请填写资讯分类');
+			   return false;
+			}
+		});
+	});
+</script>
+
+</head>
+<div class="pad_10">
+<form action="{:U('NewsCate/edit')}" method="post" name="myform" id="myform" enctype="multipart/form-data" style="margin-top:10px;">
+  <div class="pad-10">
+  <div class="col-tab">
+  <ul class="tabBut cu-li">
+    <li id="tab_setting_1" class="on" onclick="SwapTab('setting','on','',2,1);">基本信息</li>
+   
+  </ul>
+  <div id="div_setting_1" class="contentList pad-10">
+    <table width="100%" cellpadding="2" cellspacing="1" class="table_form">
+    <tr>
+      <th></th>
+      <td><input type="hidden" name="id" class="input-text" value="{$cate_info.id}"></td>
+    </tr>
+    <!--<tr>
+      <th>上级分类 :</th>
+      <td>
+      <select name="pid" style="width:150px;">
+      <option value="{$cate_info.pid}" selected="selected"><if condition="$cate_info.pid eq 0">--顶级分类--<else />{$cate_info.pname}</if></option>    
+      </td>
+      </select>
+    </tr>-->
+    <tr>
+      <th width="100">新闻分类 :</th>
+      <td><input type="text" name="NAME" id="name" class="input-text" value="{$cate_info.name}"></td>
+    </tr>
+    
+     <tr>
+        <th>上级分类 :</th>
+        <td><select name="parentid" id="cate_id" style="width:200px;">
+        	<option value="0">==顶级分类==</option>
+			<volist name="cate_list" id="val">
+			<option value="{$val.id}" <if condition="$cate_info['parentid'] eq $val['id']">selected</if>>{$val.name}</option>
+            
+			</volist>
+          
+          </select></td>
+      </tr>
+    <tr>
+      <th width="100">排序值 :</th>
+      <td><input type="text" name="ORD" id="sort_order" class="input-text" value="{$cate_info.ord}" size="4" onkeyup="value=value.replace(/[^\d]/g,'')"onbeforepaste="clipboardData.setData('text',clipboardData.getData('text').replace(/[^\d]/g,''))"></td>
+    </tr>
+    <tr>
+      <th>审核状态 :</th>
+      <td><input type="radio" name="status" value="1" <if condition="$cate_info.status eq 1"> 	checked</if> >&nbsp;已审核&nbsp;&nbsp;&nbsp;
+      	  <input type="radio" name="status" value="0" <if condition="$cate_info.status eq 0"> 	checked</if> >&nbsp;未审核</td>
+    </tr>
+   
+</table>
+  </div>
+
+  <div id="div_setting_2" class="contentList pad-10 hidden">
+    <table width="100%" cellpadding="2" cellspacing="1" class="table_form">
+     <tr>
+      <th width="100">Title :</th>
+      <td><input type="text" name="SEO_TITLE" id="seo_title" class="input-text" value="{$cate_info.SEO_TITLE}" size="50"></td>
+    </tr>
+    <tr>
+      <th width="100">Keywords :</th>
+      <td><input type="text" name="SEO_KEYS" id="seo_keys" class="input-text" value="{$cate_info.SEO_KEYS}" size="50"></td>
+    </tr>
+    <tr>
+      <th width="100">Description :</th>
+      <td><textarea name="SEO_DESC" cols="47" rows="4">{$cate_info.SEO_DESC}</textarea></td>
+    </tr>
+    </table>
+  </div>
+  <div class="bk15"></div>
+  <div class="btn">
+    <input type="submit" value="提交" name="submit" class="button" id="submit">
+  </div>
+
+</div>
+</div>
+</form>
+</div>
+</body>
+</html>

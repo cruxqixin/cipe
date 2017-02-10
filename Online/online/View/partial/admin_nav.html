@@ -1,0 +1,8 @@
+		<ul  id="nTabs2">
+            <li {$nav_status == 'audited' ? 'class="currentLi"' : ''}><a href="{:U('admin/index/1')}" target="_self">已审核用户</a></li>
+            <li {$nav_status == 'audit' ? 'class="currentLi"' : ''}><a href="{:U('admin/index')}" target="_self">待审核用户</a></li>
+			<!--<li {$nav_status == 'reg_list' ? 'class="currentLi"' : ''}><a href="{:U('admin/reg_list')}" target="_self">参会注册列表</a></li>-->
+			<li {$nav_status == 'schedule_list' ? 'class="currentLi"' : ''}><a href="{:U('admin/schedule_list')}" target="_self">用户预约列表</a></li>
+			<li ><a href="{:U('admin/audit_add_c')}" target="_self">新增个人信息</a></li>
+			<li ><a href="{:U('admin/audit_add_b')}" target="_self">新增展商信息</a></li>
+        </ul>

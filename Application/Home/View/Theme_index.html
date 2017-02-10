@@ -1,0 +1,137 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>{$theme['title']}-{:C('site_name')}</title>
+<meta name="description" content="{:C('site_description')}">
+<meta name="keywords" content="{:C('site_keyword')}">
+<meta name="title" content="{:C('site_title')}">
+<link rel="stylesheet" type="text/css" href="/css/index.css"/>
+<script src="/js/jquery.js"></script>
+<script src="/js/index.js"></script>
+<script type="text/javascript" src="/js/common.js" language="javascript"></script>
+<script>
+$(function(){
+	$("base").attr("target","");
+	$(".nav01 ul li a").attr("target","_blank");
+	$(".detail").click(function(){
+		$("#desc").height($(document).height());
+		$("#desc").width($(document).width());
+		$("#desc").show();
+	})
+	$("#detail1").click(function(){
+		$("#info").height($(document).height());
+		$("#info").width($(document).width());
+		$("#info").show();
+	})
+	$("[id=close]").click(function(){
+		$(".showboxbg").hide();
+	})
+})
+</script>
+</head>
+
+<body>
+  <include file="Public:header"/>
+  <div class="themeBox">
+	<div class="showboxbg" id="desc">
+		<div class="slogin">
+		    <div style="height:72px;margin-right:20px;"><div class="titles">{$theme['title']}</div><span id="close" style="float:right;cursor:pointer;margin-top:-20px;">关闭</span></div>
+			<div class="content" >
+				{$theme['desc']}
+			</div>
+		</div>
+	</div>
+	<div class="showboxbg" id="info">
+		<div class="slogin">
+		    <div style="height:72px;margin-right:20px;"><div class="titles">{$theme['title']}</div><span id="close" style="float:right;cursor:pointer;margin-top:-20px;">关闭</span></div>
+			<div class="content" >
+				{$theme['content']}
+			</div>
+		</div>
+	</div>
+	
+    <div id="menu_content">
+      <div class="manufactureBox">
+        <div class="banner">
+          <img src="{$theme['img']}" />
+        </div>
+        <div class="manufacture01">
+            <div class="manufacture01-1">
+               <div class="text01">
+                  <h1>{$theme['title']}</h1>
+                  <p>{$theme['desc']|strip_tags|msubstr=0,70,'utf-8',false}...</p>
+				  <input type="button" id="detail"  value="了解详情" class="detail">
+               </div>
+               <div class="img01">
+                  <dl>
+                    <dd><img src="{$theme['descimg']}" /></dd>
+                    <dt><p>{$theme['content']|strip_tags|msubstr=0,140,'utf-8',false}...<span style="cursor:pointer" id="detail1">【查看详情】</span></p>
+                    </dt>
+                  </dl>
+               </div>
+            </div><div class="clear"></div>
+            <div class="theme">
+                <ul id="theme">
+                    <li>
+                      <div class="show"><a href="{:U('Visit/index?type=1')}"><img src="/images/6_03.jpg" /></a></div>
+                      <div class="activeimg"><a href="{:U('Visit/index?type=1')}"><span>参观</span></a></div>
+                    </li>
+                    <li>
+                      <div class="show"><a href="{:U('Visit/apply?type=4')}"><img src="/images/6_06.jpg" /></a></div>
+                      <div class="activeimg"><a href="{:U('Visit/apply?type=4')}"><span>参展</span></a></div>
+                    </li>
+                    <li>
+                      <div class="show"><a href="{:U('Activity/index')}"><img src="/images/6_08.jpg" /></a></div>
+                      <div class="activeimg"><a href="{:U('Activity/index')}"><span>活动</span></a></div>
+                    </li>
+                    <li>
+                      <div class="show"><a href="http://www.cipeasia.com/Consultation.html"><img src="/images/link_11.jpg" /></a></div>
+                      <div class="activeimg"><a href="http://www.cipeasia.com/Consultation.html">广告赞助</a></div>
+                    </li>
+                    <li>
+                      <div class="show"><a href="http://online.kjtxw.com/online.php"><img src="/images/6_12.jpg" /></a></div>
+                      <div class="activeimg"><a href="http://online.kjtxw.com/online.php"><span>对接</span></a></div>
+                    </li>
+                    <li>
+                      <div class="show"><a href="http://consultant.kjtxw.com/consultant.html"><img src="/images/6_14.jpg" /></a></div>
+                      <div class="activeimg"><a href="http://consultant.kjtxw.com/consultant.html">科技服务</a></div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div class="exhibitBox">
+            <div class="exhibit">
+              <h1>展出范围</h1>
+              <ul>
+			    <volist id="val" name="Exhibition">
+                  <li>
+                    <a href="#"><img src="{$val['pic']}" /></a>
+                    <h2>{$val['title']}</h2>
+                    <P>{$val['info']}</P>
+                  </li>
+                 </volist>
+               </ul>
+            </div>
+        </div>
+        <div class="unitBox">
+          <dl>
+		  {$theme['union']}
+            
+          </dl>
+        </div>
+        <div class="exhibitBox">
+           <div class="unitBox">
+          <dl>
+            {$theme['infos']}
+          </dl>
+        </div>
+        </div>
+    </div>
+  </div>
+  </div>
+  <include file="Public:footer"/>
+</body>
+</html>
+
+

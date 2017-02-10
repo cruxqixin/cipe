@@ -1,0 +1,94 @@
+<base target='_blank'/>
+<div class="header">
+     <div class="headerTop">
+     	<div class="headerTOP01">
+			<div class="logo">
+             	<a href="/" target="_blank"><img src="/images/LOGO(5).png" /></a>
+                <p style="color:#c7000a;font-size:18px; margin-left: 230px">2016年5月9日-11日  |  北京国家会议中心 </p>
+                <p style="color:#c7000a;font-size:18px; margin-left: 230px">May9-11  |  Beijing China</p>
+            </div>
+			
+			<!--
+        	<div class="logo">
+             	<a href="/" target="_blank"><img src="/images/logo_02.jpg" /></a>
+            </div>			
+			<div class="logo" style="margin-top:70px;margin-left:100px;">
+             	<a href="/" target="_blank"><img src="/images/LO.png" /></a>
+            </div>-->
+            <div class="link01">
+            	<ul>
+                	<li>
+					<a href="#" id="weixin"><img src="/images/2_05.jpg" /></a>	
+					</li>
+                    <li><a href="http://weibo.com/u/3921420614?from=myfollow_all
+"><img src="/images/2_07.jpg" /></a></li>
+                    <li><a href="#">中文</a>|<a href="http://www.cipeasia.com/en/" target="_blank">English</a></li>
+                </ul><div class="clear"></div>
+                <img src="/images/BANNERSMALL.jpg" style="width: 280px; height: 99px; margin-left: 105px;">
+				<img id="wei" class="wei" src="/images/weixin.jpg">
+            </div>
+        </div>
+     </div>
+     <div class="navBox">
+
+        	<ul id="menu">
+            	<li><a href="/">首页</a></li>
+                <li><a href="http://www.cipeasia.com/theme/1.html">主题会展</a>
+                    <div class="subnav">
+                        <div class="min">
+                            <div>
+                                <ul>
+                                    <li><a href="http://www.cipeasia.com/theme/1.html">▪&nbsp;激光制造展</a></li>
+                                    <li><a href="{:U('Theme/index',array('id'=>2))}">▪&nbsp;红外微光展</a></li>
+                                    <li><a href="http://www.cipeasia.com/theme/3.html">▪&nbsp;光学仪器展</a></li>
+                                    <li><a href="http://www.cipeasia.com/theme/4.html">▪&nbsp;光学制造展</a></li>
+                                    <li><a href="http://www.cipeasia.com/theme/5.html">▪&nbsp;机器视觉展</a></li>
+                                    <li><a href="http://www.cipeasia.com/theme/6.html">▪&nbsp;无人系统设备展</a></li>
+                                    <li><a href="http://www.cipeasia.com/theme/7.html">▪&nbsp;光通信光传感物联网展</a></li>
+                                    <li><a href="http://www.cipeasia.com/theme/9.html">▪&nbsp;智能制造展</a></li>
+                                    <li><a href="http://www.cipeasia.com/theme/14.html">▪&nbsp;智能安防展</a></li>
+                                    <li><a href="http://www.cipeasia.com/VR">▪&nbsp;虚拟现实展</a></li>
+                                    <li><a href="http://www.cipeasia.com/theme/16.html">▪&nbsp;创新技术展</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </li>
+                <li><a href="http://www.cipeasia.com/register.html">参观指南</a>
+                    <div class="subnav">
+                        <div class="min">
+                            <div>
+                                <ul>
+                                    <li><a href="http://www.cipeasia.com/TrafficGuidance.html">▪&nbsp;交通指引</a></li>
+                                    <li><a href="http://www.cipeasia.com/LaunchTime.html">▪&nbsp;开展时间</a></li>
+                                    <li><a href="http://www.cipeasia.com/register.html">▪&nbsp;在线预登记</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div></li>
+                <li><a href="http://www.cipeasia.com/apply.html">参展指南</a>
+                    <div class="subnav">
+                        <div class="min">
+                            <div>
+                                <ul>
+                                    <li><a href="http://www.cipeasia.com/apply.html">▪&nbsp;申请参展</a></li>
+                                    <li><a href="http://www.cipeasia.com/manual.html">▪&nbsp;展商手册</a></li>
+                                    <li><a href="http://www.cipeasia.com/BoothMap.html">▪&nbsp;展位图</a></li>
+                                    <li><a href="http://www.cipeasia.com/directory.html">▪&nbsp;展商名录</a></li>
+                                    <li><a href="http://www.cipeasia.com/Consultation.html">▪&nbsp;广告咨询</a></li>
+                                    <li><a href="http://www.cipeasia.com/Build.html">▪&nbsp;搭建与租赁</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </li>
+				<li><a href="http://www.cipeasia.com/Activity.html">精彩活动</a></li>
+                <li><a href="http://www.cipeasia.com/Download.html">下载中心</a></li>
+                <li><a href="http://online.kjtxw.com/online.php">对接系统</a></li>
+                <li><a href="http://www.cipeasia.com/medias.html">合作媒体</a></li>
+                <li><a href="http://www.cipeasia.com/business.html">商旅中心</a></li>
+                <li><a href="http://www.cipeasia.com/about.html">关于我们</a></li>
+            </ul><div class="clear"></div>
+        </div>
+     
+  </div>

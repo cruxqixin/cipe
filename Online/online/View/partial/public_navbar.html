@@ -1,0 +1,27 @@
+
+<script type="text/javascript" src="/js/Online/common1.js" language="javascript"></script>
+
+
+<div class="topbg">
+  <div class="container">
+      <div class="logo"><a href="http://www.kjtxw.com/"><img src="/images/Online/logo.jpg"></a></div>
+      <div class="top_right">
+          <div class="navbar">
+             <div class="left">
+			 <if condition="$user['id'] eq ''">
+			 <a href="/online.php/index/login?returnurl=/online.php/index/detail" target="_self">登录</a><!-- <a href="{:U2('Keji/User/register')}?url=/online.php/index/detail" target="_self">免费注册</a> --></div>
+             <else/>
+			  <a href="/online.php/index/detail">{$user['nickname']}</a><a href="/online.php/user/logout" target="_self">退出</a></div>
+			 </if>
+			 <div class="right"></div>
+             <div class="clear"></div>
+          </div>
+          <div class="top_list">
+             <img src="/images/Online/online_banner.gif">
+            
+          </div>
+      </div>
+      <div class="clear"></div>
+  </div>
+</div>
+ 

@@ -1,0 +1,116 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<title>对接日历_在线对接会_科济天下网</title>
+<link href="/css/Online/Weixin/jquery.mobile-1.4.2.css" rel="stylesheet">
+<link href="/css/Online/Weixin/index.css" rel="stylesheet" type="text/css">
+<script src="/js/Online/Weixin/jquery.js"></script>
+<script src="/js/Online/Weixin/jquery.mobile-1.4.2.min.js"></script>
+<script src="/js/Online/Weixin/common.js"></script>
+<script src="/js/Online/Weixin/swipe.js"></script>
+<script type="text/javascript">
+
+
+$(function() { 
+    $(".picon04 a").click(function(){
+        if($(this).parents('.picon04').find("input")[0].value == 1){
+        	$(this).parents('.picon04').find("input")[0].value = 0;
+        }else{
+       	 	$(this).parents('.picon04').find("input")[0].value = 1;
+        }
+    }); 
+});
+</script> 
+</head>
+
+<body>
+<div data-role="page" id="Activity"  class="index">
+ <div data-role="header" data-position="fixed" class="header" id="menber"  data-tap-toggle="false">
+         <div class="xiangqing">
+            <div class="xiangqing01">
+                <div class="xiangqing02">
+                    <a href="{:U('Weixin/index')}" target="_self"><img src="/images/Online/Weixin/imegs/home.png">
+                    <span>首页</span></a>
+                </div>
+                <div class="xiangqing03">
+                    <span>企业用户详情</span>
+                </div>
+            </div>
+      </div>
+  </div>  
+  <div data-role="content" class="Main">
+
+    <div class="date">
+    <form action="{:U('weixin/calendar')}" id="form1" method="post"  target="_self">
+    	<div class="date01" style="margin-top:4%;">
+        	<div class="date02">
+            	<div class="date03tt">
+                	<span>请确定对接时间(红色对勾表示可预约时间)：</span>
+                </div>
+                
+            </div>
+            <div class="shijian">
+            	<ul>
+            	<?php
+            		$i=0;
+                	foreach($dayConfig as $day_k => $day_v){
+					$i++;
+				?>
+                	<li <?php if($i==1) { ?>class="red" <?php } ?> title="tab0{$i}"><span>{$day_v}</span></li>
+                <?php
+                	}
+				?>
+
+                </ul>
+            </div>
+            
+
+		   <div>
+		   <?php 
+			    $j=0;
+				foreach($dayConfig as $day_k => $day_v){
+				$j++;
+			?>
+           <div class="submit01" id="tab0{$j}" style="padding-bottom:5%;<?php if($j!=1){ ?> display:none;<?php } ?>" >
+           	  <div class="submit01tt">
+           	  		<?php
+           	  			$k=0;
+                   		foreach($timeConfig as $time_k => $time_v){
+						$k++;
+					?>
+           	  
+            		<div class="submit02" >
+                        <div class="fangzu02">
+                            <span class="picon04">
+                            <a href="#" class="<?php echo $calendarListDay[$day_k][$time_k]['status'] == 1 ? 'show02tt' : 'hide01tt'; ?>"><img src="/images/Online/Weixin/imegs/-25.png"></a>
+                            <a href="#" class="<?php echo $calendarListDay[$day_k][$time_k]['status'] == 0 ? 'show02tt' : 'hide01tt'; ?>"><img class="none03" src="/images/Online/Weixin/imegs/-24.png"></a>
+                            <input name="calendar_{$calendarListDay[$day_k][$time_k]['id']}" type='hidden' value="{$calendarListDay[$day_k][$time_k]['status']}"/>
+                            </span>
+                         </div>
+                        <div class="fangzu03">
+                            <span>{$time_v}</span>
+                        </div>
+                    </div>
+            	<?php } ?>
+              </div>
+           </div>
+           <?php } ?>
+           </div>
+            
+            
+		</div>
+ 
+	 	<div class="sub-time">
+	    	<div class="sub-time01">
+	        	<input type="submit" value="提交对接时间" class="btn" data-role="none">
+	        </div>
+	    </div>
+    </form>
+ </div>
+ </div>
+ </div>
+        
+</body>
+</html>

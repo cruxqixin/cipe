@@ -1,0 +1,1 @@
+<DD><SPAN class=time>[field:pubdate function="GetDateMK(@me)"/] </SPAN> <A title="[field:title/]" href="[field:arcurl/]">[field:title/]</A>

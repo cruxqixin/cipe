@@ -1,0 +1,136 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>科济天下网_在线对接会_产品详情</title>
+<link href="/css/Online/index.css" rel="stylesheet" type="text/css" />
+<link href="/css/Online/common.css" rel="stylesheet" type="text/css" />
+<script type="text/javascript" src="/js/Online/jquery-1.7.2.min.js"></script>
+<script type="text/javascript">
+$(function(){
+	$("#news li").click(function(){
+	  $(this).attr("class","current").siblings().attr("class","");
+	  $("#news_content .fixnone").eq($(this).index()).show().siblings().hide();	
+	})
+})
+$(function(){
+	$("#tech li").click(function(){
+	  $(this).attr("class","current").siblings().attr("class","");
+	  $("#tech_content .fixnone").eq($(this).index()).show().siblings().hide();	
+	})
+})
+</script>
+</head>
+<style>
+.company-01 h1{
+	border-bottom:none;}
+</style>
+
+<body>
+<include file="Online/online/View/partial/public_navbar.html"/>
+<div class="headbg">
+</div>
+<div class="navBox">
+	<ul>
+    	<li><a href="{:U('index/index')}" class="currentA">首页</a></li>
+        <!-- <li><a href="#">会议申请</a></li>
+        <li><a href="#">在线会议室</a></li> -->
+    </ul>
+</div>
+<div class="mainBox">
+    <div class="main-left">
+    	<h5>当前位置： <a href="{:U('index/index')}">首页</a> ><span> <a href="{:U('index/info/'.$onlineUser['uid'])}">企业用户详情</a></span> ><span> <a href="{:U('product/listo/'.$onlineUser['uid'])}">产品列表</a></span> ><span> 产品详情</span></h5>
+       
+       
+           
+           
+                <div class="dx_Productdisplay">
+                	<div class="dx_Productdisplay01">
+                    	<div class="dx_Productdisplay02">
+                        	<p>产品详情</p>
+                        </div>
+                        <div class="dx_Productdisplay03">
+                        	<a href="{:U('product/listO/'.$onlineUser['uid'])}">返回></a>
+                        </div>
+                    </div>
+                    <div class="dx_Productdisplay04">
+                    	<div class="dx_details">
+                        	<div class="dx_details01">
+                            	<img src="<?php echo $onlineUser['pic']?$onlineUser['pic']:'/images/Online/bz.jpg'; ?>">
+                            </div>
+                            <div class="dx_details02">
+                            	<div class="dx_details03">
+                                	<ul>
+                                    	<li><h1>{$onlineUser['company_cname']}</h1></li>
+                                        <li><p>产品ID：<span> NO.{$productInfo['id']}</span> </p></li>
+                                        <li><p>产品名称<span>：{$productInfo['product_name']}</span></p></li>
+                                        <li><p>产品类别：</p></li>
+                                        <?php foreach($productTagList as $k => $v){ ?>
+                                        <li><font>{$fatherList[$categoryListKV[$v['cid']]['father']]['cname']}—— {$categoryListKV[$v['cid']]['cname']}</font></li>
+                                        <?php } ?>
+                                        <?php if($productInfo['other_category']){ ?>
+                                        <li><font>其他 —— {$productInfo['other_category']}</font></li>
+                                        <?php } ?>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="dx_photo">
+                        	<img src="<?php echo $productInfo['pic']?$productInfo['pic']:'/images/Online/bz.jpg'; ?>">
+                        </div>
+                        <div class="dx_introduction">
+                        	<div class="dx_introduction01">
+                            	<p>产品简介</p>
+                            </div>
+                            <div class="dx_introduction02">
+                            	<p>{$productInfo['product_info']}</p>
+                            </div>
+                        </div>
+                        
+                        
+                        
+                    </div>
+                </div>
+                
+               
+           
+     
+    </div>
+    <div class="main-right">
+    	<div class="iconBox">
+        	<div class="icon">
+            	<img src="/images/Online/icon_07.jpg" />
+                <div class="icon-text">
+                	<h1><a href="#">申请对接</a></h1>
+                    <p>Apply docking</p>
+                </div>
+                <span></span>
+            </div>
+        </div>
+        <!-- <div class="news-text">
+        	<h1>推荐企业</h1>
+            <ul>
+            	<li><a href="#"><span>[ 推荐 ]</span> NANO科技北京有限公司</a></li>
+                <li><a href="#"><span>[ 推荐 ]</span> NANO科技北京有限公司</a></li>
+                <li><a href="#"><span>[ 推荐 ]</span> NANO科技北京有限公司</a></li>
+                <li><a href="#"><span>[ 推荐 ]</span> NANO科技北京有限公司</a></li>
+                <li><a href="#"><span>[ 推荐 ]</span> NANO科技北京有限公司</a></li>
+                <li><a href="#"><span>[ 推荐 ]</span> NANO科技北京有限公司</a></li>
+                <li><a href="#"><span>[ 推荐 ]</span> NANO科技北京有限公司</a></li>
+                <li><a href="#"><span>[ 推荐 ]</span> NANO科技北京有限公司</a></li>
+                <li><a href="#"><span>[ 推荐 ]</span> NANO科技北京有限公司</a></li>
+                <li class="currentLi"><a href="#"><span>[ 推荐 ]</span> NANO科技北京有限公司</a></li>
+            </ul>
+        </div> -->
+    </div>
+</div>
+
+
+
+
+
+
+
+<include file="Online/online/View/partial/Public_footer.html"/>
+</body>
+</html>

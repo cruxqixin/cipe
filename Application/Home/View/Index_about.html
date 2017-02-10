@@ -1,0 +1,29 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>关于我们-{:C('site_name')}</title>
+<meta name="description" content="{:C('site_description')}">
+<meta name="keywords" content="{:C('site_keyword')}">
+<meta name="title" content="{:C('site_title')}">
+    <script type="text/javascript" src="/js/jquery-1.7.2.min.js"></script>
+    <script type="text/javascript" src="/js/common.js" language="javascript"></script>
+<link rel="stylesheet" type="text/css" href="/css/index.css"/>
+<script src="/js/jquery.js"></script>
+<script src="/js/index.js"></script>
+
+</head>
+
+<body>
+  <include file="Public:header"/> 
+  <div class="newsBox">
+  	<div class="banner01">
+    	<a href="#"><img src="/images/About_02.jpg" /></a>
+    </div>
+    <div class="AboutBox">
+      {$art['info']}
+    </div>
+  </div>
+  <include file="Public:footer"/> 
+</body>
+</html>

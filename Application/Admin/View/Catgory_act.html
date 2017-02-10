@@ -1,0 +1,78 @@
+<include file="Public:header" />
+
+<script type="text/javascript">
+	function status(id,type){
+	    $.get("{:U('NewsCate/status')}", { id: id, type: type }, function(data){
+			$("#"+type+"_"+id+" img").attr('src', '__PUBLIC__/statics/images/status_'+data.data+'.gif')
+		},"json"); 
+	}
+$(function(){
+	$("[name=delete]").click(function(){
+		$("form").attr("action","{:U('Catgory/actdelete')}");
+		$("form").submit();
+	})
+})
+</script>
+
+</head>
+<div class="pad-lr-10" >
+   <form id="myform" name="myform" action="{:U('Catgory/act')}" method="get" >
+    <table width="100%" cellspacing="0" class="search-form">
+        <tbody>
+            <tr>
+            <td>
+            <div class="explain-col">
+              &nbsp;类型 :
+			  <select name="CATE_ID">
+			     <option value="">--请选择--</option>
+			     <volist id="val" name="catetype">
+				    <option value="{$val['id']}" <if condition="$cate_id eq $val['id']">selected="selected"</if>>{$val['kind']}</option>
+				 </volist>
+			  </select>
+                &nbsp;关键字 :
+                <input name="KEYWORD" type="text" class="input-text" size="25" value="{$KEYWORD}" />
+                <input type="submit" name="search" class="button" value="搜索" />
+        	</div>
+            </td>
+            </tr>
+        </tbody>
+    </table>
+   
+    <div class="table-list">
+    <table width="100%" cellspacing="0">
+        <thead>
+            <tr>
+			    <th width="6%">序号</th>
+                <th width="61"><input type="checkbox" value="" id="check_box" onclick="selectall('id[]');"></th>
+              	<th width="200">活动名称</th>
+               <th width="200">所属主题</th>
+                <th width="467">操作</th>
+            </tr>
+        </thead>
+    	<tbody>
+        <volist name="manu" id='val'>
+        <tr>
+		    <td align="center">{$val.id}</td>
+            <td align="center"><input type="checkbox" value="{$val.id}" name="id[]"></td>
+            <td align="center">{$val.title}</td>
+           <td align="center">{$val.type|themekind}</td>
+            <td align="center"><a class="blue" href="{:U('Catgory/actEdit',array('id'=>$val['id']))}">编辑</a></td>
+        </tr>
+        	
+        </volist>
+    	</tbody>
+    </table>
+
+    <div class="btn">
+    <label for="check_box">全选/取消</label>
+    <input type="button"  class="button" name="delete" value="删除" style="margin:0px 10px;" onclick="return check();"/>
+   
+    </div>
+
+    </div>
+    </form>
+	<div id="pages">{$page}</div>
+</div>
+
+</body>
+</html>

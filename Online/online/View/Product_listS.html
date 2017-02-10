@@ -1,0 +1,149 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>科济天下网_在线对接会_产品列表</title>
+<link href="/css/Online/index.css" rel="stylesheet" type="text/css" />
+<link href="/css/Online/common.css" rel="stylesheet" type="text/css" />
+<script type="text/javascript" src="/js/Online/jquery-1.7.2.min.js"></script>
+<script type="text/javascript">
+$(function(){
+	$("#news li").click(function(){
+	  $(this).attr("class","current").siblings().attr("class","");
+	  $("#news_content .fixnone").eq($(this).index()).show().siblings().hide();	
+	})
+})
+$(function(){
+	$("#tech li").click(function(){
+	  $(this).attr("class","current").siblings().attr("class","");
+	  $("#tech_content .fixnone").eq($(this).index()).show().siblings().hide();	
+	})
+})
+
+$(function(){
+	
+	$(".triumphBox").height($(document).height());
+	    $(".dx_display06").click(function(){
+		  $(".triumphBox").show();
+	  }) 
+	 $(".dx_delete img").click(function(){
+		   $(".triumphBox").hide();
+	   }) 
+	$(".dx_delete05 .dx_btn").click(function(){
+		   $(".triumphBox").hide();
+	   }) 
+})
+</script>
+</head>
+
+<body>
+<include file="Online/online/View/partial/public_navbar.html"/>
+<div class="headbg">
+</div>
+<div class="navBox">
+	<ul>
+    	<li><a href="{:U('index/index')}" class="currentA" target="_self">首页</a></li>
+        <!-- <li><a href="#">会议申请</a></li>
+        <li><a href="#">在线会议室</a></li> -->
+    </ul>
+</div>
+<div class="mainBox">
+    <h5>当前位置： <a href="{:U('index/index')}" target="_self">首页</a> ><span> 我的对接</span></h5>
+    <div class="joint" style="height:auto;">
+	<div class="index1_04">
+          <ul id="news">
+          <!-- 隐藏对接及日历 -->
+             <!-- <li ><a href="{:U('schedule/schedule_accept')}"  target="_self">已接收预约</a></li>
+          	 <li ><a href="{:U('index/calendar')}" target="_self">对接日历</a></li>
+          	 <li ><a href="{:U('schedule/schedule_apply')}" target="_self">已提交预约</a></li>
+          	 <li ><a href="{:U('schedule/schedule_reject')}" target="_self">被拒绝预约</a></li> -->
+          	 <li ><a href="{:U('index/detail')}" target="_self">基础资料</a></li>
+          	 <li class="current">产品展示</li>
+          </ul>
+          </div>
+          <div class="index1_05" id="news_content">
+
+              <div class="fixnone" style="display:block; height:640px;">
+              	<div class="dx_display">
+              	<?php foreach ($productList as $k=>$v){ ?>
+                	<a href="{:U('product/info/'.$v["id"])}"><div class="dx_display01">
+                    	<img src="<?php echo $v['pic'] ? $v['pic'] : '/images/Online/bz.jpg' ; ?>">
+                        <div class="dx_display02">
+                        	<div class="dx_display03">
+                            	<p>{$v['product_name']}</p>
+                            </div></a>
+                            <div class="dx_display04">
+                            	<a href="{:U('product/edit/'.$v["id"])}"><div class="dx_display05">
+                                </div></a>
+                                <div class="dx_display06">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                <?php } ?>
+                    
+                    <div class="dx_display01">
+                    	<a href="{:U('product/add')}"><img src="/images/Online/dx_09.png"></a>
+                    </div>
+                </div>
+              </div>
+             <div class="dx_yeshu">
+               	<div class="dx_yeshu01">
+                	<ul>
+                	{$userList['html']}
+                    	<!-- <li><p>共有 36 个产品，当前第<span> 1</span> /4页</p></li>
+                        <li><a href="">下一页</a></li>
+                        <li><a href="">尾页</a></li> -->
+                    </ul>
+                </div>
+               </div>
+              
+              
+              
+              
+              
+          </div>  
+       </div>
+    </div>
+</div>
+
+
+
+<div class="triumphBox">
+  <div class="triumph">
+    <div class="triumph01">
+     <div class="triumph02">
+      	<div class="dx_delete">
+        	<div class="dx_delete01">
+            	<p>删除产品</p>
+                <a href="#"><img src="/images/Online/dx_11.png"></a>
+            </div>
+            <div class="dx_delete02">
+            	<img src="/images/Online/dx_10.png">
+            </div>
+            <div class="dx_delete03">
+            	<div class="dx_delete04">
+                	<input type="button" value="确认删除" class="dx_btn" onclick="confirm_submit({$v['id']});">
+                </div>
+                <div class="dx_delete05">
+                	<input type="button" value="取消返回" class="dx_btn">
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    </div>
+  </div>
+</div>
+<script type="text/javascript">
+//删除
+function confirm_submit(pid){
+	$.post("{:U('product/delete')}", {pid} , function(msg){
+   		//alert('操作成功');
+	   	location.reload();
+	});
+}
+</script>
+<include file="Online/online/View/partial/Public_footer.html"/>
+</body>
+</html>

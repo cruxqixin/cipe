@@ -1,0 +1,102 @@
+<include file="Public:header" />
+
+<script type="text/javascript">
+	function status(id,type){
+	    $.get("{:U('Article/status')}", { id: id, type: type }, function(data){
+			$("#"+type+"_"+id+" img").attr('src', '__PUBLIC__/statics/images/status_'+data.data+'.gif')
+		},"json"); 
+	}
+</script>
+
+</head>
+<div class="pad-10" >
+    <form name="searchform" action="{:U('Article/index')}" method="post" >
+    <table width="100%" cellspacing="0" class="search-form">
+        <tbody>
+            <tr>
+            <td>
+            <div class="explain-col">
+            	发布时间：
+            	<input type="text" name="time_start" id="time_start" class="date" size="12" value="{$time_start}">
+				<script language="javascript" type="text/javascript">
+                    Calendar.setup({
+                        inputField     :    "time_start",
+                        ifFormat       :    "%Y-%m-%d",
+                        showsTime      :    'true',
+                        timeFormat     :    "24"
+                    });
+                </script>
+                -
+                <input type="text" name="time_end" id="time_end" class="date" size="12" value="{$time_end}">
+				<script language="javascript" type="text/javascript">
+                    Calendar.setup({
+                        inputField     :    "time_end",
+                        ifFormat       :    "%Y-%m-%d",
+                        showsTime      :    'true',
+                        timeFormat     :    "24"
+                    });
+                </script>
+            	&nbsp;&nbsp;资讯分类：
+                <select name="cate_id">
+            	<option value="0">--选择分类--</option>
+				<volist name="cate_list" id="val">
+				<option value="{$val.id}">{$val.name}</option>
+				</volist>
+            
+              </select>
+                &nbsp;关键字 :
+                <input name="keyword" type="text" class="input-text" size="25" value="{$keyword}" />
+                <input type="submit" name="search" class="button" value="搜索" />
+        	</div>
+            </td>
+            </tr>
+        </tbody>
+    </table>
+    </form>
+
+    <form id="myform" name="myform" action="{:U('Article/delete')}" method="post">
+    <div class="table-list">
+    <table width="100%" cellspacing="0">
+        <thead>
+            <tr>
+              
+                <th width="1%"><input type="checkbox" value="" id="check_box" onclick="selectall('id[]');"></th>
+				<th width="100">用户ID</th>
+                <th width=100 >联系人</th>
+                <th width=100>电话</th>
+                <th width=100>邮箱</th>
+                <th width=100>地址</th>
+                <th width=100>项目编号</th>
+                <th width=100>操作</th>
+            </tr>
+        </thead>
+    	<tbody>
+        <volist name="lxr" id="val" >
+        <tr>
+        	<!--<td align="center">{$val.key}</td>-->
+            <td align="center">
+            <input type="checkbox" value="{$val.id}" name="id[]"></td>
+			<td align="center"><b>{$val.USERID}</b></td>
+            <td align="center"><b>{$val.LINKMAN}</b></td>
+            <td align="center"><b>{$val.PHONE}</b></td>
+            <td align="center"><b>{$val.EMAIL}</b></td>
+            <td align="center"><b>{$val.ADDRESS}</b></td>
+            <td align="center"><b>{$val.PROID}</b></td>
+            <td align="center" ><a href="{:U('Lian/edit',array('ID'=>$val['PROID']))}">修改</a> </td>
+			
+        </volist>
+    	</tbody>
+    </table>
+
+    <div class="btn">
+    	<label for="check_box" style="float:left;">全选/取消</label>
+    	<input type="submit" class="button" name="delete" value="删除" style="float:left;margin:0px 10px;"  onclick="return check();"/>
+    	
+    </div>
+
+    </div>
+    </form>
+	<div id="pages">{$page}</div>
+</div>
+</body>
+</html>

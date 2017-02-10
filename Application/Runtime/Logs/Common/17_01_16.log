@@ -1,0 +1,12 @@
+[ 2017-01-16T21:41:26+08:00 ] 127.0.0.1 /index.php/Keji/User/Login/?returnurl=/online.php/admin/index
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000027s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000677s ]
+ERR: 无法加载模块:Keji
+
+[ 2017-01-16T21:44:39+08:00 ] 127.0.0.1 /index.php/index
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000028s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000856s ]
+ERR: 无法加载模块:Index
+

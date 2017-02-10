@@ -1,0 +1,123 @@
+*{
+	margin:0;
+	padding:0;
+	font-family:"微软雅黑";}
+img{
+	border:0;}
+body{
+	width:100%;
+	overflow:auto;}
+.showboxs{
+	background: url(/images/News/pj_01.png) center repeat;
+	width: 100%;
+	height: auto;
+	position: absolute;
+	top: 0px;
+	left: 0px;
+	z-index: 1000;
+	display: none;
+}
+.show{
+	position:relative;
+	padding:90px 250px 130px 170px;
+	border:1px solid #dbdbdb;
+	width:430px;
+	height:150px;
+	background:#fff;
+	margin:150px auto;}
+.show dl{
+	width:440px;
+	overflow:hidden;}
+.show dl dd{
+	float:left;
+	width:92px;
+	padding-right:30px;}
+.show dl dt{
+	float:left;
+	width:318px;
+	overflow:hidden;}
+.show dl dt h1{
+	font-size:24px;
+	color:#d10504;
+	line-height:42px;
+	font-weight:normal;
+	padding-bottom:28px;}
+.show dl dt p{
+	font-size:17px;
+	line-height:30px;
+	color:#666666;}
+.show dl dt p a{
+	color:#d10504;}
+.icon{
+	position:absolute;
+	top:30px;
+	right:30px;
+	}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

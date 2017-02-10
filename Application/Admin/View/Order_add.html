@@ -1,0 +1,234 @@
+<include file="Public:header" />
+
+<script type="text/javascript" src="__PUBLIC__/statics/js/common.js"></script>
+<script src="__PUBLIC__/statics/js/WdatePicker.js"></script> 
+<script type="text/javascript">
+$(function(){
+	
+	$("#addcasets").click(function(){
+		var bastStr="";
+		bastStr+="<tr>";
+		bastStr+="<td>";
+		bastStr+="姓名：<input type=\"text\" class=\"input-text\" name=\"uname[]\" />";
+		bastStr+="</td>";
+		bastStr+="<td>";
+		bastStr+="电话：<input type=\"text\" class=\"input-text\" name=\"phone[]\" />";
+		bastStr+="</td>";
+		bastStr+="<td>";
+		bastStr+="邮箱<input type=\"text\" class=\"input-text\" name=\"email[]\" />";
+		bastStr+="</td>";
+		bastStr+="<td>";
+		bastStr+="单位<input type=\"text\" class=\"input-text\" name=\"danwei[]\" />";
+		bastStr+="</td>";
+		bastStr+="<td><a href=\"javascript:;\" style=\"color:gray\" name=\"filedel\">删除</a></td>";
+		bastStr+="</tr>";
+		$("#tablecasets").append(bastStr);
+	})
+	$("#addroom").click(function(){
+	    
+		
+		$("#room").append($("#room1").html());
+	})
+	//删除附件操作
+	$("[name=filedel]").live("click",function(){
+		$(this).parent().parent().remove();
+	})
+    $("[name=is_zhusu]").change(function(){
+		if($(this).val()==1){
+			$("#info3").show();
+		}else{
+			$("#info3").hide();
+		}
+	})
+})
+function change(i){
+	$("#list .input-text").hide();
+	$("#list #"+i+"").show();
+}
+</script>
+</head>
+<form action="{:U('Order/add')}" method="post" name="myform" id="myform" enctype="multipart/form-data" style="margin-top:10px;">
+  <div class="pad-10">
+  <div class="col-tab">
+  <ul class="tabBut cu-li">
+    <li id="tab_setting_1" class="on" onclick="SwapTab('setting','on','',2,1);">基本信息</li>
+    <li id="tab_setting_2" style="display:none" onclick="SwapTab('setting','on','',2,2);">SEO设置</li>
+  </ul>
+  <div id="div_setting_1" class="contentList pad-10">
+    <table width="100%" cellpadding="2" cellspacing="1" class="table_form">
+	  
+      <tr>
+        <th width="100">会议名称 :</th>
+        <td>
+			<select name="mid">
+			  <volist id="val" name="meet">
+				  <option value="{$val['id']}" <if condition="$article['mid'] eq $val['id']">selected="selected"</if>>{$val['title']}</option>
+			  </volist>
+			</select>
+		</td>
+      </tr>
+	  <tr>
+        <th width="100">报名人员 :</th>
+        <td>
+			<select name="userid">
+			  <volist id="val" name="user">
+				  <option <if condition="$article['uid'] eq $val['id']">selected="selected"</if> value="{$val['id']}">{$val['nickname']}</option>
+			  </volist>
+			</select>
+		</td>
+      </tr>
+	  <tr>
+        <th width="100">参会人数 :</th>
+        <td><input type="text" name="num" id="num" class="input-text validate[required]" size="60" value="{$article.num}"></td>
+      </tr>
+	   <tr>
+        <th width="100">支付方式 :</th>
+        <td><if condition="$article['paytype'] eq 1">现场支付<else/>线上支付</if></td>
+      </tr>
+	  <tr>
+	        <th>是否参展 :</th>
+	        <td>
+	            <input type="radio" name="is_cz" id="is_cz" class="radio_style" value="0" <if condition="$article['is_cz'] eq '0'">checked="checked"</if> > &nbsp;否&nbsp;&nbsp;&nbsp;
+	        	<input type="radio" name="is_cz" id="is_cz" class="radio_style" value="1" <if condition="$article['is_cz'] eq '1'">checked="checked"</if>> &nbsp;是
+	        </td>
+	  </tr>
+	  <tr id="info">
+			<td class="tdright">参会人员信息 :</td>
+			<td colspan="3">
+			<div class="files" >
+                <table cellpadding="0" cellspacing="0" border="0" id="tablecasets">
+                      <if condition="$users eq ''">
+                 <tr>
+                   <td>
+                    姓名： <input type="text" class="input-text" name="uname[]" />
+                   </td>
+				   <td>
+                   电话：<input type="text" class="input-text" value="{$val.price}" name="phone[]" />
+                   </td>
+				   <td>
+                   邮箱：<input type="text" class="input-text" value="{$val.price}" name="email[]" />
+                   </td>
+                   <td>
+				   单位：<input type="text" class="input-text" value="{$val.price}" name="danwei[]" />
+                   </td>
+				   <td></td>
+                   </tr>
+                   <else />
+                   	<volist name="users" id="val">
+                      <tr>
+                      
+                       <td>
+                    姓名： <input type="text" class="input-text" name="uname[]" value="{$val['names']}"/>
+                   </td>
+				   <td>
+                   电话：<input type="text" class="input-text" value="{$val.phone}" name="phone[]" />
+                   </td>
+				   <td>
+                   邮箱：<input type="text" class="input-text" value="{$val.email}" name="email[]" />
+                   </td>
+                   <td>
+				   单位：<input type="text" class="input-text" value="{$val.danwei}" name="danwei[]" />
+                   </td>
+                       <td>
+                       <if condition="$key neq 0"><a href="javascript:;" style="color:gray" name="filedel">删除</a></if>
+                       </td>
+                       </tr>
+                   	</volist>
+                   </if>
+                   </table>
+                
+            </div>
+       
+        <!--<input type="text" name="PRO_STORIES" id="PRO_STORIES" class="pub_03" size="60" value="{$Project.PRO_STORIES}"> --></td>
+      </tr>
+	  <tr>
+	        <th>是否住宿 :</th>
+	        <td>
+	            <input type="radio" name="is_zhusu" id="is_zhusu" class="radio_style" value="0" <if condition="$article['is_zhusu'] eq '0'">checked="checked"</if> > &nbsp;否&nbsp;&nbsp;&nbsp;
+	        	<input type="radio" name="is_zhusu" id="is_zhusu" class="radio_style" value="1" <if condition="$article['is_zhusu'] neq '0'">checked="checked"</if>> &nbsp;是
+	        </td>
+	  </tr>
+	  <tr id="info3">
+			<td class="tdright">住房信息 :</td>
+			<td colspan="3">
+			<div class="files" id="room">
+			   <div id="room1">
+                <table cellpadding="0" cellspacing="0" border="0" id="tablecasets">
+                      <if condition="$rooms eq ''">
+                 <tr>
+				 <td>
+                    时间： <input onfocus="{WdatePicker()}" type="text"  id="start" class="input-text"  name="start[]" />
+					~<input onfocus="{WdatePicker()}" type="text"  id="end" class="input-text" name="end[]" />
+                   </td>
+                   <td>
+                    房型： <select name="rmid" onchange="change(this.value)">
+							  <volist id="val" name="room">
+								  <option value="{$val['id']}">{$val['roomtype']}</option>
+							  </volist>
+							</select>
+                   </td>
+				   <td id="list">
+                   价格：
+				   <volist id="val" name="rmtype">
+				    <if condition="$key eq 0">
+				    <input type="text"  id="{$val['id']}" class="input-text" value="{$val.price}　剩余{$val.num}套" name="phone[]" />
+                   <else/>
+				   <input type="text" id="{$val['id']}" style="display:none" class="input-text" value="{$val.price}　剩余{$val.num}套" name="phone[]" />
+				   </if>
+					
+					</volist>   
+				   </td>
+				   
+				   <td></td>
+                   </tr>
+                   <else />
+                   	<volist name="rooms" id="val">
+                      <tr>
+					 <td>
+						时间： <input onfocus="{WdatePicker()}" value="{$val['starttime']|date="Y-m-d",###}" type="text"  id="start" class="input-text"  name="start[]" />
+						~<input onfocus="{WdatePicker()}" value="{$val['endtime']|date="Y-m-d",###}" type="text"  id="end" class="input-text" name="end[]" />
+					   </td>
+					   <td>
+						房型： <select name="rmid" onchange="change(this.value)">
+								  <volist id="val1" name="room">
+									  <option value="{$val1['id']}" <if condition="$val['roomid'] eq $val1['id']">selected="selected"</if>>{$val1['roomtype']}</option>
+								  </volist>
+								</select>
+					   </td>
+					   <td id="list">
+					   价格：
+					   <volist id="val1" name="rmtype">						
+					   <input type="text" id="{$val1['id']}" <if condition="$val['roomid'] neq $val1['id']">style="display:none"</if> class="input-text" value="{$val1.price}　剩余{$val1.num}套" name="phone[]" />				
+						</volist>   
+					   </td>
+					   <td></td>
+					   </tr>
+                   	</volist>
+                   </if>
+                   </table>
+				 </div>
+                
+            </div>
+			 <if condition="$rooms eq ''">
+       
+		</if>
+        <!--<input type="text" name="PRO_STORIES" id="PRO_STORIES" class="pub_03" size="60" value="{$Project.PRO_STORIES}"> --></td>
+      </tr>
+		
+		
+      <tr><td>
+		<input type="hidden" name="ID" value="{$article.id}" id="article_id"/>
+		<input type="hidden" name="USERID" value="{$article.userid}" id=""/>
+	  </td></tr>
+    </table>
+  </div>
+  <div class="bk15"></div>
+  <div class="btn">
+    <a href="{:U('Article/index')}"><input type="submit" value="返回" name="submit" class="button" id="submit"></a>
+  </div>
+
+</div>
+</div>
+</form>
+</body>
+</html>

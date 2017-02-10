@@ -1,0 +1,123 @@
+body,ul,ol,li,p,h1,h2,h3,h4,h5,h6,form,fieldset,img,div,dl,dt,dd{margin:0;padding:0;border:0; color:#333; font:12px Arial,'宋体';}
+li{list-style-type:none;}
+h1,h2,h3,h4,h5,h6 {font-size:12px; font-weight:bold;}
+input,button,textarea,select{font:100% Arial,'宋体'; font-size:12px;}
+a{ color:#333;text-decoration:none;}
+a:hover{ color:#cc0000; text-decoration:underline;}
+body{ background:#e7e7e7;}
+.mtop{ margin-top:10px;}
+#whole{ width:970px; margin:auto;}
+#page{ float:left; width:970px; background:#fff;}
+.top{ float:left; width:948px; border-left:1px solid #ccc; border-right:1px solid #ccc; background:url(../images/top.gif) repeat-x; height:30px; line-height:33px; padding:0px 10px;}
+.top li{ float:left; line-height:33px; margin:0px 3px; color:#666;}
+#loginshow{ float:right;}
+.banner{ float:left; border:1px solid #ccc;}
+.conter{ float:left; width:950px; padding:10px;}
+.w_230{ float:left; width:230px;}
+.w_465{ float:left; width:465px; margin:0px 10px;}
+.w_700{ float:left; width:700px; margin:0px 10px;}
+.w_235{ float:left; width:235px;}
+.jiben{ float:left; width:228px; border:1px solid #e2e2e2;}
+.jiben .tite{ background:url(../images/bg1.gif) repeat-x; width:208px; padding:0px 10px; float:left;}
+.jiben .tite h3{ float:left; color:#a90000; line-height:28px;}
+.xinx{ float:left; width:208px; padding:10px; line-height:24px;}
+.xinx img{ margin:17px 0px;}
+.guang{ float:left; width:465px; background:#999900;}
+.tuqh{ float:left; width:465px;}
+.zhuce{ float:left; width:235px;}
+.pinx{ border:1px solid #e2e2e2; float:left; width:233px;}
+.pinx .tite{ background:url(../images/bg1.gif) repeat-x; width:213px; padding:0px 10px; float:left;}
+.pinx .tite h3{ float:left;line-height:28px;}
+.liuc{ float:left; width:213px; padding:10px;}
+.liuc p{ line-height:20px; padding-bottom:5px;}
+.nav{ float:left; width:228px; border:1px solid #e2e2e2;}
+.nav ul li{ line-height:28px; background:url(../images/nav_bg.gif) no-repeat; font-weight:bold; padding:0px 10px; width:208px;}
+.nav ul li a{ color:#000; background:url(../images/tub01.gif) left no-repeat; padding-left:15px;}
+.nav ul li a.hover{ color:#a90000; background:url(../images/tub02.gif) left no-repeat; padding-left:15px;}
+.nav ul li a:hover{ color:#cc0000; text-decoration:none;}
+
+.nav ul ul{ margin:5px 0px;}
+.nav ul ul li{ line-height:24px; background:none; font-weight:normal;}
+.nav ul ul li a{ color:#444; background:none;}
+.nav ul ul li font{font-size:12px; color:#0000fd; background:none;}
+
+.huiz{ float:left; width:228px; border:1px solid #e2e2e2;}
+.huiz .tite{ background:url(../images/bg1.gif) repeat-x; width:208px; padding:0px 10px; float:left;}
+.huiz .tite h3{ float:left; line-height:28px;}
+.tong{ float:left; width:208px; padding:10px; line-height:21px;}
+.tong li{ float:left; line-height:21px; padding-bottom:10px; width:208px;}
+.tong p{line-height:22px;}
+.xiaz{ float:left; width:208px; padding:10px;}
+.xiaz li{ float:left; line-height:24px;  width:183px;  padding-left:25px; position:relative;}
+.xiaz li .tubiao{
+	display:block;
+	width:16px;
+	height:16px;
+	position:absolute;
+	left:0;
+	top:4px;
+	background:url(../images/word.png) no-repeat;
+	}
+.posi{
+	display:block;
+	width:16px;
+	height:16px;
+	position:absolute;
+	left:0;
+	top:4px;
+	background:url(../images/word.png) no-repeat -28px 0;
+	}
+
+.gzhu{ float:left; width:228px; border:1px solid #e2e2e2;}
+.gzhu .tite{ background:url(../images/bg1.gif) repeat-x; width:208px; padding:0px 10px; float:left;}
+.gzhu .tite h3{ float:left; color:#a90000; line-height:28px;}
+.women{ float:left; width:208px; padding:10px; line-height:21px;}
+.women a{ float:left; margin-right:15px;}
+
+.shao{ float:left; width:463px; border:1px solid #e2e2e2;}
+.shao .tite{ background:url(../images/bg1.gif) repeat-x; width:443px; padding:0px 10px; float:left;}
+.shao .tite h3{ float:left;line-height:28px;}
+.shao1{ float:left; width:698px; border:1px solid #e2e2e2;}
+.shao1 .tite{ background:url(../images/bg1.gif) repeat-x; width:678px; padding:0px 10px; float:left;}
+.shao1 .tite h3{ float:left;line-height:28px;}
+.jie{ float:left; padding:10px; width:443px; line-height:21px;}
+.jie1{ float:left; padding:10px; width:213px; line-height:21px;}
+.jie1 p{ padding-bottom:10px; line-height:24px;}
+.jie a{ font-family:"宋体"; color:#0000fe;}
+.jie p{ padding-bottom:10px; line-height:24px;}
+.jie2{ float:left; padding:10px; width:678px; line-height:21px;}2
+.jie2 a{ font-family:"宋体"; color:#0000fe;}
+.jie2 p{ padding-bottom:10px; line-height:24px;}
+
+
+.jie img{ border:1px solid #ccc;}
+
+.dian{ float:left; padding:10px; width:443px; line-height:21px;}
+.dian a{ font-family:"宋体"; color:#a90000;}
+.dian p{ padding-bottom:10px; line-height:18px;}
+
+.zhuti{float:left; padding:10px; width:443px; line-height:21px;}
+.fangx{ float:left; width:443px; margin-bottom:10px;}
+.zhuti li{ float:left; width:430px; background:url(../images/inco.gif) 0px 8px no-repeat; padding-left:10px; line-height:24px;}
+
+.dan{ border:1px solid #e2e2e2; float:left; width:233px;}
+.dan .tite{ background:url(../images/bg1.gif) repeat-x; width:213px; padding:0px 10px; float:left;}
+.dan .tite h3{ float:left;line-height:28px;}
+.wei{ float:left; padding:10px; width:213px; line-height:24px;}
+.wei p{ padding-bottom:10px; line-height:21px;}
+.wei p a{color:#a90000;}
+
+#bottom{ width:970px; float:left; margin-top:10px;}
+.bottom-m{ width:968px; height:33px; border:1px #cc0000 solid; background:#FFF4F4; float:left;}
+.bottom-m-1{ width:964px; height:29px; border-bottom:2px #FF6044 solid;border-right:2px #FF6044 solid;border-left:2px #fff solid;border-top:2px #fff solid; line-height:29px; text-align:center; color:#333;}
+.bottom-m-1 a{ color:#333; text-decoration:none;}
+.bottom-m-1 a:hover{ color:#333; text-decoration:underline;}
+.bottom-2{ width:100%; float:left; padding:5px 0px; text-align:center; line-height:18px; color:#666666;}
+.bottom-2 a{ color:#020346;}
+.bottom-110{ width:100%; float:left; text-align:center; padding:5px 0px;}
+
+/*论坛底部*/
+#bottom-lt{ width:970px; margin:0 auto; text-align:left; overflow:hidden;}
+.bottom-lt1{ width:5px; float:left; overflow:hidden; height:53px; background:url(../images/lt-foot-l.gif) no-repeat;}
+.bottom-lt2{ width:960px; float:left; height:43px; background:url(../images/lt-footbg.gif) repeat-x; line-height:18px; padding-top:10px;}
+.bottom-lt3{ width:5px; float:left; height:53px; background:url(../images/lt-foot-r.gif) no-repeat;}

@@ -1,0 +1,55 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>活动列表-{:C('site_name')}</title>
+<meta name="description" content="{:C('site_description')}">
+<meta name="keywords" content="{:C('site_keyword')}">
+<meta name="title" content="{:C('site_title')}">
+<link rel="stylesheet" type="text/css" href="/css/index.css"/>
+<script src="/js/jquery.js"></script>
+<script src="/js/index.js"></script>
+<script type="text/javascript" src="/js/jquery-1.7.2.min.js"></script>
+    <script src="/js/index/common.js"></script>
+</head>
+
+<body>
+  <include file="Public:header"/>
+  <div class="newsBoX">
+  	<div class="banner01">
+    	<a href="#"><img src="/images/act_02.jpg" /></a>
+    </div>
+	<div class="activity">
+	  <volist id="val" name="pages">
+		<div class="activity_01">
+			<div class="title1">{$val['title']}</div>
+			<ul>
+			  <volist id="val1" name="val['child']">
+				<li><a href="{$val1['url']}">{$val1['title']}</a></li>
+			  </volist>
+			</ul>
+		</div>
+	 </volist>
+		<div class="activity_01">
+			<div class="title1"><a style="color:#c7000a" href="{$pages1['child']['url']}">{$pages1['title']}</a></div>
+			<ul>
+				<li style="width:auto;background:none;text-indent:0px;"><span style="margin-right:10px"><img src="/images/act_01.png"></span>{$pages1['child']['title']} </li>
+			</ul>				
+		</div>
+		<volist id="val" name="pages2">
+		<div class="activity_01">
+			<div class="title1">{$val['title']}</div>
+			<ul>
+			  <volist id="val1" name="val['child']">
+				<li class="list"><a href="{$val1['url']}">{$val1['title']}</a> </li>
+			  </volist>
+			</ul>
+		</div>
+		</volist>
+	</div>
+  </div>
+ </div>
+ <div class="clear"></div>
+  <include file="Public:footer"/>
+</body>
+</html>

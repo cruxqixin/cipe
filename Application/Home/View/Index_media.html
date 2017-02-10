@@ -1,0 +1,51 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>合作媒体-{:C('site_name')}</title>
+<meta name="description" content="{:C('site_description')}">
+<meta name="keywords" content="{:C('site_keyword')}">
+<meta name="title" content="{:C('site_title')}">
+<link rel="stylesheet" type="text/css" href="/css/index.css"/>
+<script src="/js/jquery.js"></script>
+<script src="/js/index.js"></script>
+    <script type="text/javascript" src="/js/jquery-1.7.2.min.js"></script>
+<script type="text/javascript" src="/js/common.js" language="javascript"></script>
+</head>
+
+<body>
+  <include file="Public:header"/>
+  <div class="newsBoX">
+  	<div class="banner01">
+    	<a href="#"><img src="/images/media-1_02.jpg"/></a>
+    </div>
+    <div class="media-01">
+    	<dl> 
+		  <volist id="val" name="list">
+        	<dd><a href="#"><h1>{$val['title']}</h1></a></dd>
+            <dt>
+			<volist id="val1" name="val['child']">
+			<a href="{$val1['url']}"><img src="{$val1['pic']}"/></a>
+            </volist>
+			<div class="clear"></div>
+            </dt>
+          </volist>  
+        	
+        </dl>
+        <div class="clear"></div>
+    </div>
+    <div class="media-02">
+        <div class="biaoti">
+    	<p class="text03">组委会诚邀媒体长期合作，互利共赢！“光”的世界因你而精彩</p>
+        <p class="text04">联系人：陈彤：022-59013419    Email：andrea_ct@126.com</p>
+        </div>
+    </div>
+    
+ </div>
+  <div class="footer">
+     <div class="copyright">
+     	<p>北京宇航会展有限公司版权所有  京ICP备12003248号 </p>
+     </div>
+  </div>
+</body>
+</html>

@@ -1,0 +1,82 @@
+<include file="Public:header" />
+
+<script type="text/javascript" src="__PUBLIC__/statics/js/common.js"></script>
+<script type="text/javascript">
+	$(document).ready(function(){
+		$("#submit").click(function(){		
+			if($("#CCONTENT").val()==0){
+			   alert('请填写内容');
+			   return false;
+			}
+			if($("#CNAME").val()==0){
+			   alert('请填写姓名称');
+			   return false;
+			}
+			
+		});
+		
+		KindEditor.create('[name=PRO_SUPERIORITY]');
+		KindEditor.create('[name=PRO_BENEFIT]');
+		KindEditor.create('[name=PRO_PRODUCTION]');
+		
+	});
+	
+</script>
+
+</head>
+
+<form action="{:U('Lian/edit')}" method="post" name="myform" id="myform" enctype="multipart/form-data" style="margin-top:10px;">
+  <div class="pad-10">
+  <div class="col-tab">
+  <ul class="tabBut cu-li">
+    <li id="tab_setting_1" class="on" onclick="SwapTab('setting','on','',2,1);">基本信息</li> 
+	
+  </ul>
+  <div id="div_setting_1" class="contentList pad-10">
+    <table width="100%" cellpadding="2" cellspacing="1" class="table_form">
+      <tr>
+        <th width="100">用户ID :</th>
+        <td ><input type="text" name="USERID" id="USERID" class="input-text" size="60" value="{$Project.USERID}"></td>
+        <th width="100">联系人 :</th>
+        <td ><input type="text" name="LINKMAN" id="LINKMAN" class="input-text" size="60" value="{$Project.LINKMAN}"></td>
+      </tr>
+	  <tr>
+     
+        <th width="100">电话 :</th>
+        <td><input type="text" name="PHONE" id="PHONE" class="input-text" size="60" value="{$Project.PHONE}"></td>
+      </tr>
+
+	  <tr>
+        <th width="100">邮箱 :</th>
+        <td ><input type="text" name="EMAIL" id="EMAIL" class="input-text" size="60" value="{$Project.EMAIL}"></td>
+        
+      </tr>
+	  <tr>
+        <th width="100">地址 :</th>
+        <td ><input type="text" name="ADDRESS" id="ADDRESS" class="input-text" size="60" value="{$Project.ADDRESS}"></td>
+        
+      </tr>
+	 <!-- <tr>
+        <th width="100">项目编号 :</th>
+        <td ><input type="text" name="PROID" id="PROID" class="input-text" size="60" value="{$Project.PROID}"></td>
+        
+      </tr>
+	  -->
+     
+      <tr><td><input type="hidden" name="PROID" value="{$Project.PROID}" id="ID"/><input type="hidden" name="IDs" value="{$proid}" id="ID"/></td> <td colspan="3"></td>
+       </tr>
+    </table>
+  </div>
+
+ 
+  <div class="bk15"></div>
+  <div class="btn">
+    <input type="submit" value="提交" name="submit" class="button" id="submit">
+  </div>
+
+
+</div>
+</div>
+</form>
+</body>
+</html>

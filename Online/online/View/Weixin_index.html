@@ -1,0 +1,189 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>首页_在线对接会_科济天下网</title>
+<link href="/css/Online/Weixin/jquery.mobile-1.4.2.css" rel="stylesheet">
+<link href="/css/Online/Weixin/index.css" rel="stylesheet" type="text/css">
+<script src="/js/Online/Weixin/jquery.js"></script>
+<script src="/js/Online/Weixin/jquery.mobile-1.4.2.min.js"></script>
+<script src="/js/Online/Weixin/common.js"></script>
+<script src="/js/Online/Weixin/swipe.js"></script>
+</head>
+
+<body>
+<div data-role="page" id="Activity"  class="index">
+   <div data-role="header" data-position="fixed" class="header" id="menber"  data-tap-toggle="false">
+     
+      <div class="logo">
+      	<div class="logo01">
+        	<div class="logo02">
+            	<a href="{:U('weixin/index')}" target="_self" ><img src="/images/Online/Weixin/imegs/-01.png"></a>
+            </div>
+            <div class="logo03">
+            	<a href="{:U('weixin/index')}" target="_self" ><img src="/images/Online/Weixin/imegs/-02.png"></a>
+            </div>
+        </div>
+      </div>
+      <div class="seach">
+      	<form action="" method="get" target="_self">
+	      	<div class="seach01">
+	        	 <div class="seach02">
+	             	<input type="text" class="text" name="keyword" value="{$keyword}" placeholder="请输入查询关键词">
+	             </div>
+	             <div class="seach03"> 
+	             	<input data-role="none" type="submit" class="btn" style="color:#c7000a;">
+	                <div class="seach04">
+	                	<div class="seach05">
+	                    	<img src="/images/Online/Weixin/imegs/-03.png">
+	                    </div>
+	                    <div class="seach06">
+	                    	<span>搜索</span>
+	                    </div>
+	                </div>
+	             </div>
+	        </div>
+        </form>
+      </div>
+      <div class="leibie">
+      	<div class="leibie01">
+        	<div class="leibie02">
+            	<span>行业类别</span>
+            </div>
+            <div class="leibie03">
+            	<img class="hide01" src="/images/Online/Weixin/imegs/-04.png">
+                
+            </div>
+            
+        </div>
+        <div class="leibie01vv">
+        	<div class="leibie02">
+            	<span>行业类别</span>
+            </div>
+            <div class="leibie03">
+            	
+                <img class="show01" src="/images/Online/Weixin/imegs/-09.png">
+            </div>
+            
+        </div>
+      </div>
+      <div class="yin">
+      	<img src="/images/Online/Weixin/imegs/-06.png">
+      </div>
+   </div>
+  <div data-role="content" class="Main">
+  <div style="margin: 60px;"><h3 style="color:red;">欢迎明年再次使用，期待明年再相聚!</h3></div>
+  	<!-- <div class="pos">
+    	<div class="pos01">
+        	<div class="pos02">
+            	<ul>
+                	<li <?php if(!$_GET['fid']){?> class="guang" <?php } ?>><a href="">全部</a></li>
+                	<?php 
+							foreach($fatherList as $father_k => $father_v){ 
+								$i++;
+								if($i != 11){
+                    ?>
+                    <li <?php if($father_v['id'] == $_GET['fid']){?> class="guang" <?php } ?> > <a href=""><?php echo mb_substr($father_v['cname'],0,24); ?></a></li>
+					<?php } }?>
+                </ul>
+            </div>
+        </div>
+        <div class="pos03">
+        	<div class="pos04">
+            	<ul>
+            		<li <?php if(!$_GET['fid']){?> class="youse" <?php } ?>><a data-ajax="false" href="{:U('weixin/index')}">全部</a></li>
+            	</ul>
+            </div>
+            
+            <?php 
+							foreach($fatherList as $father_k => $father_v){ 
+								$j++;
+								if($j != 11){
+            ?>
+        	<div class="pos04" <?php if($father_v['id'] != $_GET['fid']){?> style="display:none;" <?php } ?>>
+            	<ul>
+            	<li <?php if($_GET['fid'] == $father_v['id'] && !$_GET['cid']){?> class="youse" <?php } ?>><a data-ajax="false" href="?fid={$father_v['id']}">全部</a></li>
+            	<?php
+			              foreach($childList[$father_v['id']] as $child_k => $child_v){
+				?>
+                <li <?php if($child_v['id'] == $_GET['cid']){?>class="youse"<?php }?>><a data-ajax="false" href="?fid={$father_v['id']}&cid={$child_v['id']}">{$child_v['cname']}</a></li>
+                <?php } ?>
+            </ul>
+            </div>
+            <?php } } ?>
+        </div>
+    </div>
+  	<div class="dakuang">
+  		<?php foreach($userList as $k => $v){ 
+				if($v['type'] == 2){
+        ?>
+	    <div class="title">
+	    	<div class="title01">
+	        	<div class="title01tt">
+	            	<div class="title02">
+	            	<h1>【{$v['exhibition_number']}】{$v['company_cname']}</h1>
+	            </div>
+	            <div class="title03">
+	            	<h2> 发布时间：<?php echo date('Y-m-d',$v['add_time']);?></h2>
+	            </div>
+	            <div class="title04">
+	            	<p>能提供的核心产品及技术合作：<span><php> echo mb_substr($v['cooperation_offer'],0,50,'utf-8');</php></span></p>
+					<p>需要何种合作或帮助：<span><php> echo mb_substr($v['cooperation_need'],0,50,'utf-8');</php></span></p>
+	
+	            </div>
+	            <div class="title05">
+	            	<a href="{:U('weixin/info/'.$v['uid'])}">详细信息>></a>
+	            </div>
+	            </div>
+	        </div>
+	    </div>
+	    <?php }else{ ?>
+	    <div class="titlett">
+	    	<div class="title01">
+	        	<div class="title01tt">
+	            	<div class="title02">
+	            	<h1>【专家】{$v['name']}</h1>
+	            </div>
+	            <div class="title03">
+	            	<h2> 发布时间：<?php echo date('Y-m-d',$v['add_time']);?></h2>
+	            </div>
+	            <div class="title04">
+	            	<p>所属行业：<span>{$v['industry']}</span></p>
+					<p>需要何种合作或帮助：<span><php> echo mb_substr($v['cooperation_need'],0,50,'utf-8');</php></span></p>
+	
+	            </div>
+	            <div class="title05">
+	            	<a href="{:U('weixin/info/'.$v['uid'])}">详细信息>></a>
+	            </div>
+	            </div>
+	        </div>
+	    </div>
+	    <?php }
+			}
+		?>
+		<div class="pagination">
+        	<div class="pagination01">
+            	<ul>
+                	{$page}
+                </ul>
+            </div>
+        </div>
+    </div>
+  
+   -->
+  </div>
+  
+  
+  <div  data-role="footer" data-position="fixed" class="footer"  data-tap-toggle="false">
+      <div class="footer02">
+        <div class="yinyng03"><img src="/images/Online/Weixin/imegs/yinying_02.png"/></div>
+        <div class="donate02">
+       
+         <a href="{:U('Weixin/detail')}" target="_self"><input type="button" value="我的对接" data-role="none" class="menu05"></a>
+          <div class="clear"></div>
+        </div>
+      </div>
+   </div> 
+</div>
+</body>
+</html>

@@ -1,0 +1,57 @@
+<include file="Public:header" />
+
+<script type="text/javascript">
+	function status(id,type,value){
+	    $.get("{:U('News/status')}", { id: id, type: type, value: value }, function(data){
+			$("#"+type+"_"+id+" img").attr('src', '__PUBLIC__/statics/images/status_'+data.data+'.gif')
+		},"json");  
+	}
+$(function(){
+	$("[name=delete]").click(function(){
+			$("[name=searchform]").attr("action","{:U('Travel/delete')}");
+		    $("[name=searchform]").submit();
+		})
+})
+</script>
+
+</head>
+<div class="pad-10" >
+    <form name="searchform" action="{:U('visit/index')}" method="get" >
+    <div class="table-list">
+    <table width="100%" cellspacing="0">
+        <thead>
+            <tr>
+                <th width="60">序号</th>
+                <th width="33" ><input type="checkbox" value="" id="check_box" onclick="selectall('id[]');"></th>
+                <th width=445 >标题名称</th>
+                
+                 <th width=173>操作</th>
+               <!-- <th width=30>推荐</th>
+                <th width=30>状态</th> -->
+            </tr>
+        </thead>
+    	<tbody>
+        <volist name="articles" id="val" >
+        <tr>
+        	<td align="center">{$val.id}</td>
+            <td  align="center">
+            <input type="checkbox" value="{$val.id}" name="id[]"></td>
+           <td align="center">{$val.title}</td>
+           
+           <td align="center" style="padding-left:50px;"><a href="{:U('Visit/edit',array('id'=>$val['id']))}">修改</a>&nbsp;&nbsp;</td>
+          </volist>
+    	</tbody>
+    </table>
+
+    <div class="btn">
+    	<label for="check_box" style="float:left;">全选/取消</label>
+    	
+		
+    </div>
+
+    </div>
+    </form>
+	<div id="pages">{$page}</div>
+</div>
+</body>
+</html>

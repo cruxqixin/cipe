@@ -1,0 +1,94 @@
+<include file="Public:header" />
+
+<script type="text/javascript">
+	function status(id,type,value){
+	    $.get("{:U('News/status')}", { id: id, type: type, value: value }, function(data){
+			$("#"+type+"_"+id+" img").attr('src', '__PUBLIC__/statics/images/status_'+data.data+'.gif')
+		},"json");  
+	}
+$(function(){
+	$("[name=delete]").click(function(){
+			$("[name=searchform]").attr("action","{:U('Travel/delete')}");
+		    $("[name=searchform]").submit();
+		})
+})
+$(function(){
+	$("[name=export]").click(function(){
+		$("#searchform").attr("action","{:U('Visit/export_be')}");
+		$("#searchform").submit();
+	})
+})
+</script>
+
+</head>
+<body>
+    <form id="searchform" action="" method="get" >
+  
+    <table width="100%" cellspacing="0" class="search-form">
+        <tbody>
+            <tr>
+            <td>
+				<input type="submit" name="export" class="button" value="导出"/>
+            </td>
+            <td>
+				报名总数 ：{$count}
+            </td>
+            </tr>
+            
+        </tbody>
+    </table>
+    </form>
+<div class="pad-10" >
+    <div class="table-list">
+    <table width="100%" cellspacing="0">
+        <thead>
+            <tr>
+                <th width="5%">序号</th>
+                <th width=100 align="center">姓名</th>
+				<th width=100>单位名称</th>
+                <th width=100>时间</th>
+				 <th width=100 align="center">手机</th>
+				 <th width=100 align="center">电话</th>
+				 <th width=100 align="center">邮箱</th>
+                 <th width=40>操作</th>
+            </tr>
+        </thead>
+    	<tbody>
+        <volist name="list" id="val" >
+        <tr>
+        	<td align="center">{$val.id}</td>
+			<td align="center">{$val.name} <?php echo $val['gender']== 'M' ? '先生' : '女士' ;?></td>
+			<td align="center">{$val.company}</td>
+            <td align="center">{$val.add_time|date="Y-m-d",###}</td>
+            <td align="center">{$val.tel}</td>
+            <td align="center">{$val.mobile}</td>
+            <td align="center">{$val.email}</td>
+            <td align="center">
+            <a href="{:U('Visit/info_be?id='.$val['id'])}">查看</a>
+            <a onclick="delete_confirm({$val.id});" href="">删除</a>
+            </td>
+			
+			     </volist>
+    	</tbody>
+    </table>
+
+    </div>
+	<div id="pages">{$page}</div>
+</div>
+<script type="text/javascript">
+//删除确认
+function delete_confirm(agency_id){
+	  var r=confirm("确认删除？")
+	  if (r==true){
+		  delete_confirm_submit(agency_id);
+	  }
+}
+function delete_confirm_submit(agency_id){
+	$.post("{:U('Visit/delete_visit')}", {action: "post" , type : "be" , id : agency_id},function(msg){
+		alert('操作成功');
+	   	location.reload();
+	});
+}
+</script>
+</body>
+</html>

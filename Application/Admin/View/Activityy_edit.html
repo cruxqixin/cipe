@@ -1,0 +1,58 @@
+<include file="Public:header" />
+<script type="text/javascript">
+$(function(){
+
+})
+function show(i){
+	if(i==3){
+		$("[id=url]").hide();
+	}else{
+		$("[id=url]").show();
+	}
+}
+</script>
+	
+</head>
+<form id="myform" name="myform" action="{:U('Activityy/edit')}" enctype="multipart/form-data" method="post">
+
+  <div class="pad-10">
+    <div class="col-tab">
+      <ul class="tabBut cu-li">
+        <li id="tab_setting_1" class="on" onclick="SwapTab('setting','on','',1,1);">信息</li>
+      </ul>
+      
+      <div id="div_setting_1" class="contentList pad-10">
+          <table width="100%" cellpadding="2" cellspacing="1" class="table_form">
+            <tr>
+			<th width="100">所属分类 :</th>
+			<td><select name="type" onchange="show(this.value)">
+			  <volist id="val" name="list">
+				  <option value="{$val['id']}" <if condition="$art['type'] eq $val['id']">selected="selected"</if>>{$val['title']}</option>
+				   
+			  </volist>
+			</select></td>
+		  </tr>
+            <tr>
+              <th width="15%">标题:</th>
+              <td><textarea type="text" name="title" style="width:70%;height:145px;" value="">{$art.title}</textarea></td>
+            </tr>
+            <tr id="url">
+              <th width="15%">链接地址:</th>
+              <td><input type="text" name="url" class="input-text" size="100" value="{$art.url}"></td>
+            </tr>
+         </table>      
+      </div>
+
+      <div class="bk15"></div>
+
+      <div class="btn"><input type="submit" value="提交" name="submit" class="button" id="submit">
+	  <input type="hidden" name="id" value="{$art.id}" id="id" />
+	  </div>
+
+    </div>
+
+  </div>
+
+</form>
+</body>
+</html>

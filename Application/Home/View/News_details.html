@@ -1,0 +1,49 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>{$art['title']}-{:C('site_name')}</title>
+<meta name="description" content="{:C('site_description')}">
+<meta name="keywords" content="{:C('site_keyword')}">
+<meta name="title" content="{:C('site_title')}">
+<link rel="stylesheet" type="text/css" href="/css/index.css"/>
+<script src="/js/jquery.js"></script>
+<script src="/js/index.js"></script>
+<script type="text/javascript" src="/js/common.js" language="javascript"></script>
+</head>
+
+<body>
+  <include file="Public:header"/> 
+  <div class="newsBoX">
+  	<div class="banner01">
+    	<a href="#"><img src="/images/banner1_03.jpg" /></a>
+    </div>
+  	<div class="link02">
+    	<ul id="new">
+        	<li <if condition="$art['type'] eq 1">class="current1"</if>><a href="http://www.cipeasia.com/exhibiton.html">展会新闻</a></li>
+            <li <if condition="$art['type'] eq 2">class="current1"</if>><a href="http://www.cipeasia.com/Express.html">展商速递</a></li>
+            <li <if condition="$art['type'] eq 3">class="current1"</if>><a href="http://www.cipeasia.com/video.html">视频报道</a></li>
+        </ul><div class="clear"></div>
+    </div>
+    <div id="new_content">
+      <div class="detailBox">
+    	 <div class="newsDetail-01">
+            <dl>
+            	<dd><a>
+                    <h1>{$art['title']}</h1></a>
+                    <p style="text-align:center">新闻来源：{$art['source']}        新闻时间：{$art['addtime']|date="Y-m-d",###}</p></dd>
+                {$art['info']}
+                
+            </dl>
+         </div>
+        
+     </div>
+  </div>
+ </div>
+  <div class="footer">
+     <div class="copyright">
+     	<p>北京宇航会展有限公司版权所有  京ICP备12003248号 </p>
+     </div>
+  </div>
+</body>
+</html>

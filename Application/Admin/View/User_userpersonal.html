@@ -1,0 +1,83 @@
+<include file="Public:header" />
+
+</head>
+<div class="pad_10 pub_02">
+
+<script type="text/javascript" src="__PUBLIC__/statics/js/WdatePicker.js"></script>
+
+ <form action="{:U('Admin/User/userpersonal')}" method="post">
+                	
+                   <table cellpadding="0" cellspacing="0" border="0">
+                       <tr>
+                          <td align="right"><span>*</span> 姓名</td>
+                          <td colspan="2"><input type="text" name="UNAME" value="{$data.UNAME}" class="pub_03 validate[required]" style="width:540px" /></td>
+                       </tr>
+                         <tr>
+                          <td align="right"><span>*</span>性别</td>
+                          <td colspan="2">&nbsp;&nbsp;&nbsp;<input type="radio" name="UGender"  checked="checked"  value="0"/>&nbsp;男&nbsp;&nbsp; <input name="UGender" type="radio" value="1"/>&nbsp;女</td>
+                       </tr>
+                       <tr>
+                          <td align="right">出生年月</td>
+                          <td colspan="2"><input type="text" name="UBIRTH" value="{$data.UBIRTH}" class="pub_06"  style="width:170px" onclick="WdatePicker()" />
+                       
+                          </td>
+                       </tr>
+                       <tr>
+                          <td align="right"><span>*</span>职务</td>
+                          <td colspan="2"><input type="text" name="UPOST" value="{$data.UPOST}" class="pub_03 validate[required]" style="width:540px" /></td>
+                       </tr>
+                         <tr>
+                          <td align="right">职称</td>
+                          <td colspan="2"><input type="text" name="UPOSTTITLE" value="{$data.UPOSTTITLE}" class="pub_03" style="width:540px" /></td>
+                       </tr>
+                         <tr>
+                          <td align="right"><span>*</span> 单位名称</td>
+                          <td colspan="2"><input type="text" name="UNITNAME" value="{$data.UNITNAME}" class="pub_03 validate[required]" style="width:540px" /></td>
+                       </tr>
+                       
+                        <tr>
+                          <td align="right"> 所属部门</td>
+                          <td colspan="2"><input name="UDEPARTMENT" value="{$data.UDEPARTMENT}" type="text" class="pub_03" style="width:540px" /></td>
+                       </tr>
+   
+                        
+                         <tr>
+                          <td align="right"><span>*</span> 单位地址</td>
+                          <!--<td><select class="pub_03" style="width:154px"><option></option></select></td>
+                          <td><input type="text" class="pub_03" style="width:378px" /></td> -->
+                           <td colspan="2"><input type="text" name="UADDRESS" value="{$data.UADDRESS}" class="pub_03 validate[required]" style="width:540px" /></td>
+                       </tr>
+                         <tr>
+                          <td align="right">邮编</td>
+                          <td colspan="2"><input name="UPOSTNO" type="text"  value="{$data.UPOSTNO}" class="pub_03" style="width:540px" /></td>
+                       </tr>
+                         <tr>
+                          <td align="right"><span>*</span>联系人办公电话</td>
+                          <td colspan="2"><input type="text" name="UMOBIPHONE" value="{$data.UMOBIPHONE}" class="pub_03 validate[required]" style="width:540px" /></td>
+                       </tr>
+                      
+                         <tr>
+                          <td align="right">传真</td>
+                          <td colspan="2"><input type="text" name="UFAX"  value="{$data.UFAX}" class="pub_03" style="width:540px" /></td>
+                       </tr>
+                         <tr>
+                          <td align="right"><span>*</span>邮箱</td>
+                          <td colspan="2"><input type="text" name="UEMAIL" value="{$data.UEMAIL}"  class="pub_03 validate[required]" style="width:540px" /></td>
+                       </tr>
+					    <tr>
+                          <td align="right"><span>*</span>身份证电子版</td>
+                          <td colspan="2"><if condition="$data['CERTIFICATE'] eq ''"><else/>&nbsp;&nbsp;<a href="{$data.CERTIFICATE}" style=" color:#0000FF" target="_blank">下载</a></if></td>
+                       </tr>
+                         <tr>
+                          <td align="right"></td>
+                          <td colspan="2" align="center">
+                          <input type="submit" style="background:url(__PUBLIC__/statics/images/btn_team.jpg) ;width:331px; height:35px; border:none;"  value=""/>
+                          </td>
+                       </tr>
+                   </table>
+                   <input type="hidden"  name="submit" value="1" />
+                    <input type="hidden" name="USERID" id="USERID" class="button" value="{$data.USERID}">
+                   </form>
+   
+</div>
+</body></html>

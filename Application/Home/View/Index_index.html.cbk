@@ -1,0 +1,319 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>CIPE</title>
+<link rel="stylesheet" type="text/css" href="/css/index.css"/>
+<script src="/js/jquery.js"></script>
+<script src="/js/index.js"></script>
+<script type="text/javascript" src="/js/common.js" language="javascript"></script>
+<!--[if lte IE 6]>
+<script type="text/javascript" src="js/PNG.js"></script>
+<script type="text/javascript" src="js/PNGClass.js"></script>
+<![endif]-->
+</head>
+
+<body>
+  <div class="header">
+     <div class="headerTop">
+     	<div class="headerTOP01">
+        	<div class="logo">
+             	<img src="images/logo_02.jpg" />
+            </div>
+            <div class="link01">
+            	<ul>
+                	<li><a href="#"><img src="images/2_05.jpg" /></a></li>
+                    <li><a href="#"><img src="images/2_07.jpg" /></a></li>
+                    <li><a href="#"><font>中文  | </font></a><a href="#"><font>English</font></a></li>
+                </ul><div class="clear"></div>
+                <p>2016年5月9日-11日  |  北京国家会议中心 </p>
+                <p>May9-11  |  Beijing China</p>
+            </div>
+        </div>
+     </div>
+     <div class="navBox">
+     	<div class="nav01">
+        	<ul>
+            	<li class="current"><a href="#">首页</a></li>
+                <li><a href="{:U('Home/theme/index')}">主题会展</a></li>
+                <li><a href="#">参观指南</a></li>
+                <li><a href="#">参展指南</a></li>
+                <li><a href="#">下载中心</a></li>
+                <li><a href="#">对接系统</a></li>
+                <li><a href="#">合作媒体</a></li>
+                <li><a href="#">商旅中心</a></li>
+                <li><a href="#">关于我们</a></li>
+            </ul><div class="clear"></div>
+        </div>
+     </div> 
+  </div>
+<!--banner-->
+<div class="focus-bg">
+  <div id="bg-big" class="">
+    <div class="area focus">
+      <div class="focus-wrap" id="scrollA"> 
+        <!-- Begin -->
+        <div class="cons">
+          <div id="carousel_container" class="con">
+            <div class="pt pt_cur" style="display:block">
+            	<a href="advantage.html"><img src="images/banner_02.jpg"/></a>
+            </div>
+            <div class="pt">
+            	<a href="advantage.html"><img src="images/banner_02.jpg"/></a>
+            </div>
+            <div class="pt">
+            	<a href="advantage.html"><img src="images/banner_02.jpg"/></a>
+            </div>
+            <div class="pt">
+            	<a href="advantage.html"><img src="images/banner_02.jpg"/></a>
+            </div>
+          </div>
+        </div>
+        <div class="autoS">
+          <ul id="carousel_point" class="clear">
+            <li turn="1" class="libg"></li>
+            <li turn="2"></li>
+            <li turn="3"></li>
+            <li turn="4"></li>
+          </ul>
+        </div>
+        <!-- End --> 
+      </div>
+    </div>
+  </div>
+</div>
+<script>
+	var carousel_taskId;
+	(function(){
+		jQuery('#user_name').hover(function(){
+			jQuery('#name_menu').show();
+		});
+		jQuery('#name_menu').mouseleave(function(){
+			jQuery('#name_menu').hide();
+		});
+	
+		getCmtNum();
+		showPvNum(165019088 + 150000000);
+		showGarbageNum(1943050);
+		setInterval(getCmtNum,3000);
+		bindCarousel();
+		carousel_taskId = setTimeout(carouselNext,4000);
+	})(jQuery)
+</script>
+<div class="menuBox" id="col">
+  <ul>
+    <Li>
+      <div class="index-01"><img src="images/index1_15.png" /></div>
+      <dl>
+        <dd>
+          <img src="images/nav_05.png" class="icon" />
+        </dd>
+        <dt>
+          <img src="images/index_15.png" />
+        </dt>
+      </dl>
+      <div class="title">
+        <a href="#"><h1>参观</h1><p>Visit</p></a>
+      </div>
+    </Li>
+    <Li>
+      <div class="index-01"><img src="images/index1_17.png" /></div>
+      <dl>
+        <dd>
+          <img src="images/nav_05.png" class="icon" />
+        </dd>
+        <dt>
+          <img src="images/index_17.png" />
+        </dt>
+      </dl>
+      <div class="title">
+        <a href="#"><h1>参展</h1><p>Exhibitors</p></a>
+      </div>
+    </Li>
+    <Li>
+      <div class="index-01"><img src="images/index1_19.png" /></div>
+      <dl>
+        <dd>
+          <img src="images/nav_05.png" class="icon" />
+        </dd>
+        <dt>
+          <img src="images/index_19.png" />
+        </dt>
+      </dl>
+      <div class="title">
+        <a href="#"><h1>活动</h1><p>Activity</p></a>
+      </div>
+    </Li>
+    <Li>
+      <div class="index-01"><img src="images/index1_21.png" /></div>
+      <dl>
+        <dd>
+          <img src="images/nav_05.png" class="icon" />
+        </dd>
+        <dt>
+          <img src="images/index_21.png" />
+        </dt>
+      </dl>
+      <div class="title">
+        <a href="#"><h1>产业联盟</h1><p>Industry Alliance</p></a>
+      </div>
+    </Li>
+    <Li>
+      <div class="index-01"><img src="images/index1_23.png" /></div>
+      <dl>
+        <dd>
+          <img src="images/nav_05.png" class="icon" />
+        </dd>
+        <dt>
+          <img src="images/index_23.png" />
+        </dt>
+      </dl>
+      <div class="title">
+        <a href="#"><h1>对接</h1><p>Docking</p></a>
+      </div>
+    </Li>
+    <Li>
+      <div class="index-01"><img src="images/index1_25.png" /></div>
+      <dl>
+        <dd>
+          <img src="images/nav_05.png" class="icon" />
+        </dd>
+        <dt>
+          <img src="images/index_25.png" />
+        </dt>
+      </dl>
+      <div class="title">
+        <a href="#"><h1>科技服务</h1><p>Technology Services</p></a>
+      </div>
+    </Li>
+  </ul>
+</div>
+ <div class="indexBox">
+ 	<div class="logo1">
+        <a href="#"><img src="images/index_05.png" /></a>
+    </div>
+    <div class="index01">
+        <div class="exhibitionNews">
+        	<div class="title-01"><h1>展会新闻</h1><a href="#">more+</a><div class="clear"></div></div>
+            <ul id="menu2">
+            	<li>
+                	<dl>
+                    	<dd><a href="#"><img src="images/new_07.jpg" /></a></dd>
+                        <dt><a href="#">"国防光电子创新技术系列论坛"6月盛大开幕</a>
+                        <span>2015-06-02</span>
+                        <p>由中国工程院电子信息学部、国家自然科学基金委员会和中国光学工程学会共同主办的"国防光电子创新技术系列论坛"将于6月14日从合肥开始历时2个月，途径合肥 ...</p></dt>
+                    </dl>
+                </li>
+                <li>
+                   <dl>
+                      <dd><a href="#"><img src="images/new_09.jpg"/></a></dd>
+                      <dt><a href="#">光电子•中国博览会（Photonics China）在京...</a>
+                        <span>2015-06-02</span>
+                        <p>2015年5月5日至7日在北京国家会议中心举办由中国高科技产业化研究会、中国光学工程学会主办的"光电子·中国（Photonics China）博览会"在京隆重召开。此次 ...</p>
+                      </dt>
+                   </dl>
+                </li>
+                	<li>
+                	<dl>
+                    	<dd><a href="#"><img src="images/new_17.jpg" /></a></dd>
+                        <dt>
+                          <a href="#">中国联通成功召开新一代城域波分复用技术及...</a>
+                          <span>2015-05-22</span>
+                          <p>2014年11月中国联通与西班牙电信在北京联合发布有关共同推动下一代城域波分技术(NGM-WDM)的白皮书。该白皮书结合移动回传、移动前传、大客户接入、公众 ...</p>
+                        </dt>
+                    </dl>
+                </li>
+                <li>
+                  <dl>
+                    <dd><a href="#"><img src="images/new_19.jpg"/></a></dd>
+                    <dt>
+                        <a href="#">中国光学工程学会光通信与信息网络专家委员会...</a>
+                        <span>2015-05-22</span>
+                        <p>2015年5月5日，"中国光学工程学会光通信与信息网络技术专家委员会（以下简称专委会）筹备会"在北京国家会议中心召开。...</p>
+                    </dt>
+                  </dl>
+                </li>
+            </ul>
+            <div class="clear"></div>
+        </div>
+    </div>
+    <div class="index02">
+    	<div class="index02-left">
+          	<div class="title-01"><h1>展商速递</h1><a href="#">more+ </a><div class="clear"></div></div>
+            <ul class="new-list">
+            	<li><a href="#">国家科学技术奖获奖项目报告会</a><font>2015-05-30</font></li>
+                <li><a href="#">2015年高新技术企业新品发布会</a><font>2015-04-25</font></li>
+                <li><a href="#">科技中小企业国家资金资助项目申报辅导</a><font>2015-04-19</font></li>
+                <li><a href="#">科技部重点实验室科技成果</a><font>2015-04-25</font></li>
+                <li><a href="#">国际电子技术及项目对接洽谈会</a><font>2015-04-23</font></li>
+                <li><a href="#">热成像及微光技术及产业发展座谈会邀请函</a><font>2015-04-21</font></li>
+                <li><a href="#">2015机器视觉市场需求暨采购对接会</a><font>2015-04-18</font></li>
+            </ul>
+        </div>
+        <div class="index02-right">
+        	<div class="title-01"><h1>视频报道</h1><a href="#">more+ </a><div class="clear"></div></div>
+            <a href="#" class="link9"><img src="images/index_05.jpg" /></a>
+            <p><a href="#">2011年中国(北京)国际光电展览会开幕</a></p>	
+        </div><div class="clear"></div>
+    </div>
+    <div class="index03">
+    	<div class="trade">
+            <div class="title-01"><h1>重要展商</h1><a href="#">more+ </a><div class="clear"></div></div>
+            <dl id="brand">
+            	<dd>
+                <a href="#"><img src="images/index_19.jpg" /></a>
+                <a href="#"><img src="images/index_21.jpg" /></a>
+                <a href="#"><img src="images/index_23.jpg" /></a>
+                <a href="#"><img src="images/index_25.jpg" /></a>
+                <a href="#"><img src="images/index_27.jpg" /></a>
+                <a href="#"><img src="images/index_29.jpg" /></a>
+                <a href="#"><img src="images/index_31.jpg" /></a>
+                <a href="#"><img src="images/index_33.jpg" /></a>
+                <a href="#"><img src="images/index_53.jpg" /></a>
+                <a href="#"><img src="images/index_55.jpg" /></a>
+                <a href="#"><img src="images/index_57.jpg" /></a>
+                <a href="#"><img src="images/index_59.jpg" /></a>
+                <a href="#"><img src="images/index_61.jpg" /></a>
+                <a href="#"><img src="images/index_63.jpg" /></a>
+                <a href="#"><img src="images/index_65.jpg" /></a>
+                <a href="#"><img src="images/index_67.jpg" /></a>
+                <a href="#"><img src="images/index_87.jpg" /></a>
+                <a href="#"><img src="images/index_89.jpg" /></a>
+                <a href="#"><img src="images/index_91.jpg" /></a>
+                <a href="#"><img src="images/index_93.jpg" /></a>
+                <a href="#"><img src="images/index_95.jpg" /></a>
+                <a href="#"><img src="images/index_97.jpg" /></a>
+                <a href="#"><img src="images/index_99.jpg" /></a>
+                <a href="#"><img src="images/index_101.jpg" /></a>
+                </dd>
+            </dl>
+        </div>
+    </div>
+    <div class="linkBox">
+      <div class="link"><h1>友情链接</h1><a href="#">more+ </a><div class="clear"></div></div>
+      <p><a href="#">北京会展公司  </a>|
+         <a href="#">中国光学英才网  </a>| 
+         <a href="#"> 光行天下 </a>| 
+         <a href="#">中华人民共和国商务部 </a>| 
+         <a href="#">中华人民共和国科技部</a>| 
+         <a href="#">中国航天科技集团</a>| 
+         <a href="#">中国高科技产业化研究会</a> 
+        
+        <a href="#">中国宇航光电资讯网</a>|
+            <a href="#">《红外与激光工程》</a>|
+            <a href="#">  美国国际光学工程学会（SPIE）</a>|
+            <a href="#">法国国际商务展会公司（BCI）</a>|
+            <a href="#">中国光学学会</a>|
+            <a href="#">中国太赫兹研发网 </a>
+            <a href="#">中国光学工程学会</a>
+         </p>
+       
+    </div>
+    </div>
+ </div>
+  <div class="footer">
+     <div class="copyright">
+     	<p>北京宇航会展有限公司版权所有  京ICP备12003248号 </p>
+     </div>
+</body>
+</html>

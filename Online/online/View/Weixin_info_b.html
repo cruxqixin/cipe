@@ -1,0 +1,233 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>{$onlineUser['company_cname']}_用户详情_在线对接会_科济天下网</title>
+<link href="/css/Online/Weixin/jquery.mobile-1.4.2.css" rel="stylesheet">
+<link href="/css/Online/Weixin/index.css" rel="stylesheet" type="text/css">
+<script src="/js/Online/Weixin/jquery.js"></script>
+<script src="/js/Online/Weixin/jquery.mobile-1.4.2.min.js"></script>
+<script src="/js/Online/Weixin/common.js"></script>
+<script src="/js/Online/Weixin/swipe.js"></script>
+
+</head>
+
+<body>
+<div data-role="page" id="Activity"  class="index">
+ <div data-role="header" data-position="fixed" class="header" id="menber"  data-tap-toggle="false">
+         <div class="xiangqing">
+            <div class="xiangqing01">
+                <div class="xiangqing02">
+                    <a href="{:U('Weixin/index')}" target="_self"><img src="/images/Online/Weixin/imegs/home.png">
+                    <span>首页</span></a>
+                </div>
+                <div class="xiangqing03">
+                    <span>企业用户详情</span>
+                </div>
+            </div>
+      </div>
+	
+     <!--<div class="branch01">
+      <ul>
+        <li class="current"><a href="#">基本信息</a></li>
+        <li><a href="#">产品技术及服务</a></li>
+        <li><a href="#">对接</a></li>
+        
+      </ul>
+      <div class="clear"></div>
+     </div>
+     <div class="yin">
+     	<img src="/images/Online/Weixin/imegs/-06.png">
+     </div> -->
+  </div>  
+ <div data-role="content" class="Main">
+ 	<div class="company">
+    	<div class="company01">
+        	<div class="company02">
+            	<h1>{$onlineUser['company_cname']}</h1>
+            </div>
+        </div>
+        
+    </div>
+    <div class="profile">
+    	<div class="profile01">
+        	<div class="profile02">
+            	<p>展位号/项目发布会：<span>【{$onlineUser['exhibition_number'] ? $onlineUser['exhibition_number'] : '无'}】</span></p>
+            </div>
+            <div class="profile03">
+            	<div class="profile04">
+                	<ul>
+                    	<li><span>公司中文名称：</span><font>{$onlineUser['company_cname']}</font></li>
+                        <li><span>公司英文名称：</span><font>{$onlineUser['company_ename']}</font></li>
+                        <li><span>公司中文简介：</span><font>{$onlineUser['company_cinfo']}</font></li>
+                        <li><span>公司英文简介：</span><font>{$onlineUser['company_einfo']}</font></li>
+                        <li><span>网站：</span><font>{$onlineUser['company_website']}</font></li>
+                        <li><span>地址：</span><font>{$onlineUser['company_address']}</font></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="profile" style="margin-bottom:5%;">
+    	<div class="profile01">
+        	<div class="profile02">
+            	<p>企业联系人详细资料</p>
+            </div>
+            <div class="profile03">
+            	<div class="profile04">
+                	<ul>
+                    	<li><span>性别：</span><font>{$onlineUser['gender']}</font></li>
+                        <li><span>姓名：</span><font>{$onlineUser['name']}</font></li>
+                        <li><span>职位：</span><font>{$onlineUser['position']}</font></li>
+                        
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+    <?php
+		foreach($choosenFatherList as $father){
+	?>
+    <div class="technology">
+    	<div class="technology01">
+        	<div class="technology02">
+            	<ul>
+                	<li><span>▪&nbsp;&nbsp;<php>echo $father['cname'];</php><php>if($father['ename'] != ''){ echo '/'.$father['ename'];}</php></span></li>
+                </ul>
+            </div>
+            <div class="jin">
+	            <?php 
+					foreach($choosenList[$father['id']] as $k=>$v){
+				?>
+            	<p>{$v['cname']}{$v['ename']}</p>
+            	<?php } ?>
+
+            </div>
+
+        </div>
+    </div>
+    <?php } ?>
+    
+    <div class="businesstt">
+    	<div class="business">
+            <div class="business01">
+                <div class="business02">
+                    <p>能提供的核心产品及技术合作：</p>
+                </div>
+                <div class="business03">
+                    <p>{$onlineUser['cooperation_offer']}</p>
+                </div>
+            </div>
+   		 </div>
+         <div class="business">
+            <div class="business01">
+                <div class="business02">
+                    <p>已实现的应用：</p>
+                </div>
+                <div class="business03">
+                    <p>{$onlineUser['implemented_application']}</p>
+                </div>
+            </div>
+   		 </div>
+         <div class="business">
+            <div class="business01">
+                <div class="business02">
+                    <p>需要何种合作或帮助：</p>
+                </div>
+                <div class="business03">
+                    <p>{$onlineUser['cooperation_need']}</p>
+                </div>
+            </div>
+   		 </div>
+                  <div class="business">
+            <div class="business01">
+                <div class="business02">
+                    <p>是否有投融资需求：</p>
+                </div>
+                <div class="business03">
+                    <p>{$onlineUser['fund_demand']==1 ? '是' : '否'}</p>
+                </div>
+            </div>
+   		 </div>
+
+    </div>
+    <div class="zhu">
+    	<div class="zhu01">
+        	<div class="zhu02">
+            	<span>注：红色表示当前已预约，黄色表示待定中，请选择绿色时间点。</span>
+            </div>
+        </div>
+    </div>
+    <div class="date">
+    	<div class="date01">
+        	<div class="date02">
+            	<div class="date03">
+                	<span>选择日期：</span>
+                </div>
+                
+            </div>
+        <div class="shijiantt">
+            	<ul>
+                <?php
+            		$i=0;
+                	foreach($dayConfig as $day_k => $day_v){
+					$i++;
+				?>
+                	<li <?php if($i==1) { ?>class="red" <?php } ?> title="tab0{$i}"><span>{$day_v}</span></li>
+                <?php
+                	}
+				?>
+                </ul>
+            </div>
+            
+        <div class="time">
+        <?php
+        	$j=0;
+        	foreach($dayConfig as $day_k => $day_v){
+			$j++;
+		?>
+        	<div class="time01" id="tab0{$j}" style="<?php if($j!=1){ ?> display:none;<?php } ?>">
+            	<ul>
+            					<?php
+            					//绿色 16  黄色15 红色 z01
+	                    		foreach($timeConfig as $time_k => $time_v){
+									if(in_array($calendarListDay[$day_k][$time_k]['id'],$scheduleListCid) || $calendarListDay[$day_k][$time_k]['status']==0){
+										$pic = $scheduleListCidKV[$calendarListDay[$day_k][$time_k]['id']] == 1 ? '-15' : 'z01';
+										$checkable = 0;
+									}else{
+										$pic = '-16';
+										$checkable = 1;
+									}
+
+								?>
+                    <li data-value="{$calendarListDay[$day_k][$time_k]['id']}" data-status="{$checkable}"><img src="/images/Online/Weixin/imegs/{$pic}.png"><a href="">{$time_v}</a></li>
+								<?php
+								}
+								?>
+                </ul>
+            </div>
+            <?php
+                	}
+			?>
+</div>
+</div>
+</div>
+</div>
+
+
+ <div  data-role="footer" data-position="fixed" class="footer"  data-tap-toggle="false">
+      <div class="footer02">
+        <div class="yinyng03"><img src="/images/Online/Weixin/imegs/yinying_02.png"/></div>
+        <div class="donate02">
+        <form action="{:U('weixin/setSchedule')}" id="form1" method="post"  target="_self">
+         <input type='hidden' name='calendar_id' value="" id="calendar_id"/>
+         <input type='hidden' name="accept_uid"  value="{$_GET['uid']}"/>
+         <input type="submit" value="选择对接时间" data-role="none" class="menu05">
+         </form>
+          <div class="clear"></div>
+        </div>
+      </div>
+   </div> 
+</div>
+</body>
+</html>

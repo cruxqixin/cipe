@@ -1,0 +1,190 @@
+<include file="Public:header" />
+
+</head>
+<div class="pad_10 pub_02">
+
+<script type="text/javascript" src="__PUBLIC__/statics/js/WdatePicker.js"></script>
+<script type="text/javascript" src="__PUBLIC__/statics/js/area.js" charset="gbk"></script>
+<script type="text/javascript" src="__PUBLIC__/statics/js/jquery-1.7.2.js" charset="gbk"></script>
+
+<style type="text/css">
+select{margin-left:8px;};
+</style>
+ <form action="{:U('Admin/User/company')}" method="post">
+                	
+                   <table cellpadding="0" cellspacing="0" border="0">
+                       <tr>
+                          <td align="right"><span>*</span> 企业姓名</td>
+                          <td colspan="2"><input type="text" name="CNAME" value="{$data.cname}" class="pub_03 " style="width:540px" /></td>
+                       </tr>
+					    <tr>
+                          <td align="right"><span>*</span>省/市</td>
+                          <td colspan="2">
+                              <select name="CPROV" id="s_province" va="1"></select>
+                              <select name="CCITY" id="s_city" va="1"></select>
+                              <select name="s_county" id="s_county" va="1"></select>
+                          </td>
+                       </tr>
+					   <tr>
+                          <td align="right"><span>*</span> 详细地址</td>
+                         
+                           <td colspan="2"><input type="text" name="CADDRESS" value="{$data.caddress}" class="pub_03 " style="width:540px" /></td>
+                       </tr>
+					   <tr>
+                          <td align="right">企业性质</td>
+                          <td colspan="2">
+                         <select name="CNATUREID" id="CNATUREID">
+						  <volist name="xz" id="val" >
+                          	<option value="{$val.id}" <if condition="$data['cnatureid'] eq $val['id']"> selected="selected"</if>>{$val.tname}</option>
+                          
+							</volist>
+                          </select>
+                          <input type="hidden" name="CNATURE" id="CNATUREIDVALUE" /></td>
+                       </tr>
+					    <tr>
+                          <td align="right">行业</td>
+                          <td colspan="2">   
+                         <select name="CINDUSTRYID" id="CINDUSTRYID">
+						  <volist name="hy" id="val" >
+						  <option value="{$val.id}" <if condition="$data['cindustryid'] eq $val['id']"> selected="selected"</if>>{$val.tname}</option>
+                        </volist>
+						 
+                          </select>
+                          <input type="hidden" name="CINDUSTRY" id="CINDUSTRYIDVALUE" /></td>
+                    </tr>
+					 <tr>
+                          <td align="right"> 主营产品</td>
+                          <td colspan="2"><input name="CTHEMAIN" value="{$data.cthemain}" type="text" class="pub_03" style="width:540px" /></td>
+                       </tr>
+                        <tr>
+                          <td align="right"> 应用领域</td>
+                          <td colspan="2"><input name="CFIELD" value="{$data.cfield}" type="text" class="pub_03" style="width:540px" /></td>
+                       </tr>
+					   <tr>
+                          <td align="right">联系人</td>
+                          <td colspan="2"><input type="text" name="CONTACTS" value="{$data.contacts}" class="pub_03 "  style="width:170px" />
+                       
+                          </td>
+                       </tr>
+					    <tr>
+                          <td align="right">联系人电话</td>
+                          <td colspan="2"><input type="text" name="CMOBILEPHONE" value="{$data.cmobilephone}" class="pub_03 "  style="width:170px" />
+                       
+                          </td>
+                       </tr>
+					   <tr>
+                          <td align="right">联系人手机</td>
+                          <td colspan="2"><input type="text" name="CPHONE" value="{$data.cphone}" class="pub_03 "  style="width:170px" />
+                       
+                          </td>
+                       </tr>
+					    <tr>
+                          <td align="right">联系生日</td>
+                          <td colspan="2"><input type="text" name="CBIRTH" value="{$data.cbirth}" class="pub_06"  style="width:170px" onclick="WdatePicker()" />
+                       
+                          </td>
+                       </tr>
+                         <tr>
+                          <td align="right"><span>*</span>联系人性别</td>
+                          <td colspan="2">&nbsp;&nbsp;&nbsp;<input type="radio" name="CENDER"  checked="checked"  value="0"/>&nbsp;男&nbsp;&nbsp; <input name="CENDER" type="radio" value="1"/>&nbsp;女</td>
+                       </tr>
+                      
+					   
+                       <tr>
+                          <td align="right"><span>*</span>联系人职务</td>
+                          <td colspan="2"><input type="text" name="CPOST" value="{$data.cpost}" class="pub_03 " style="width:540px" /></td>
+                       </tr>
+                      <tr>
+                          <td align="right">邮编</td>
+                          <td colspan="2"><input name="CFAX" type="text"  value="{$data.cfax}" class="pub_03" style="width:540px" /></td>
+                       </tr>
+					    <tr>
+                          <td align="right">传真</td>
+                          <td colspan="2"><input type="text" name="CFAX"  value="{$data.cfax}" class="pub_03" style="width:540px" /></td>
+                       </tr>
+                         <tr>
+                          <td align="right"><span>*</span>邮箱</td>
+                          <td colspan="2"><input type="text" name="CEMAIL" value="{$data.cemail}"  class="pub_03 " style="width:540px" /></td>
+                       </tr>
+					   <tr>
+                          <td align="right"> 官方网址</td>
+                          <td colspan="2"><input name="CDOMAIN" value="{$data.cdomain}" type="text" class="pub_03" style="width:540px" /></td>
+                       </tr>
+                        <tr>
+                          <td align="right">公司成立日期</td>
+                          <td colspan="2"><input type="text" name="COMBIRTH"  value="{$data.combirth}" class="pub_06" style="width:170px" onclick="WdatePicker()" />
+                        </td>
+                       </tr>
+                         <tr>
+                          <td align="right">营业额</td>
+                          <td colspan="2"><input type="text" name="CTURNOVER"  value="{$data.cturnover}" class="pub_03 validate[custom[onlyNumberSp]]"  />万元
+                        </td>
+                       </tr>
+                         <tr>
+                          <td align="right"><span>*</span>公司所属集团</td>
+                          <td colspan="2"><input type="text" name="CGENUS"  value="{$data.cgenus}" class="pub_03" style="width:540px" />
+                        </td>
+                       </tr>
+                         <tr>
+                          <td align="right"><span>*</span>营业执照</td>
+                          <td colspan="2"><if condition="$data['license'] eq ''"><else/>&nbsp;&nbsp;<a href="{$data.license}" style=" color:#0000FF" target="_blank">下载</a></if>
+                        </td>
+                       </tr>
+					    <tr>
+                          <td align="right"><span>*</span>授权书</td>
+                          <td colspan="2"><if condition="$data['authorization'] eq ''"><else/>&nbsp;&nbsp;<a href="{$data.authorization}" style=" color:#0000FF" target="_blank">下载</a></if>
+                        </td>
+                       </tr>
+                         <tr>
+                          <td align="right"></td>
+                          <td colspan="2" align="center">
+                          <input type="submit" style="background:url(__PUBLIC__/statics/images/btn_team.jpg) ;width:331px; height:35px; border:none;"  value=""/>
+                          </td>
+                       </tr>
+                   </table>
+                   <input type="hidden"  name="submit" value="1" />
+                    <input type="hidden" name="USERID" id="USERID" class="button" value="{$data.userid}">
+                   </form>
+				     <script type="text/javascript">
+//初始化信息
+var s=["s_province","s_city","s_county"];//三个select的id
+var opt0 = ["省份","地级市","市、县级市"];//初始值
+function _init_area(){  //初始化函数
+
+	for(i=0;i<s.length-1;i++){
+		
+	  	document.getElementById(s[i]).onchange=new Function("change("+(i+1)+")");
+	
+	}
+	change(0);
+}
+$(function(){
+	$("select").each(function(){
+		if($(this).attr("va")=="1"){
+			return;
+		}
+		$(this).change(function(){
+			$("#"+$(this).attr("id")+"VALUE").val($(this).find("option:selected").text());	
+		}).change();
+	})	
+	_init_area();
+	$("#s_province").val("{$data.CPROV}");
+		$("#s_province").change();
+		$("#s_city").val("{$data.CCITY}");
+		$("#s_city").change();
+		$("#s_county").val("{$data.COUNTY}");
+	//if('{$data.COUNTY}'=='0'){
+//		
+//	}else{
+//		$("#region").val("{$data.CPROV}");
+//		$("#region").change();
+//		$("#country").val("{$data.CCITY}");
+//		$("#country").change();
+//		$("#city_state").val("{$data.COUNTY}");
+//		
+//	} 
+})
+</script>
+   
+</div>
+</body></html>

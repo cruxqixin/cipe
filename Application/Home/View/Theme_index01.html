@@ -1,0 +1,503 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>{$theme['title']}-{:C('site_name')}</title>
+<meta name="description" content="{:C('site_description')}">
+<meta name="keywords" content="{:C('site_keyword')}">
+<meta name="title" content="{:C('site_title')}">
+<link rel="stylesheet" type="text/css" href="/css/index.css"/>
+<script src="/js/jquery.js"></script>
+<script src="/js/index.js"></script>
+<script type="text/javascript" src="/js/common.js" language="javascript"></script>
+<script>
+$(function(){
+	$("base").attr("target","");
+	$(".nav01 ul li a").attr("target","_blank");
+	$(".detail").click(function(){
+		$("#desc").height($(document).height());
+		$("#desc").width($(document).width());
+		$("#desc").show();
+	})
+	$("#detail1").click(function(){
+		$("#info").height($(document).height());
+		$("#info").width($(document).width());
+		$("#info").show();
+	})
+	$("[id=close]").click(function(){
+		$(".showboxbg").hide();
+	})
+})
+</script>
+</head>
+
+<body>
+  <include file="Public:header"/>
+  <div class="themeBox">
+	<div class="showboxbg" id="desc">
+		<div class="slogin">
+		    <div style="height:72px;margin-right:20px;"><div class="titles">{$theme['title']}</div><span id="close" style="float:right;cursor:pointer;margin-top:-20px;">关闭</span></div>
+			<div class="content" >
+				{$theme['desc']}
+			</div>
+		</div>
+	</div>
+	<div class="showboxbg" id="info">
+		<div class="slogin">
+		    <div style="height:72px;margin-right:20px;"><div class="titles">{$theme['title']}</div><span id="close" style="float:right;cursor:pointer;margin-top:-20px;">关闭</span></div>
+			<div class="content" >
+				{$theme['content']}
+			</div>
+		</div>
+	</div>
+	
+    <div id="menu_content">
+      <div class="manufactureBox">
+        <div class="banner">
+          <img src="{$theme['img']}" />
+        </div>
+		</div>
+		</div>
+        <!--<div class="manufacture01">
+            <div class="manufacture01-1">
+               <div class="text01">
+                  <h1>{$theme['title']}</h1>
+                  <p>{$theme['desc']|strip_tags|msubstr=0,70,'utf-8',false}...</p>
+				  <input type="button" id="detail"  value="了解详情" class="detail">
+               </div>
+               <div class="img01">
+                  <dl>
+                    <dd><img src="{$theme['descimg']}" /></dd>
+                    <!--<dt><p>{$theme['content']|strip_tags|msubstr=0,140,'utf-8',false}...<span style="cursor:pointer" id="detail1">【查看详情】</span></p>
+                    </dt>-->
+                 <!-- </dl>
+               </div>
+            </div><div class="clear"></div>-->
+			<div class="Exhibition_01">
+					<div class="Exhibition_02">
+						<div class="Exhibition_03">
+							<div class="Exhibition_04" id="zhanhui">
+								<h1>{$theme['title']}</h1>
+							</div>
+							<div class="Exhibition_05">
+								<p>{$theme['desc']|strip_tags|msubstr=0,70,'utf-8',false}...</p>
+							</div>
+							<div class="Exhibition_06">
+								<a href="" id="detail" class="detail">查看更多</a>
+							</div>
+						</div>
+						<div class="Exhibition_07">
+							<img src="{$theme['descimg']}" />
+						</div>
+					</div>
+            <div class="theme">
+                <ul id="theme">
+                    <li>
+                      <div class="show"><a href="{:U('Visit/index?type=1')}"><img src="/images/6_03.jpg" /></a></div>
+                      <div class="activeimg"><a href="{:U('Visit/index?type=1')}"><span>参观</span></a></div>
+                    </li>
+                    <li>
+                      <div class="show"><a href="{:U('Visit/apply?type=4')}"><img src="/images/6_06.jpg" /></a></div>
+                      <div class="activeimg"><a href="{:U('Visit/apply?type=4')}"><span>参展</span></a></div>
+                    </li>
+                    <li>
+                      <div class="show"><a href="{:U('Activity/index')}"><img src="/images/6_08.jpg" /></a></div>
+                      <div class="activeimg"><a href="{:U('Activity/index')}"><span>活动</span></a></div>
+                    </li>
+                    <li>
+                      <div class="show"><a href="http://www.cipeasia.com/Consultation.html"><img src="/images/link_11.jpg" /></a></div>
+                      <div class="activeimg"><a href="http://www.cipeasia.com/Consultation.html">广告赞助</a></div>
+                    </li>
+                    <li>
+                      <div class="show"><a href="http://online.kjtxw.com/online.php"><img src="/images/6_12.jpg" /></a></div>
+                      <div class="activeimg"><a href="http://online.kjtxw.com/online.php"><span>对接</span></a></div>
+                    </li>
+                    <li>
+                      <div class="show"><a href="http://consultant.kjtxw.com/consultant.html"><img src="/images/6_14.jpg" /></a></div>
+                      <div class="activeimg"><a href="http://consultant.kjtxw.com/consultant.html">科技服务</a></div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <!--<div class="exhibitBox">
+            <div class="exhibit">
+              <h1>展品范围</h1>
+              <ul>
+                  <li>
+                    <a href="#"><img src="{$val['pic']}" /></a>
+                    <h2>{$val['title']}</h2>
+                    <P>{$val['info']}</P>
+                  </li>
+               </ul>
+            </div>
+        </div>-->
+	<volist id="val" name="Exhibition">
+		<div class="Exhibits_01">
+    	<div class="Exhibits_02" id="zhanpin">
+        	<p>展品范围</p>
+        </div>
+        <div class="Exhibits_03">
+        	<div class="Exhibits_04">
+            	<img src="{$val['pic']}" />
+            </div>
+            <div class="Exhibits_05">
+            	<p>{$val['title']}</p>
+            </div>
+            <div class="Exhibits_06">
+            	<P>{$val['info']}</P>
+            </div>
+        </div>
+	</div>
+   </volist>
+	
+	
+	
+	
+	<div class="Concurrent_01">
+    	<div class="Concurrent_02" id="tongqi">
+        	<p>同期活动 · 精彩纷呈</p>
+        </div>
+        <div class="Concurrent_03">
+        	<div class="Concurrent_04">
+            	<img src="/images/z_06.png">
+				</div>
+            <div class="Concurrent_05">
+            	<h1>光制世界  智赢未来——2017光信息与光网络大会</h1>
+                <p>包含7位院士在内的12位国内外顶级专家亲临现场做精彩报告，中国移动、中国联通、中国电信三大运营商，华为、中兴
+                、烽火、长飞、富通等龙头企业悉数到会，将覆盖全产业链最新研究热点，分享最新技术成果，共同探讨
+                光信息与光网络领域从技术到策略再到解决方案的最新进展，共同搭建产学研用的大平台，预计参会人员600多人。</p>
+            </div>
+        </div>
+        <div class="Forum_01">
+        	<h1>分论坛：</h1>
+        </div>
+        <div class="Forum_02">
+        	<ul>
+            	<li><a href="">下一代超宽带光接入技术产业发展论坛</a></li>
+                <li><a href="">下一代超宽带光接入技术产业发展论坛</a></li>
+                <li><a href="">下一代超宽带光接入技术产业发展论坛</a></li>
+                <li><a href="">下一代超宽带光接入技术产业发展论坛</a></li>
+                <li><a href="">下一代超宽带光接入技术产业发展论坛</a></li>
+                <li><a href="">下一代超宽带光接入技术产业发展论坛</a></li>
+                <li><a href="">下一代超宽带光接入技术产业发展论坛</a></li>
+                <li><a href="">下一代超宽带光接入技术产业发展论坛</a></li>
+                <li><a href="">下一代超宽带光接入技术产业发展论坛</a></li>
+                <li><a href="">下一代超宽带光接入技术产业发展论坛</a></li>
+                <li><a href="">下一代超宽带光接入技术产业发展论坛</a></li>
+            </ul>
+        </div>
+        <div class="Concurrent_03">
+        	<div class="Concurrent_04">
+            	<img src="/images/z_07.png">
+            </div>
+            <div class="Concurrent_05">
+            	<h1>第六届中国（北京）国际光纤传感技术及应用大会</h1>
+                <p>大会是中国光学工程学会光纤传感技术专家工作委员会、中国光纤中国光纤传感技术及产业创
+                新联盟年会，除了前沿学术研讨，重点将围绕智能电网、大型构件安全、煤炭安全、地质灾害安
+                全、油田安全等应用领域，展开研讨和需求对接，预计参会人员400多人。</p>
+            </div>
+        </div>
+        <div class="Forum_01">
+        	<h1>分论坛：</h1>
+        </div>
+        <div class="Forum_02tt">
+        	<ul>
+            	<li><a href="">纤传感技术在大型构件安全煤炭安全、地质灾害、智能电网、油田安全等领域的应用</a></li>
+            </ul>
+        </div>
+        
+    </div>
+    <div class="Exhibits_01">
+    	<div class="Exhibits_02" id="liangdian">
+        	<p>大会亮点</p>
+        </div>
+        <div class="highlights_01">
+        	<div class="highlights_02">
+            	<div class="highlights_03">
+                	<img src="/images/z_12.png">
+                </div>
+                <div class="highlights_04">
+                	<h1>国际合作</h1>
+                	<p>邀请国际顶级科学家、企业家到会交流，探讨国际前沿热点议题，发布国际项目需求。</p>
+                </div>
+            </div>
+            <div class="highlights_02tt">
+            	<div class="highlights_03">
+                	<img src="/images/z_13.png">
+                </div>
+                <div class="highlights_04">
+                	<h1>校企合作</h1>
+                	<p>邀请国际顶级科学家、企业家到会交流，探讨国际前沿热点议题，发布国际项目需求。</p>
+                </div>
+            </div>
+        </div>
+        <div class="highlights_01">
+        	<div class="highlights_02">
+            	<div class="highlights_03">
+                	<img src="/images/z_14.png">
+                </div>
+                <div class="highlights_04">
+                	<h1>专业采购</h1>
+                	<p>邀请国际顶级科学家、企业家到会交流，探讨国际前沿热点议题，发布国际项目需求。</p>
+                </div>
+            </div>
+            <div class="highlights_02tt">
+            	<div class="highlights_03">
+                	<img src="/images/z_15.png">
+                </div>
+                <div class="highlights_04">
+                	<h1>科技服务2.0</h1>
+                	<p>邀请国际顶级科学家、企业家到会交流，探讨国际前沿热点议题，发布国际项目需求。</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="Exhibits_01">
+    	<div class="Exhibits_02tt" id="zhongdian">
+        	<p>部分重点展商</p>
+        </div>
+        <div class="exhibitors_01">
+        	<div class="exhibitors_02">
+            	<img src="/images/z_16.png">
+                <img src="/images/z_17.png">
+                <img src="/images/z_18.png">
+                <img src="/images/z_19.png">
+                <img src="/images/z_20.png">
+                <img src="/images/z_21.png">
+                <img src="/images/z_22.png">
+                <img src="/images/z_23.png">
+                <img src="/images/z_24.png">
+                <img src="/images/z_25.png">
+                <img src="/images/z_26.png">
+                <img src="/images/z_27.png">
+                <img src="/images/z_28.png">
+                <img src="/images/z_29.png">
+                <img src="/images/z_30.png">
+                <img src="/images/z_31.png">
+                <img src="/images/z_32.png">
+                <img src="/images/z_33.png">
+                <img src="/images/z_34.png">
+                <img src="/images/z_35.png">
+                <img src="/images/z_36.png">
+                <img src="/images/z_37.png">
+                <img src="/images/z_38.png">
+                <img src="/images/z_39.png">
+            </div>
+        </div>
+     </div>
+     <div class="Exhibits_01">
+    	<div class="Exhibits_02" id="lijie">
+        	<p>历届回顾</p>
+        </div>
+        <div class="exhibitors_01">
+        	<div class="exhibitors_02tt">
+            	<img src="/images/z_41.png">
+                <img src="/images/z_42.png">
+                <img src="/images/z_43.png">
+                <img src="/images/z_44.png">
+                <img src="/images/z_45.png">
+                <img src="/images/z_46.png">
+                <img src="/images/z_47.png">
+                <img src="/images/z_48.png">
+                <img src="/images/z_49.png">
+                <img src="/images/z50.png">
+            </div>
+        </div>
+      </div>
+       <div class="Exhibits_01">
+    	<div class="Exhibits_02" id="xiangguan">
+        	<p>相关新闻</p>
+        </div>
+        <div class="Forum_02">
+        	<ul>
+            	<li><a href="">下一代超宽带光接入技术产业发展论坛</a></li>
+                <li><a href="">下一代超宽带光接入技术产业发展论坛</a></li>
+                <li><a href="">下一代超宽带光接入技术产业发展论坛</a></li>
+                <li><a href="">下一代超宽带光接入技术产业发展论坛</a></li>
+                <li><a href="">下一代超宽带光接入技术产业发展论坛</a></li>
+                <li><a href="">下一代超宽带光接入技术产业发展论坛</a></li>
+                <li><a href="">下一代超宽带光接入技术产业发展论坛</a></li>
+                <li><a href="">下一代超宽带光接入技术产业发展论坛</a></li>
+                <li><a href="">下一代超宽带光接入技术产业发展论坛</a></li>
+                <li><a href="">下一代超宽带光接入技术产业发展论坛</a></li>
+            </ul>
+        </div>
+        
+       </div>
+       <div class="Exhibits_01">
+    	<div class="Exhibits_02" id="canyu">
+        	<p>参与方式</p>
+        </div>
+        <!--<div class="Participation_01">
+        	<div class="Participation_02">
+            	<h1>参会要求：</h1>
+                <p>参会注册费1800元/人（包含资料、用餐等费用）。</p>
+                <h1>参展要求：</h1>
+                <p>国内展商：标展：人民币16000元/9平米  光地：人民币1500元/平方米 </p>
+                <p>国际展商：标展：美元3000元/9平米     光地：美元300元/平方米 </p>
+                <h1>赞助方式：</h1>
+                <table cellpadding="0" cellspacing="0" border="0" width="100%">
+                	<tr style="background:#fbdcdd;">
+                    	<td width="20%"><p>赞助方案  </p></td>
+                        <td width="60%"><p>回报形式   </p></td>
+                        <td width="20%"><p>价格   </p></td>
+                    </tr>
+                    <tr>
+                      <td><p>钻石支持</p></td>
+                      <td>
+                      <span>（1）成为大会联办单位，相关会议资料、网站、宣传材料标注为联办单位；</span>
+                      <span>（2）学会网站集群平台长期宣传产品、技术等；</span>
+                      <span>（3）72平展位展示；</span>
+                      <span>（4）会议现场主办方将通过引荐、对接洽谈等形式安排企业与客户建立联系，协助促成合作；</span>
+                      <span>（5）20-30分钟的专题会议PPT报告；</span>
+                      <span>（6）参会名额4个。</span>
+                      </td>
+                      <td><p>拾伍万元</p></td>
+                    </tr>
+                    <tr style="background:#f3f5f2">
+                      <td><p>黄金支持</p></td>
+                      <td>
+                      <span>（1）会议同期36平展位展示；</span>
+                      <span>（2）会议现场主办方将通过引荐、对接洽谈等形式安排企业与卖家建立联系，协助促成合作；</span>
+                      <span>（3）20-30分钟的专题会议PPT报告；</span>
+                      <span>（4）参会名额3个。</span>
+                      
+                      </td>
+                      <td><p>拾万元</p></td>
+                    </tr>
+                    <tr>
+                      <td><p>会议报告</p></td>
+                      <td>
+                      <span>（1）20-30分钟的PPT报告；</span>
+                      <span>（2）参会名额2个。</span>
+                      
+                      </td>
+                      <td><p>贰万元</p></td>
+                    </tr>
+                    <tr style="background:#f3f5f2">
+                      <td><p>资料发放</p></td>
+                      <td>
+                      <span>（1）会议资料袋中放单位宣传页，会场门口放置易拉宝； </span>
+                      <span>（2）会议现场主办方将通过引荐、对接洽谈等形式安排企业与卖家建立联系，协助促成合作；</span>
+                      <span>（3）参会名额1个。</span>
+                     
+                      
+                      </td>
+                      <td><p>壹万元</p></td>
+                    </tr>
+                    <tr>
+                      <td><p>大会礼品</p></td>
+                      <td>
+                      <span>（1）提供大会礼品，参会代表、参展企业各一份礼品，礼品可印赞助者企业logo标识（限1名）。 </span>
+                      <span>（2）参会名额1个。</span>
+                      
+                      </td>
+                      <td><p>贰万元</p></td>
+                    </tr>
+                    <tr style="background:#f3f5f2">
+                      <td><p>会议茶歇</p></td>
+                      <td>
+                      <span>（1）会场茶歇一天，赞助者提供甜品、水果、咖啡、饮料、水等（保证充足），可在会场门口茶歇处摆放企业易拉宝并标明赞助（限两名）； </span>
+                      <span>（2）参会名额1个。 </span>
+                     
+                      </td>
+                      <td><p>伍仟元</p></td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+        <div class="Participation_03">
+        	<p>其他赞助方式可详谈。</p>
+        </div>
+      </div>-->
+	  
+	  <div class="unitBox">
+          <dl>
+		  {$theme['union']}
+            
+          </dl>
+        </div>
+        <div class="exhibitBox">
+           <div class="unitBox">
+          <dl>
+            {$theme['infos']}
+          </dl>
+        </div>
+        </div>
+      <div class="Exhibits_01">
+    	<div class="Exhibits_02" id="lianxi">
+        	<p>联系方式</p>
+        </div>
+        <div class="Contact_01">
+        	<p>中国光学工程学会</p>
+        </div>
+        <div class="Contact_02">
+        	<div class="Contact_03">
+            	<div class="Contact_04">
+                	<img src="/images/z_51.png">
+                </div>
+                <div class="Contact_05">
+                	<p>联系人</p>
+                    <p>李泽</p>
+                </div>
+            </div>
+            <div class="Contact_03">
+            	<div class="Contact_04">
+                	<img src="/images/z_52.png">
+                </div>
+                <div class="Contact_05">
+                	<p>电话</p>
+                    <p>022-58168873</p>
+                </div>
+            </div>
+            <div class="Contact_03">
+            	<div class="Contact_04">
+                	<img src="/images/z_53.png">
+                </div>
+                <div class="Contact_05">
+                	<p>邮箱</p>
+                    <p>lizebj@163.com</p>
+                </div>
+            </div>
+        </div>
+     </div>
+    
+    
+   <div class="zhanhui">
+	<ul>
+    	<li class="red"><a href="#zhanhui"><p>展会<font>介绍</font></p></a></li>
+        <li><a href="#zhanpin"><p>展品范围</p></a></li>
+        <li><a href="#tongqi"><p>同期活动</p></a></li>
+        <li><a href="#liangdian"><p>大会亮点</p></a></li>
+        <li><a href="#zhongdian"><p>重点展商</p></a></li>
+        <li><a href="#lijie"><p>历届回顾</p></a></li>
+        <li><a href="#xiangguan"><p>相关新闻</p></a></li>
+        <li><a href="#canyu"><p>参与方式</p></a></li>
+        <li><a href="#lianxi"><p>联系方式</p></a></li>
+        
+    </ul>
+</div> 
+</div>
+	
+	
+        <!--<div class="unitBox">
+          <dl>
+		  {$theme['union']}
+            
+          </dl>
+        </div>
+        <div class="exhibitBox">
+           <div class="unitBox">
+          <dl>
+            {$theme['infos']}
+          </dl>
+        </div>-->
+        </div>
+    </div>
+  </div>
+  </div>
+  <include file="Public:footer"/>
+</body>
+</html>
+
+

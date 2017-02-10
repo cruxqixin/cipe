@@ -1,0 +1,11 @@
+﻿document.writeln("<div id=\"bottom\">");
+document.writeln("        <div class=\"bottom-2\">");
+document.writeln("		客服热线：+86-022-63729618  022-58168871  13512832410");
+document.writeln("		<br>"); 
+document.writeln("		客服传真：+86-010-63723558");
+document.writeln("		<br>");
+document.writeln("		Copyright ©  2015, All Rights Reserved.");
+document.writeln("		</div>");
+document.writeln("	");
+document.writeln("        ");
+document.writeln("    </div>");

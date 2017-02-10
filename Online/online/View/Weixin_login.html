@@ -1,0 +1,63 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>登录_在线对接会_科济天下网</title>
+<link href="/css/Online/Weixin/jquery.mobile-1.4.2.css" rel="stylesheet">
+<link href="/css/Online/Weixin/index.css" rel="stylesheet" type="text/css">
+<script src="/js/Online/Weixin/jquery.js"></script>
+<script src="/js/Online/Weixin/jquery.mobile-1.4.2.min.js"></script>
+<script src="/js/Online/Weixin/common.js"></script>
+<script src="/js/Online/Weixin/swipe.js"></script>
+<script type="text/javascript">
+function check(){
+	if($("#name").val()===""){
+		alert('请输入邮箱或者用户名');
+		return false;
+	}
+	if($("#password").val()===""){
+		alert('请输入密码');
+		return false;
+	}
+	
+}
+</script>
+</head>
+
+<body>
+<div data-role="page" id="Activity"  class="index">
+ <div data-role="header" data-position="fixed" class="header" id="menber"  data-tap-toggle="false">
+         <div class="xiangqing">
+            <div class="xiangqing01">
+                <div class="xiangqing02">
+                    <a href="{:U('Weixin/index')}" target="_self"><img src="/images/Online/Weixin/imegs/home.png">
+                    <span>首页</span></a>
+                </div>
+                <div class="xiangqing03">
+                    <span>登录</span>
+                </div>
+            </div>
+      </div>
+  </div>  
+ <div data-role="content" class="Main">
+   <div class="logo_01"><img src="/images/Online/Weixin/imegs/01_03.png"/></div>
+   <div class="login">
+   <form action="{:U('Weixin/login')}" method="post" target="_self" >
+    <dl>
+     <dd>
+      <span>帐 号</span><input type="text" class="text_02" name="name" id="name" value="" placeholder="邮箱/用户名" data-role="none" />
+      <div class="clear"></div>
+     </dd>
+     <dd>
+      <span>密 码</span><input type="password" class="text_02" name="password" id="password"  data-role="none" />
+      <div class="clear"></div>
+     </dd>
+     <dt><input type="submit" class="but_01" value="立即登录" onclick="return check()" data-role="none"/></dt>
+     <dt><a href="https://open.weixin.qq.com/connect/oauth2/authorize?appid={$appid}&redirect_uri={$redirect_uri}&response_type=code&scope=snsapi_userinfo#wechat_redirect" target="_self"><input type="button" class="but_02" value=" 微信授权登录" data-role="none" /></a></dt>
+    </dl>
+    </form>
+   </div>
+ </div>
+ </div>
+</body>
+</html>

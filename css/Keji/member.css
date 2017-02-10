@@ -1,0 +1,118 @@
+@charset "utf-8";
+/* CSS Document */
+
+*{
+	padding:0px;
+	margin:0px;
+}
+ul li{
+	list-style:none;
+}
+a{
+	text-decoration:none;
+}
+img{
+	border:0px;
+}
+body{
+	line-height:22px;
+	font-size:12px;
+	font-family:"微软雅黑";
+}
+.container{
+	width:1003px;
+	margin:0 auto;
+	text-align:center
+
+}
+.clear{
+	clear:both;
+}
+.Hrs{
+	height:10px;
+	clear:both;
+	border-bottom:3px solid #c60000;
+}
+.member_bg{
+	background:url(/images/Keji/mem_01.jpg) center no-repeat;
+	width:100%;
+	height:305px;
+}
+.member_01{
+	clear:both;
+	width:100%;
+	padding-bottom:40px;
+}
+.member_01 table{
+	border-collapse:collapse;
+	width:100%;
+}
+.member_01 table  tr th{
+	border:2px solid #FFF;
+	line-height:40px;
+	background-color:#bb316c;
+	color:#FFF;
+	font-size:16px;
+}
+.member_01 table  tr td{
+	border:2px solid #FFF;
+	line-height:40px;
+	background-color:#f5f5f5;
+	color:#030000;
+	font-size:16px;
+	text-align:center;
+}
+.member_01 table  .evn td{
+	background-color:#f5bfd6;
+}
+.member_01 table  tr .weight{
+	font-weight:bold;
+}
+.member_01 table tr  .red{
+	color:#e51c2c;
+}
+.member_01 table tr .lefts{
+	text-align:left;
+	text-indent:10px;
+}
+.member_01 table tr td p{
+	padding:10px;
+	line-height:30px;
+	text-align:left;
+}
+.member_01 table tr td span{
+	font-size:14px;
+}
+.member_02{
+	padding-bottom:10px;
+	text-align:center;
+}
+.member_03{
+	background:url(/images/Keji/mem_04.jpg) center no-repeat;
+	width:100%;
+	height:616px;
+}
+.member_04{
+	padding-top:50px;
+	padding-left:35px;
+	height:45px;
+	color:#FFF;
+	font-size:32px;
+	font-family:"方正正中黑简体";
+}
+.member_05{
+	width:932px;
+	
+	background:url(/images/Keji/men_04.png) center repeat ;
+	margin:0 auto;
+}
+.member_05 .box{
+	padding:40px 45px 0px 45px;
+	line-height:32px;
+	font-size:16px;
+	color:#000;
+}
+.member_05 .box p{
+	padding-bottom:20px;
+	text-indent:26px;
+}

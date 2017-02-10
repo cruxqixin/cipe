@@ -1,0 +1,72 @@
+<include file="Public:header" />
+
+<script type="text/javascript">
+	$(document).ready(function(){
+		$("#submit").click(function(){
+			if($("#name").val()==0){
+			   alert('请填写资讯分类');
+			   return false;
+			}
+		});
+	});
+</script>
+
+</head>
+<body>
+<div class="pad_10">
+<form action="{:U('NewsCate/add')}" method="post" name="myform" id="myform" enctype="multipart/form-data" style="margin-top:10px;">
+  <div class="pad-10">
+  <div class="col-tab">
+  <ul class="tabBut cu-li">
+    <li id="tab_setting_1" class="on" onClick="SwapTab('setting','on','',2,1);">基本信息</li>
+    
+  </ul>
+  <div id="div_setting_1" class="contentList pad-10">
+    <table width="100%" cellpadding="2" cellspacing="1" class="table_form">
+    <tr> 
+      <th width="100">新闻分类 :</th>
+      <td><input type="text" name="name" id="name" class="input-text"></td>
+    </tr>
+     <tr>
+        <th>上级分类 :</th>
+        <td><select name="parentid" id="cate_id" style="width:200px;">
+        	<option value="0">==顶级分类==</option>
+			<volist name="cate_list" id="val">
+			<option value="{$val.id}">{$val.name}</option>
+            
+			</volist>
+          
+          </select></td>
+      </tr>
+	
+	
+</table>
+  </div>
+
+  <div id="div_setting_2" class="contentList pad-10 hidden">
+    <table width="100%" cellpadding="2" cellspacing="1" class="table_form">
+     <tr>
+      <th width="100">Title :</th>
+      <td><input type="text" name="SEO_TITLE" id="seo_title" class="input-text" value="{$article_cate_info.SEO_TITLE}" size="50"></td>
+    </tr>
+    <tr>
+      <th width="100">Keywords :</th>
+      <td><input type="text" name="SEO_KEYS" id="seo_keys" class="input-text" value="{$article_cate_info.SEO_KEYS}" size="50"></td>
+    </tr>
+    <tr>
+      <th width="100">Description :</th>
+      <td><textarea name="SEO_DESC" cols="47" rows="4">{$article_cate_info.SEO_DESC}</textarea></td>
+    </tr>
+    </table>
+  </div>
+  <div class="bk15"></div>
+  <div class="btn">
+    <input type="submit" value="提交" name="submit" class="button" id="submit">
+  </div>
+
+</div>
+</div>
+</form>
+</div>
+</body>
+</html>

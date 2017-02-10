@@ -1,0 +1,288 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>科技天下网——用户登录</title>
+<link href="/css/Keji/css.css" rel="stylesheet" type="text/css" />
+<link href="/css/Keji/index.css" rel="stylesheet" type="text/css" />
+<link href="/css/Online/common.css" rel="stylesheet" type="text/css" />
+<script src="/Public/statics/js/jquery/jquery-1.7.2.min.js"></script>
+<script type="text/javascript" src="/js/Keji/common.js" language="javascript"></script>
+<script type="text/javascript">
+$(function(){
+     $(".showboxs").height($(document).height());
+	 var defaultVal=$("#name").val();//将各个input的默认值都保存出来。
+		  $("#name").focus(function(){
+			if($("#name").val()==defaultVal)
+			  {
+				  $("#name").val("");//获得焦点时进行判断，如果当前的value值是默认的才进行清空
+			  } 
+		  })
+		  $("#name").blur(function(){
+			if($("#name").val().length==0)
+			 {
+				 $("#name").val(defaultVal);  //失去焦点时进行判断，如果value值的长度等于0（也就是空的时候，//没有输入内容的清空下），将原先保存的value值写入
+			 }
+		  })
+   
+	if($("#type").val()==1){
+		$("#login").show();
+		$("#infos").html("登录成功！");
+		daojishi();
+	}else if($("#type").val()==2){
+		$("#login").show();
+		$("#infos").html("您未通过管理员的审核，请联系管理员！");
+		$("#xinxi").hide();
+	}else{
+		$("#login").hide();
+	}
+	$("#closes").click(function(){
+	    if($("#type").val()==2){
+			$("#login").hide();
+		}else{
+			window.location.href="{$path}";
+		}
+	    
+	})
+	
+	$("#register").click(function(){
+		window.location="/keji/user/register.html";
+	})
+	
+	
+})
+function check(){
+	if($("#name").val()==="邮箱/用户名"){
+		alert('请输入邮箱或者用户名');
+		return false;
+	}
+	if($("#password").val()===""){
+		alert('请输入密码');
+		return false;
+	}
+	
+}
+var qtime=3;
+function daojishi(){
+	if(qtime>0){
+		$("[id=miao]").html(qtime);
+		qtime=qtime-1;		
+		setTimeout("daojishi()",1000);
+	}else{
+		window.location.href="{$path}";
+	}
+}
+</script>
+<style type="text/css">
+  .footerbg{
+	  margin-top:0px;
+  }
+</style>
+<!--[if lte IE 6]>
+<script type="text/javascript" src="/js/PNG.js"></script>
+<script type="text/javascript" src="/js/PNGClass.js"></script>
+<![endif]-->
+</head>
+
+<body>
+
+<div class="topBox">
+	<div class="top">
+    	<h1>
+            
+        </h1>
+        <p>
+        </p>
+    </div>
+</div>
+<div class="logoBox">
+    <img src="/images/Keji/logo_06.jpg" border="0" usemap="#Map" />
+	<map name="Map" id="Map"><area shape="rect" coords="3,4,160,51" href="/" />
+	  <area shape="rect" coords="177,4,241,58" href="" />
+	</map>
+    <span><a href="{:U('index/index')}">返回首页</a></span>
+</div>
+<div class="mainBox">
+	<div class="main">
+    	<p style="margin-top:50px;"> <img src="/images/Online/online-530-330.jpg" width=530 height=330 />
+        </p>
+		<div><input type="hidden" value="{$_GET['type']}" name="" id="type" />
+			 <input type="hidden" value="{$_GET['pwd']}" name="" id="pwd" />
+		</div>
+        <div class="textBox">
+		<form action="{:U('user/login')}" method="post" onsubmit="return check()">
+        
+		<div style="color:red">{$error}</div>
+        	<div class="text">
+            	<h1>账号</h1>
+                <input class="field" name="name" id="name" value="邮箱/用户名" />
+            </div>
+            <div class="text">
+            	<h1>密码</h1>
+                <input class="field password" name="password" id="password" type="password"/>
+            </div>
+            <dl>
+            	<dd><input name="" type="checkbox" value="" />记住我的登录状态</dd>
+                <dt><a href="/keji/user/forgetpass.html">忘记密码?</a></dt>
+            </dl>
+            <div class="botm">
+                <input name="" type="submit" class="but" value="登  录" onclick="return check()"/>
+            </div>
+            <div class="search">
+            	<span>还没有帐号：</span>
+                <a href="/keji/user/register.html?url=/online.php/index/detail"><input id="register" name="" type="button" value="免费快速注册" /></a>
+            </div>
+        
+		 <input type="hidden" value="{$returnurl}" name="returnurl" />
+		
+		</form>
+        </div>
+    </div>
+</div>
+
+<div class="footerbg">
+   <div class="container">
+       <div class="footer">
+          <!--<div class="foot"><a href="#">关于我们</a>|<a href="#">广告咨询</a>|<a href="#">帮助信息</a>|<a href="#">联系我们</a>|<a href="#">会员服务</a>|<a href="#">网站导航</a>|<a href="#">国际站</a></div>-->
+          <p>我们的网站：<a href="/keji/index/plate.html">平台介绍</a>|
+		                  <a href="">产品商贸网</a>|
+						  <a href="">咨询评估</a>|
+						  <a href="">创新实验平台</a>|
+						    <a href="/data.html">资料库</a>|
+							 <a href="http://business.kjtxw.com/business.html">招商</a>|
+						 <a href="" >会展</a>						 
+		</p>
+          <p>客服热线： 022-58625029   客服传真： 022-58168885    业务：58625081 备案号：津ICP备14001671号-4 </p>
+           <P>版权所有：天津宇航光电会议服务中心</P>
+		   <P>技术支持：天津市阳光盛强网络科技有限公司</P>
+		  <P>&nbsp;</P>
+          <P>&nbsp;</P>
+         
+
+       </div>
+   </div>
+</div>
+<script>
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "//hm.baidu.com/hm.js?bfcb489a47ef98fb35f99b36c3a1fc69";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+  
+})();
+
+</script>
+<script>
+$(function(){
+    $("a").each(function(){
+		if($(this).attr("title")=="站长统计"){
+			$(this).css({"display":"block","text-align":"center"});
+		}
+	})
+	
+})
+</script>
+<script src="http://s4.cnzz.com/stat.php?id=1254713230&web_id=1254713230" language="JavaScript"></script>
+<div class="showboxs" id="aa">
+	<div class="show">
+		<dl>
+			<dd>
+				<img src="/images/Keji/img_05.jpg" />
+			</dd>
+			<dt>
+				<h1>信息提交成功！</h1>
+				<P>页面将在<span id="miaos"></span>秒钟之后跳转至提交时网页。</P>
+			</dt>
+		</dl>
+		<div class="icon">
+			<a href="#" id="closess"><img src="/images/Keji/关闭_16.jpg" /></a>
+		</div>
+		<span><input type="hidden" name="show" id="show" value=""></span>
+	</div>
+</div>
+<link href="/css/Keji/index.css" rel="stylesheet" type="text/css" />
+<script type="text/javascript">
+$(function(){
+	$("#aa").height($(document).height());
+	if($("#show").val()){
+		$("#aa").show();
+		daojishi1();
+	}else{
+		$("#aa").hide();
+	}
+	$("#closess").click(function(){
+		$("#aa").hide();
+	})
+})
+var qtimes=3;
+function daojishi1(){
+	if(qtimes>0){
+		$("#miaos").html(qtimes);
+		qtimes=qtimes-1;		
+		setTimeout("daojishi1()",1000);
+	}else{
+		$(".showboxs").hide();
+	}
+}
+</script>
+<div class="showboxs" id="login">
+	<div class="show">
+		<dl>
+			<dd>
+				<img src="/images/Keji/img_05.jpg" />
+			</dd>
+			<dt>
+				<h1><span id="infos"></span></h1>
+				<P id="xinxi">页面将在<span id="miao"></span>秒钟之后跳转至个人中心。 <a href="http://kjtxnew.com/Keji/Ucenter/index">点击这里</a>立即跳转。</P>
+			</dt>
+		</dl>
+		<div class="icon">
+			<a href="#" id="closes"><img src="/images/Keji/关闭_16.jpg" /></a>
+		</div>
+	</div>
+</div>
+<div class="showboxs" id="pasd" >
+	<div class="show">
+		<dl>
+			<dd>
+				<img src="/images/Keji/img_05.jpg" />
+			</dd>
+			<dt>
+				<h1>修改密码成功！</h1>
+				<P>页面将在<span id="miaodj"></span>秒钟之后跳转至登录前的网页.</P>
+			</dt>
+		</dl>
+		<div class="icon">
+			<a href="#" id="close2"><img src="/images/Keji/关闭_16.jpg" /></a>
+		</div>
+	</div>
+</div>
+<script type="text/javascript">
+
+$(function(){
+	$("#close2").click(function(){
+		$("#pasd").hide();
+	})
+	
+    if($("#pwd").val()){
+		$("#pasd").show();	
+		daojishi2();
+	}else{
+		$("#pasd").hide();
+	}
+    
+})
+var qtime2=3;
+function daojishi2(){
+	if(qtime2>0){
+		$("#miaodj").html(qtime2);
+		qtime2=qtime2-1;		
+		setTimeout("daojishi2()",1000);
+	}else{
+		$("#pasd").hide();
+	}
+}
+</script>
+</body>
+</html>

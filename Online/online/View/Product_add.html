@@ -1,0 +1,200 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>科济天下网_在线对接会_添加产品</title>
+<link href="/css/Online/index.css" rel="stylesheet" type="text/css" />
+<link href="/css/Online/common.css" rel="stylesheet" type="text/css" />
+<script type="text/javascript" src="/js/Online/jquery-1.7.2.min.js"></script>
+<link href="__PUBLIC__/statics/js/kindeditor4/themes/default/default.css" rel="stylesheet" type="text/css" />
+<script type="text/javascript" src="__PUBLIC__/statics/js/kindeditor4/kindeditor-min.js"></script>
+<link href="/css/validationEngine.jquery.css" rel="stylesheet" type="text/css" />
+<script src="/js/Online/jquery.validationEngine.js" type="text/javascript"></script>
+<script src="/js/Online/jquery.validationEngine-zh_CN.js" type="text/javascript" charset="UTF-8"></script>
+
+<script type="text/javascript">
+$(function(){
+	$("#news li").click(function(){
+	  $(this).attr("class","current").siblings().attr("class","");
+	  $("#news_content .fixnone").eq($(this).index()).show().siblings().hide();	
+	})
+})
+$(function(){
+	$("#testdiv input[type=checkbox]").click(function(){
+		if($("#testdiv input[type=checkbox]:checked").size()>3)
+		{
+			$(this).removeAttr("checked");
+			return;
+		}
+	})
+		
+	$("#btndui").click(function(){
+		  $(".showboxbg").show();
+		  $(".showboxbg").height($(document).height());
+	  }) 
+	  $("#closebox").click(function(){
+		   $(".showboxbg").hide();
+	   }) 
+})
+    $(function(){
+	   $("#testdiv .application-06 .title-01 input").click(function(){  
+		 var temp=$(this).parent().parent().find("ul");  
+		 if(temp.is(":hidden"))
+		  {
+			 temp.show(); 
+			 $(this).val("收起");
+		  }
+		  else
+		  {
+		    temp.hide();
+			$(this).val("展开");
+		  }   
+	   })		
+     })
+	$(function(){
+	   $(".falg").click(function(){
+		  var html=$(".search-01 .lie");
+		  if(html.is(":hidden"))
+		  {
+			 html.show();  
+		  } 
+		  else
+		  {
+			  html.hide();  
+		  }  
+	   }) 
+	   $(".search-01 .lie").find("a").click(function(){
+		   $(".txt_bg").val($(this).html());
+		   $(".search-01 .lie").hide();
+		}) 
+	 
+	})
+	$(function(){
+	$("form").validationEngine();
+	var uploadbutton = KindEditor.uploadbutton({
+		button : $('#uploadButton')[0],
+		fieldName : 'imgFile',
+		url : '__PUBLIC__/statics/js/kindeditor4/php/upload_json.php?dir=image',
+		afterUpload : function(data) {
+			if (data.error === 0) {
+				var url = KindEditor.formatUrl(data.url, 'absolute');
+				$('#pic').val(url);
+				$("#imgeface").attr("src",url);
+			} else {
+				alert(data.message);
+			}
+		},
+		afterError : function(str) {
+			alert('网速不给力！');
+		}
+	})
+	uploadbutton.fileBox.change(function(e) {
+		uploadbutton.submit();
+	});
+	   
+	})
+</script>
+</head>
+
+<body>
+<include file="Online/online/View/partial/public_navbar.html"/>
+<div class="headbg">
+</div>
+<div class="navBox">
+	<ul>
+    	<li><a href="#" class="currentA">首页</a></li>
+        <!-- <li><a href="#">会议申请</a></li>
+        <li><a href="#">在线会议室</a></li> -->
+    </ul>
+</div>
+<div class="mainBox">
+    <h5>当前位置： <a href="{:U('index/index')}">首页</a> ><span> <a href="{:U('index/detail')}">我的对接</a></span> ><span> <a href="{:U('product/listS')}">产品列表</a></span> ><span> 添加产品</span></h5>
+    
+    <div class="application" id="news_content">
+    	<div class="fixnone" style="display:block;">
+           <div class="dx_Productdisplay01" style="width:968px; margin:0 auto; padding-top:15px;">
+              <div class="dx_Productdisplay02">
+                 <p>添加产品</p>
+              </div>
+              <div class="dx_Productdisplay03">
+                 <a href="{:U('porduct/listS')}">返回></a>
+              </div>
+           </div>
+           <form action="{:U('product/add')}" id="form1" method="post"  target="_self" enctype="multipart/form-data" >
+           <div class="dx_name">
+           	<div class="dx_name01">
+            	<div class="dx_name02">
+            	<p>产品中文名称<span style="color:red;">*</span>：</p>
+                </div>
+                <div class="dx_name03">
+                    <input type="text" name='product_cname' placeholder='请输入产品中文名称' value="" class="dx_text validate[required]">
+                </div>
+            </div>
+            <div class="dx_name01">
+            	<div class="dx_name02">
+            	<p>产品英文名称<span style="color:red;">*</span>：</p>
+                </div>
+                <div class="dx_name03">
+                    <input type="text" name='product_ename' placeholder='请输入产品英文名称' value="" class="dx_text validate[required]">
+                </div>
+            </div>
+            <div class="dx_name01">
+            	<div class="dx_name02">
+            	<p>产品标签/关键字<span style="color:red;">*</span>：</p>
+                </div>
+                <div class="dx_name03">
+                    <input type="text" name='tag' placeholder='请输入1-3个产品标签/关键字,以空格或逗号分隔' value="" class="dx_text validate[required]">
+                </div>
+            </div>
+            <div class="dx_name01">
+            	<div class="dx_name02">
+            	<p>产品图片<span style="color:red;">*</span>：</p>
+                </div>
+                <div class="logobox01">
+                	<img id="imgeface"  height=50 src="/images/Online/dx_12.png" />
+	        		<input type="hidden" name="pic" id="pic" class=" validate[required]" size="60" value="" />
+                </div>
+                <div class=logobox02>
+                	<label><input  type="button" id="uploadButton" value="上传图片" /></label ><label><span>（为保证显示效果，请上传360px*300px图片文件）</span></label>
+                </div>
+            </div>
+           </div>
+
+            <div class="dx_jieshao ">
+               	<p>产品简介<span style="color:red;">*</span>：</p>
+               </div>
+               <div class="dx_jieshao01 application-08">
+               		<dl>
+                        <dd></dd>
+                        <dt><input class="validate[required]" name="product_info" type="text" value="" placeholder="请填写200字以内产品简介"/></dt>
+                        
+                    </dl>
+               </div>
+            <div class="application-09">
+                <div class="but-01">
+                    <input type="submit" class="but-02 rad-but" value="提交" />
+                    <input type="button" class="but-02" id="chongzhi" value="重置内容" />
+                </div>
+            </div>
+            </form>
+        </div>
+    	
+    </div>
+</div>
+<include file="Online/online/View/partial/Public_footer.html"/>
+<div class="showboxbg">
+	<div class="show">
+        <div class="show-03">
+            <h1>提示信息</h1>
+            <a href="#" id="closebox">关闭</a>
+        </div>
+        <div class="show-01">
+            <p>内容为空,不可提交</p>
+        </div>
+        <div class="show-02">
+            <input name="" type="button" class="but" value="确定"/>
+        </div>
+     </div>
+</div>
+</body>
+</html>

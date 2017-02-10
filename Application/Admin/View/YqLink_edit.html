@@ -1,0 +1,43 @@
+<include file="Public:header" />
+<script type="text/javascript">
+
+</script>
+
+</head>
+<form id="myform" name="myform" action="{:U('yq_link/edit')}" enctype="multipart/form-data" method="post">
+
+  <div class="pad-10">
+    <div class="col-tab">
+      <ul class="tabBut cu-li">
+        <li id="tab_setting_1" class="on" onclick="SwapTab('setting','on','',1,1);">文章标签内链</li>
+
+      </ul>
+
+      <div id="div_setting_1" class="contentList pad-10">
+          <table width="100%" cellpadding="2" cellspacing="1" class="table_form">
+            <tr>
+              <th width="15%">标题:</th>
+              <td><input type="text" name="title" class="input-text" size="100" value="{$link.title}"></td>
+            </tr>
+            <tr>
+              <th width="15%">链接地址:</th>
+              <td><input type="text" name="url" class="input-text" size="100" value="{$link.link_url}"></td>
+            </tr>
+
+
+         </table>
+      </div>
+
+      <div class="bk15"></div>
+
+      <div class="btn"><input type="submit" value="提交" name="submit" class="button" id="submit">
+	  <input type="hidden" name="id" value="{$link.id}" id="LINK_ID" />
+	  </div>
+
+    </div>
+
+  </div>
+
+</form>
+</body>
+</html>

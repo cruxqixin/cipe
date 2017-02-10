@@ -1,0 +1,124 @@
+<include file="Public:header" />
+
+<script type="text/javascript">
+	function status(id,type,value){
+	    $.get("{:U('News/status')}", { id: id, type: type, value: value }, function(data){
+			$("#"+type+"_"+id+" img").attr('src', '__PUBLIC__/statics/images/status_'+data.data+'.gif')
+		},"json");  
+	}
+</script>
+<script type="text/javascript">
+//操作
+function checkco(doa,controid,status){
+	var sucin = 0;
+	$("input[name='id[]']:checked").each(function(i, n){
+		sucin = 1;
+	});
+	if(sucin == 0){
+		alert("请选择要"+doa+"的ID");
+		return false;
+	}else{
+		$("#myform").attr("action",$("#"+controid).val());
+		$("#tostatus").val(status);
+		return confirm('确认'+doa+'？');
+		return true;		
+	}
+}
+
+</script>
+</head>
+<div class="pad-10" >
+<input type="hidden" id="delete" value="{:U('News/deletepic')}" />
+<input type="hidden" id="status" value="{:U('News/status1')}" />
+    <form name="searchform" action="{:U('News/pics')}" method="post" ><input type="hidden" name="tostatus"  id="tostatus"/>
+    <table width="100%" cellspacing="0" class="search-form">
+        <tbody>
+            <tr>
+            <td>
+            <div class="explain-col">
+            	发布时间：
+            	<input type="text" name="TIME_START" id="TIME_START" class="date" size="12" value="{$TIME_START}">
+				<script language="javascript" type="text/javascript">
+                    Calendar.setup({
+                        inputField     :    "TIME_START",
+                        ifFormat       :    "%Y-%m-%d",
+                        showsTime      :    'true',
+                        timeFormat     :    "24"
+                    });
+                </script>
+                -
+                <input type="text" name="TIME_END" id="TIME_END" class="date" size="12" value="{$TIME_END}">
+				<script language="javascript" type="text/javascript">
+                    Calendar.setup({
+                        inputField     :    "TIME_END",
+                        ifFormat       :    "%Y-%m-%d",
+                        showsTime      :    'true',
+                        timeFormat     :    "24"
+                    });
+                </script>
+            	&nbsp;&nbsp;资讯分类：
+                <select name="CATE_ID">
+            	<option value="0">--选择分类--</option>
+				<volist name="cate_list" id="val">
+				<option value="{$val.ID}">{$val.NAME}</option>
+				</volist>
+               
+              </select>
+                &nbsp;关键字 :
+                <input name="KEYWORD" type="text" class="input-text" size="25" value="{$KEYWORD}" />
+                <input type="submit" name="search" class="button" value="搜索" />
+        	</div>
+            </td>
+            </tr>
+        </tbody>
+    </table>
+    </form>
+
+    <form id="myform" name="myform" action="{:U('News/pics')}" method="post">
+    <div class="table-list">
+    <table width="100%" cellspacing="0">
+        <thead>
+            <tr>
+                <th width="5%">序号</th>
+                <th width="1%"><input type="checkbox" value="" id="check_box" onclick="selectall('id[]');"></th>
+                <th width=200 align="left">图片</th>
+               
+                <th width=100>添加时间</th>
+                <th width=30>图片显示顺序</th>
+				<!--<th width=30>状态</th>-->
+                 <th width=30>操作</th>
+             
+            </tr>
+        </thead>
+    	<tbody>
+        <volist name="articles" id="val" >
+        <tr>
+        	<td align="center">{$val.key}</td>
+            <td align="center">
+            <input type="checkbox" value="{$val.id}" name="id[]"></td>
+            <td align="left" style="padding-left:50px;"><img src="{$val.PICS}" width="160px" height="100px" /></td>
+            <td align="center">{$val.add_time|date="Y-m-d H:i:s",###}</td>
+            <td align="center"><input  type="text" class="input-text-c input-text" value="{$val.ord}" size="4" name="ORDERS[{$val.id}]"></td>
+			<!--<td align="center" onclick="status({$val.ID},'STATUS',{$val.STATUS})" id="status_{$val.ID}"><img src="__PUBLIC__/statics/images/status_{$val.STATUS}.gif" /></td>-->
+           <td align="center" style="padding-left:50px;"><a href="{:U('News/addpics',array('id'=>$val['id']))}">修改</a>&nbsp;&nbsp;
+		  </td>
+           <!-- <td align="center" onclick="status({$val.ID},'IS_BEST',{$val.IS_BEST})" id="is_best_{$val.ID}"><img src="__PUBLIC__/statics/images/status_{$val.IS_BEST}.gif" /></td>
+      		 -->
+			 
+        </volist>
+    	</tbody>
+    </table>
+
+    <div class="btn">
+    	<label for="check_box" style="float:left;">全选/取消</label>
+    	<input type="submit" class="button" name="delete" value="删除" style="float:left;margin:0px 10px;"  onclick="return checkco('删除','delete',0);"/>
+    	<input type="submit" class="button" name="order" onclick="document.myform.action='{:U('News/order')}'" value="排序" style="float:left;"/>
+    	<input type="submit" class="button" name="status0" id="status0" value="作为首页图片" style="float:left;margin:0px 10px;"  onclick="return checkco('操作','status',6);"/>
+		<div id="pages">{$page}</div>
+    </div>
+
+    </div>
+    </form>
+</div>
+</body>
+</html>

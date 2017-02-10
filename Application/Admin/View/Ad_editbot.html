@@ -1,0 +1,70 @@
+<include file="Public:header" />
+<script type="text/javascript">
+$(function(){
+	
+	var uploadbutton = KindEditor.uploadbutton({
+		button : $('#uploadButton')[0],
+		fieldName : 'imgFile',
+		url : '__PUBLIC__/statics/js/kindeditor4/php/upload_json.php?dir=image',
+		afterUpload : function(data) {
+			if (data.error === 0) {
+				var url = KindEditor.formatUrl(data.url, 'absolute');
+				$('#adimg').val(url);
+				$("#imgeface").attr("src",url);
+			} else {
+				alert(data.message);
+			}
+		},
+		afterError : function(str) {
+			alert('网速不给力！');
+		}
+	});
+	uploadbutton.fileBox.change(function(e) {
+		uploadbutton.submit();
+	});
+
+		
+	
+})
+</script>
+	
+</head>
+<form id="myform" name="myform" action="{:U('Ad/editbot')}" enctype="multipart/form-data" method="post">
+
+  <div class="pad-10">
+    <div class="col-tab">
+      <ul class="tabBut cu-li">
+        <li id="tab_setting_1" class="on" onclick="SwapTab('setting','on','',1,1);">文章标签内链</li>
+      </ul>
+      
+      <div id="div_setting_1" class="contentList pad-10">
+          <table width="100%" cellpadding="2" cellspacing="1" class="table_form">
+            <tr>
+       <th width="100">图片 :</th> 
+        <td colspan="3">
+        	<img id="imgeface"  style="width:130px; height:160px;" src="<if condition="$art['adimg'] eq ''">/images/chosefile.jpg<else/>{$art.adimg}</if>" />
+            <br />
+        	<input type="hidden" name="adimg" id="adimg" class="pub_03 validate[required]" size="60" value="{$art.adimg}" />
+            <input type="button" id="uploadButton" value="选择" />
+        </td>
+        </tr>
+            <tr>
+              <th width="15%">链接地址:</th>
+              <td><input type="text" name="adurl" class="input-text" size="100" value="{$art.adurl}"></td>
+            </tr>
+         </table>      
+      </div>
+
+      <div class="bk15"></div>
+
+      <div class="btn"><input type="submit" value="提交" name="submit" class="button" id="submit">
+	  <input type="hidden" name="id" value="{$art.id}" id="id" />
+	  </div>
+
+    </div>
+
+  </div>
+
+</form>
+</body>
+</html>

@@ -1,0 +1,116 @@
+<include file="Public:header" />
+
+<script type="text/javascript">
+	function status(id,type,value){
+	    $.get("{:U('News/status')}", { id: id, type: type, value: value }, function(data){
+			$("#"+type+"_"+id+" img").attr('src', '__PUBLIC__/statics/images/status_'+data.data+'.gif')
+		},"json");  
+	}
+</script>
+<script type="text/javascript">
+//操作
+function checkco(doa,controid,status){
+	var sucin = 0;
+	$("input[name='id[]']:checked").each(function(i, n){
+		sucin = 1;
+	});
+	if(sucin == 0){
+		alert("请选择要"+doa+"的ID");
+		return false;
+	}else{
+		$("#myform").attr("action",$("#"+controid).val());
+		$("#tostatus").val(status);
+		return confirm('确认'+doa+'？');
+		return true;		
+	}
+}
+
+</script>
+<script type="text/javascript">
+$(function(){
+	var items='{"items":["wordpaste","selectall","justifyleft","justifycenter","image","justifyright","justifyfull","insertorderedlist","insertunorderedlist","formatblock","fontname","fontsize","forecolor","hilitecolor","bold","italic","fullscreen"]}';
+	items=eval("("+items+")");
+	KindEditor.create('[name=EINTRO]',items);
+	$("#ENAME").keyup(function(){
+		$("#ECODE").val(HanZi_PinYin.get($.trim($(this).val())));	
+	})
+	
+	var uploadbutton = KindEditor.uploadbutton({
+		button : $('#uploadButton')[0],
+		fieldName : 'imgFile',
+		url : '__PUBLIC__/statics/js/kindeditor4/php/upload_json.php?dir=image',
+		afterUpload : function(data) {
+			if (data.error === 0) {
+				var url = KindEditor.formatUrl(data.url, 'absolute');
+				$('#PICS').val(url);
+				$("#imgeface").attr("src",url);
+			} else {
+				alert(data.message);
+			}
+		},
+		afterError : function(str) {
+			alert('网速不给力！');
+		}
+	});
+	uploadbutton.fileBox.change(function(e) {
+		uploadbutton.submit();
+	});
+})
+</script>
+
+</head>
+<include file="Public:header" /><include file="Public:header" /><body>
+<div class="pad_10">
+<form action="{:U('News/addpics')}" method="post" name="myform" id="myform" enctype="multipart/form-data" style="margin-top:10px;">
+  <div class="pad-10">
+  <div class="col-tab">
+  <ul class="tabBut cu-li">
+    <li id="tab_setting_1" class="on" onClick="SwapTab('setting','on','',2,1);">基本信息</li>
+    <!--<li id="tab_setting_2" onClick="SwapTab('setting','on','',2,2);">SEO设置</li>-->
+  </ul>
+  <div id="div_setting_1" class="contentList pad-10">
+    <table width="100%" cellpadding="2" cellspacing="1" class="table_form">
+    <tr>
+        <td class="tdright"><span>*</span>图片 :  </td>
+        <td colspan="3">
+        	<img id="imgeface"  style="width:130px; height:160px;" src="<if condition="$articles['PICS'] eq ''">/images/chosefile.jpg<else/>{$articles.PICS}</if>" />
+            <br />
+        	<input type="hidden" name="PICS" id="PICS" class="pub_03 validate[required]" size="60" value="{$articles.PICS}" />
+            <input type="button" id="uploadButton" value="选择" />
+        </td>
+        </tr>
+     <!--<tr>
+        <th>上级分类 :</th>
+        <td><select name="PARENTID" id="cate_id" style="width:200px;">
+        	<option value="0">==顶级分类==</option>
+			<volist name="cate_list" id="val">
+			<option value="{$val.ID}">{$val.NAME}</option>
+            
+			</volist>
+          
+          </select></td>
+      </tr>-->
+	<tr>
+      <th width="100">排序值 :</th>
+      <td><input type="text" value="{$articles.ORD}" name="ORD" id="sort_order" class="input-text" size="4" onKeyUp="value=value.replace(/[^\d]/g,'')"onbeforepaste="clipboardData.setData('text',clipboardData.getData('text').replace(/[^\d]/g,''))"></td>
+    </tr>
+	<!--<tr>
+      <th>审核状态 :</th>
+      <td><input type="radio" name="STATUS" value="1" checked>&nbsp;已审核&nbsp;&nbsp;&nbsp;
+      	  <input type="radio" name="STATUS" value="0">&nbsp;未审核</td>
+    </tr>-->
+</table>
+  </div>
+
+ 
+  <div class="bk15"><input type="hidden" name="ID"  id="ID" value="{$articles.ID}"></div>
+  <div class="btn">
+    <input type="submit" value="提交" name="submit" class="button" id="submit">
+  </div>
+
+</div>
+</div>
+</form>
+</div>
+</body>
+</html>

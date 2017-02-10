@@ -1,0 +1,88 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>发出的预约_在线对接会_科济天下网</title>
+<link href="/css/Online/Weixin/jquery.mobile-1.4.2.css" rel="stylesheet">
+<link href="/css/Online/Weixin/index.css" rel="stylesheet" type="text/css">
+<script src="/js/Online/Weixin/jquery.js"></script>
+<script src="/js/Online/Weixin/jquery.mobile-1.4.2.min.js"></script>
+<script src="/js/Online/Weixin/common.js"></script>
+<script src="/js/Online/Weixin/swipe.js"></script>
+
+</head>
+
+<body>
+<div data-role="page" id="Activity"  class="index">
+ <div data-role="header" data-position="fixed" class="header" id="menber"  data-tap-toggle="false">
+         <div class="xiangqing">
+            <div class="xiangqing01">
+                <div class="xiangqing02">
+                    <a href="{:U('Weixin/index')}" target="_self"><img src="/images/Online/Weixin/imegs/home.png">
+                    <span>首页</span></a>
+                </div>
+                <div class="xiangqing03">
+                    <span>我的对接</span>
+                </div>
+            </div>
+      </div>
+	
+     <div class="branch01">
+      <ul>
+        <li><a href="{:U('weixin/detail')}" target="_self">基本资料</a></li>
+        <li><a href="{:U('weixin/schedule_accept')}" target="_self">收到的预约</a></li>
+        <li class="current"><a href="{:U('weixin/schedule_apply')}" target="_self">发出的预约</a></li>
+        
+      </ul>
+      <div class="clear"></div>
+     </div>
+     <div class="yin">
+     	<img src="/images/Online/Weixin/imegs/-06.png">
+     </div>
+  </div>  
+ <div data-role="content" class="Main">
+	<?php 
+	$i = 0;
+    foreach($scheduleList as $k => $v){
+	$i++;
+ 	?>
+	   <div class="appointment">
+	   	<div class="appointment01">
+	       	<div class="appointment02">
+	           	<p>预约时间：<span>{$dayConfig[$calendarListKV[$v['calendar_id']]['day_id']]}  {$timeConfig[$calendarListKV[$v['calendar_id']]['time_id']]}</span></p>
+	           </div>
+	           <div class="appointmenttt">
+	           	<div class="appointment03">
+	           	<p>对接客户类型：<span><?php echo $v['type'] == 1 ? '专家' : '企业';?></span></p>
+	           	<p>对接人：</p>
+	           	<p><span><a href="{:U('weixin/info/'.$v['accept_uid'])}">{$v['accept_name']}</a></span></p>
+	           	<p>提交申请时间：</p>
+	           	<p><span><?php echo date('Y/m/d',$v['add_time']);?></span></p>
+	           	</div>
+	            <div class="appointment-right">
+	            	<div class="appointment-right01">
+	                	
+	                    	<?php if($v['status'] == 1){ ?>
+	                       <span>待确认</span>
+	                        <?php }else{ ?>
+	                       <span class="queren" style="color:#fff;">已确认</span>
+	                        <?php } ?>
+
+	                </div>
+	            </div>
+	           </div>
+	       </div>
+		</div>
+	<?php } ?>
+	    <div class="pagination">
+        	<div class="pagination01">
+            	<ul>
+                	{$page}
+                </ul>
+            </div>
+        </div>
+	    
+	</div>
+ </div>
+</body>
+</html>

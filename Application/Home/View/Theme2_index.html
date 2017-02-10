@@ -1,0 +1,329 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>{$theme['title']}-{:C('site_name')}</title>
+<meta name="description" content="{:C('site_description')}">
+<meta name="keywords" content="{:C('site_keyword')}">
+<meta name="title" content="{:C('site_title')}">
+<link rel="stylesheet" type="text/css" href="/css/index.css"/>
+<link rel="stylesheet" type="text/css" href="/css/amazeui.min.css"/>
+<script src="/js/jquery.js"></script>
+<script src="/js/index.js"></script>
+<script type="text/javascript" src="/js/common.js" language="javascript"></script>
+<script src="/js/jquery.min.js"></script>
+<script src="/js/amazeui.js"></script>
+<script>
+$(function(){
+	$("base").attr("target","");
+	$(".nav01 ul li a").attr("target","_blank");
+	$(".detail").click(function(){
+		$("#desc").height($(document).height());
+		$("#desc").width($(document).width());
+		$("#desc").show();
+	})
+	$("#detail1").click(function(){
+		$("#info").height($(document).height());
+		$("#info").width($(document).width());
+		$("#info").show();
+	})
+	$("[id=close]").click(function(){
+		$(".showboxbg").hide();
+	})
+})
+</script>
+<meta name="baidu-tc-verification" content="9b4be3a86e3975c1dfb2fd4dec931ac0" />
+
+</head>
+
+<body>
+  <include file="Public:header"/>
+  <div class="themeBox">
+	<div class="showboxbg" id="desc">
+		<div class="slogin">
+		    <div style="height:72px;margin-right:20px;"><div class="titles">{$theme['title']}</div><span id="close" style="float:right;cursor:pointer;margin-top:-20px;">关闭</span></div>
+			<div class="content" >
+				{$theme['desc']}
+			</div>
+		</div>
+	</div>
+	<div class="showboxbg" id="info">
+		<div class="slogin">
+		    <div style="height:72px;margin-right:20px;"><div class="titles">{$theme['title']}</div><span id="close" style="float:right;cursor:pointer;margin-top:-20px;">关闭</span></div>
+			<div class="content" >
+				{$theme['content']}
+			</div>
+		</div>
+	</div>
+	
+    <div id="menu_content">
+      <div class="manufactureBox">
+        <div style="height:220px;" class="banner">
+          <img style="height:210px" src="{$theme['img']}" />
+        </div>
+		</div>
+		</div>
+		<div>
+			<div class="Exhibition_01">
+					<div class="Exhibition_02">
+						<div class="Exhibition_03">
+							<div class="Exhibition_04" id="zhanhui">
+								<h1>{$theme['title']}</h1>
+							</div>
+							<div class="Exhibition_05">
+								<p>{$theme['desc']|strip_tags|msubstr=0,542,'utf-8',false}...</p>
+							</div>
+							<div class="Exhibition_06">
+								<a href="#" id="detail" class="detail">查看更多</a>
+							</div>
+						</div>
+						<div class="Exhibition_07">
+							<img src="{$theme['descimg']}" />
+						</div>
+					</div>
+            <div class="theme">
+                <ul id="theme">
+                    <li>
+                      <div class="show"><a href="{:U('Visit/index?type=1')}"><img src="/images/6_03.jpg" /></a></div>
+                      <div class="activeimg"><a href="{:U('Visit/index?type=1')}"><span>参观</span></a></div>
+                    </li>
+                    <li>
+                      <div class="show"><a href="{:U('Visit/apply?type=4')}"><img src="/images/6_06.jpg" /></a></div>
+                      <div class="activeimg"><a href="{:U('Visit/apply?type=4')}"><span>参展</span></a></div>
+                    </li>
+                    <li>
+                      <div class="show"><a href="{:U('Activity/index')}"><img src="/images/6_08.jpg" /></a></div>
+                      <div class="activeimg"><a href="{:U('Activity/index')}"><span>活动</span></a></div>
+                    </li>
+                    <li>
+                      <div class="show"><a href="http://www.cipeasia.com/Consultation.html"><img src="/images/link_11.jpg" /></a></div>
+                      <div class="activeimg"><a href="http://www.cipeasia.com/Consultation.html">广告赞助</a></div>
+                    </li>
+                    <li>
+                      <div class="show"><a href="http://online.kjtxw.com/online.php"><img src="/images/6_12.jpg" /></a></div>
+                      <div class="activeimg"><a href="http://online.kjtxw.com/online.php"><span>对接</span></a></div>
+                    </li>
+                    <li>
+                      <div class="show"><a href="http://consultant.kjtxw.com/consultant.html"><img src="/images/6_14.jpg" /></a></div>
+                      <div class="activeimg"><a href="http://consultant.kjtxw.com/consultant.html">科技服务</a></div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <!--<div class="exhibitBox">
+            <div class="exhibit">
+              <h1>展品范围</h1>
+              <ul>
+			    <volist id="val" name="Exhibition">
+                  <li>
+                    <a href="#"><img src="{$val['pic']}" /></a>
+                    <h2>{$val['title']}</h2>
+                    <P>{$val['info']}</P>
+                  </li>
+                 </volist>
+               </ul>
+            </div>
+        </div>-->
+		<div class="Exhibits_01">
+    	<div class="Exhibits_02" id="zhanpin">
+        	<p>展品范围</p>
+        </div>
+        <volist id="val" name="Exhibition">
+        <div class="Exhibits_03">
+        	<div class="Exhibits_04">
+            	<img width="100" height="100" src="{$val['pic']}" />
+            </div>
+			<div class="dx_01"></div>
+            <div class="Exhibits_05">
+            	<p>{$val['title']}</p>
+            </div>
+            <div class="Exhibits_06">
+            	<P>{$val['info']}</P>
+            </div>
+        </div>
+        </volist>
+	</div>
+	
+	<div class="Concurrent_01">
+    	<div class="Concurrent_02" id="tongqi">
+        	<p>同期活动 · 精彩纷呈</p>
+        </div>
+        <volist name="act" id="ac">
+        <div class="Concurrent_03">
+        	<div class="Concurrent_04">
+            	<img width="150" height="150" src="{$ac.pic}">
+				</div>
+            <div class="Concurrent_05">
+            	<h1>{$ac.title}</h1>
+                <p>{$ac.info}</p>
+            </div>
+        </div>
+		<div style="width:1003px; overflow:hidden;">
+        <div class="Forum_01">
+        	<h1><if condition="$ac.bbs neq ''">分论坛：</if></h1>
+        </div>
+        <div class="Forum_02">
+        	<ul>
+        	<volist name="ac.bbs" id="bb">
+            	<li><a href="{$bb.bbslink}">{$bb.bbsname}</a></li>
+            </volist>
+            </ul>
+        </div>
+		</div>
+      </volist>
+	  
+       
+        </div>
+    </div>
+    <div class="Exhibits_01">
+    	<div class="Exhibits_02" id="liangdian">
+        	<p>大会亮点</p>
+        </div>
+        <div class="highlights_01">
+        <volist id="val" name="light">
+        	<div class="highlights_02">
+            	<div class="highlights_03">
+                	<img width="60" height="60" src="{$val.pic}">
+                </div>
+                <div class="highlights_04">
+                	<h1>{$val.title}</h1>
+                	<p>{$val.info}</p>
+                </div>
+            </div>
+           </volist>
+        </div>
+    </div>
+    <div class="Exhibits_01">
+    	<div class="Exhibits_02tt" id="zhongdian">
+        	<p>部分重点展商</p>
+        </div>
+        <div class="exhibitors_01">
+        	<div class="exhibitors_02">
+            	{$theme.union}
+            </div>
+        </div>
+     </div>
+     <div class="Exhibits_01">
+    	<div class="Exhibits_02" id="lijie">
+        	<p>历届回顾</p>
+        </div>
+        <div class="exhibitors_01">
+		<div style="width:1003px; margin:0 auto;" class="kuang">
+		<ul data-am-widget="gallery" class="am-gallery am-avg-sm-2 am-avg-md-3 am-avg-lg-4 am-gallery-overlay" data-am-gallery="{ pureview: true }" >
+		  
+		  <volist name="infos" id="val">
+			<li>
+				<div class="am-gallery-item">
+					<a href="{$val.pic}" class="">
+						<img width=200 height=200 src="{$val.pic}"/>
+						
+					</a>
+				</div>
+			</li>
+		   </volist> 
+		</ul>
+
+		</div>
+        </div>
+      </div>
+	  <if condition="$theme['id'] eq 25">
+	  <p>111</p>
+	  <else/>
+       <div class="Exhibits_01">
+    	<div class="Exhibits_02" id="xiangguan">
+        	<p>相关新闻</p>
+        </div>
+        <div class="Forum_02">
+        	<ul>
+			  <volist id="val" name="news2">
+            	<li><a href="http://www.cipeasia.com/News/{$val['id']}.html">{$val['title']}</a><font>{$val['addtime']|date="Y-m-d",###}</font></li>
+              </volist>
+            </ul>
+        </div>
+       </div>
+        </if>
+       <div class="Exhibits_01">
+    	<div class="Exhibits_02" id="canyu">
+        	<p>参与方式</p>
+        </div>
+	  <div class="unitBox">
+		  	{$theme['part']}
+        </div>
+      <div class="Exhibits_01">
+    	<div class="Exhibits_02" id="lianxi">
+        	<p>联系方式</p>
+        </div>
+        <div class="Contact_01">
+        	<p>中国光学工程学会</p>
+        </div>
+        <div class="Contact_02">
+        	<div class="Contact_03">
+            	<div class="Contact_04">
+                	<img src="/images/z_51.png">
+                </div>
+                <div class="Contact_05">
+                	<p>联系人</p>
+                    <p>{$theme.person}</p>
+                    <p>{$theme.person1}</p>
+                    <p>{$theme.person2}</p>
+                </div>
+            </div>
+            <div class="Contact_03">
+            	<div class="Contact_04">
+                	<img src="/images/z_52.png">
+                </div>
+                <div class="Contact_05">
+                	<p>电话</p>
+                    <p>{$theme.phone}</p>
+                    <p>{$theme.phone1}</p>
+                    <p>{$theme.phone2}</p>
+                </div>
+            </div>
+            <div class="Contact_03">
+            	<div class="Contact_04">
+                	<img src="/images/z_53.png">
+                </div>
+                <div class="Contact_05">
+                	<p>邮箱</p>
+                    <p>{$theme.emile}</p>
+                    <p>{$theme.emile1}</p>
+                    <p>{$theme.emile2}</p>
+                </div>
+            </div>
+        </div>
+     </div>
+    
+    
+   
+</div>
+	
+</div> 
+        </div>
+  <div class="zhanhuitt" style="float:left;right:120px;">
+	<ul id="zhanhuitt">
+    	<li class="red"><a href="#zhanhui"><p>展会<font>介绍</font></p></a></li>
+        <li><a href="#zhanpin"><p>展品范围</p></a></li>
+        <li><a href="#tongqi"><p>同期活动</p></a></li>
+        <li><a href="#liangdian"><p>大会亮点</p></a></li>
+        <li><a href="#zhongdian"><p>重点展商</p></a></li>
+        
+        
+    </ul>
+
+    </div>
+<div class="zhanhuitt" style="float:left;right:60px;">
+	<ul id="zhanhuitt">
+    	
+        <li><a href="#lijie"><p>历届回顾</p></a></li>
+        <li><a href="#xiangguan"><p>相关新闻</p></a></li>
+        <li><a href="#canyu"><p>参与方式</p></a></li>
+        <li><a href="#lianxi"><p>联系方式</p></a></li>
+        
+    </ul>
+
+    </div>
+  </div>
+  </div>
+  <include file="Public:footer"/>
+</body>
+</html>
