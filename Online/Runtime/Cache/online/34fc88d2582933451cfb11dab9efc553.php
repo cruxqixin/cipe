@@ -82,7 +82,7 @@ $(function(){
                     	<a href="<?php echo U('product/info/'.$v["id"]);?>"><div class="dx_Productdisplay05">
                         	<img src="<?php echo $v['pic'] ? $v['pic'] : '/images/Online/bz.jpg' ; ?>">
                             <div class="dx_Productdisplay06">
-                            	<p><?php echo ($v['product_name']); ?></p>
+                            	<p><?php echo ($v['product_cname']); ?></p>
                             </div>
                         </div></a>
                     <?php } ?>

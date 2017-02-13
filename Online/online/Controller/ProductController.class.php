@@ -34,17 +34,16 @@ class ProductController extends BaseController {
             if($data['product_ename']){
                 $data['first_letter'] =  strtoupper(substr($data['product_ename'],0,1));
             }
-            //处理1-3个tag关键字
             
+            //处理1-3个tag关键字
+            $tagArray = $this->strToTag($data['tag']);
             
             $data['add_time'] = $data['update_time'] = time();
             $data['status'] = 1;
-            if($data['other_category']){
-                $data['other_category'] = strip_tags(trim($data['other_category']));
-            }
+
             $pid = $productModel->add($data);
             if($pid){
-                $this->saveTag($uid,$pid,$data['tag']);
+                $this->saveTag($uid,$pid,$tagArray);
                 header("Location:http://".$_SERVER['HTTP_HOST'].'/online.php/product/listS');
             }else{
                 $this->error("提交失败");
@@ -59,7 +58,7 @@ class ProductController extends BaseController {
             $this->error('缺少产品id');
         }
         $productModel = M('2017_product');
-        $productInfo = $productModel->where(array('pid'=>$pid))->find();
+        $productInfo = $productModel->where(array('Id'=>$pid))->find();
         if(!$productInfo || $productInfo['status'] == 0){
             $this->error('该产品不存在');
         }
@@ -73,8 +72,9 @@ class ProductController extends BaseController {
         $productTagModel = M('2017_product_tag');
         $productTagList = $productTagModel->where(array('pid' => $pid))->select();
         foreach($productTagList as $k => $v){
-            $productTagListKV[] = $v['tag'];
+            $productInfo['tag'] .= ' '.$v['tag'];
         }
+        $productInfo['tag'] = ltrim($productInfo['tag']);
         //表单处理
         if($_POST){
             //             //暂停提交
@@ -95,15 +95,14 @@ class ProductController extends BaseController {
             if($data['product_ename']){
                 $data['first_letter'] =  strtoupper(substr($data['product_ename'],0,1));
             }
-        
-            $data['update_time'] = time();
-            if($data['other_category']){
-                $data['other_category'] = strip_tags(trim($data['other_category']));
-            }
+            //处理1-3个tag关键字
+            $tagArray = $this->strToTag($data['tag']);
             
-            $update = $productModel->where("id=".$productInfo['id'])->save($data);
+            $data['update_time'] = time();
+            
+            $update = $productModel->where("Id=".$productInfo['id'])->save($data);
             if($update){
-                $this->saveTag($productInfo['uid'],$pid,$data['tag']);
+                $this->saveTag($productInfo['uid'],$pid,$tagArray);
                 header("Location:http://".$_SERVER['HTTP_HOST'].'/online.php/product/listS');
             }else{
                 $this->error("提交失败");
@@ -112,7 +111,6 @@ class ProductController extends BaseController {
 
         $this->assign('onlineUser',$onlineUser);
         $this->assign('productInfo',$productInfo);
-        $this->assign('productTagListKV',$productTagListKV);
         
         
         $this->display();
@@ -124,7 +122,7 @@ class ProductController extends BaseController {
             $this->error('缺少产品id');
         }
         $productModel = M('2017_product');
-        $productInfo = $productModel->where(array('pid'=>$pid))->find();
+        $productInfo = $productModel->where(array('Id'=>$pid))->find();
         if(!$productInfo || $productInfo['status'] == 0){
             $this->error('该产品不存在');
         }
@@ -138,7 +136,7 @@ class ProductController extends BaseController {
             //保存数据
             $data['status'] = 0;
             $data['update_time'] = time();
-            $update = $productModel->where("id=".intval($_POST['pid']))->save($data);
+            $update = $productModel->where("Id=".intval($_POST['pid']))->save($data);
             if($update){
                 echo json_encode($data);die();
             }else{
@@ -183,12 +181,13 @@ class ProductController extends BaseController {
             $this->error('缺少产品id');
         }
         $productModel = M('2017_product');
-        $productInfo = $productModel->where(array('pid'=>$pid))->find();
+        $productInfo = $productModel->where(array('Id' => $pid) )->find();
         if(!$productInfo || $productInfo['status'] == 0){
             $this->error('该产品不存在');
         }
         $userModel = M('2017_user');
         $onlineUser = $userModel->where(array('uid'=>$productInfo['uid'] ))->find();
+        
         if($onlineUser['status'] != 1){
             $this->error('该产品所属用户待审核');
         }
@@ -197,19 +196,18 @@ class ProductController extends BaseController {
         $productTagModel = M('2017_product_tag');
         $productTagList = $productTagModel->where(array('pid' => $productInfo['id']))->select();
         foreach($productTagList as $k => $v){
-            $productTagListKV[] = $v['tag'];
+            $productInfo['tag'] .= ' '.$v['tag'];
         }
+        $productInfo['tag'] = ltrim($productInfo['tag']);
         $this->assign('onlineUser',$onlineUser);
         $this->assign('productInfo',$productInfo);
-        $this->assign('productTagListKV',$productTagListKV);
-        
         $this->display();
     }
     
     private $productInputArray = array(
         'product_cname' => '产品中文名称',
         'product_ename' => '产品英文名称',
-        'pic' => '产品图片',
+//         'pic' => '产品图片',
         'tag' => '产品关键字/标签',
         'product_info' => '产品简介',
 //         'product_id' => '产品ID',

@@ -336,6 +336,24 @@ class BaseController extends Controller {
 	    }
 	    return $onlineUser;
 	}
+	//多个关键字分解tag数组
+	public function strToTag($string){
+	    $string = trim($string);
+	    $string = inject_check($string);
+// 	    $string = RemoveXSS($string);
+	    $result = array();
+	    $array = array();
+	    $string = str_replace('，', ',', $string);
+	    $string = str_replace(' ', ',', $string);
+
+	    $array = explode(',', $string);
+	    foreach ($array as $key => $value) {
+	        if ('' != ($value = trim($value))) {
+	            $result[] = $value;
+	        }
+	    }
+	    return $result;
+	}
 	
 	public function saveTag($uid,$pid,$tags){
 	    $productTagModel = M('2017_product_tag');

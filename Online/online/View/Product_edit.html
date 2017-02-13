@@ -127,7 +127,23 @@ $(function(){
             	<p>产品名称<span style="color:red;">*</span>：</p>
                 </div>
                 <div class="dx_name03">
-                    <input type="text" name='product_name' placeholder='请输入产品名称' value="{$productInfo['product_name']}" class="dx_text validate[required]">
+                    <input type="text" name='product_cname' placeholder='请输入产品中文名称' value="{$productInfo['product_cname']}" class="dx_text validate[required]">
+                </div>
+            </div>
+            <div class="dx_name01">
+            	<div class="dx_name02">
+            	<p>产品英文名称<span style="color:red;">*</span>：</p>
+                </div>
+                <div class="dx_name03">
+                    <input type="text" name='product_ename' placeholder='请输入产品英文名称' value="{$productInfo['product_ename']}" class="dx_text validate[required]">
+                </div>
+            </div>
+            <div class="dx_name01">
+            	<div class="dx_name02">
+            	<p>产品标签/关键字<span style="color:red;">*</span>：</p>
+                </div>
+                <div class="dx_name03">
+                    <input type="text" name='tag' placeholder='请输入1-3个产品标签或关键字,以空格或逗号分隔' value="{$productInfo['tag']}" class="dx_text validate[required]" style="width:400px;">
                 </div>
             </div>
             <div class="dx_name01">
@@ -136,58 +152,13 @@ $(function(){
                 </div>
                 <div class="logobox01">
                 	<img id="imgeface"  height=50 src="<?php echo $productInfo['pic']?$productInfo['pic']:'/images/Online/bz.jpg'; ?>" />
-	        		<input type="hidden" name="pic" id="pic" class=" validate[required]" size="60" value="{$productInfo['pic']}" />
+	        		<input type="hidden" name="pic" id="pic" class="" size="60" value="{$productInfo['pic']}" />
                 </div>
                 <div class=logobox02>
                 	<label><input  type="button" id="uploadButton" value="上传图片" /></label ><label><span>（为保证显示效果，请上传360px*300px图片文件）</span></label>
                 </div>
             </div>
-            <div class="dx_name01">
-            	<div class="dx_name02">
-            	<p>产品类别<span style="color:red;">*</span>：</p>
-                </div>
-                
-            </div>
            </div>
-            <div class="application-01">
-                <div class="application-03">产品技术及服务类别/ PRODUCTS AND SERVICES OFFERED<span>*最多可选3项</span></div>                 
-					<div id="testdiv"> 
-	              <?php
-	               $i = 0;
-               foreach($fatherList as $father_k => $father_v){
-			       $i++;
-					if($i != 11){
-               		?>
-	               <div class="application-06">
-	                  <div class="title-01">
-	                        <div class="title-02">▪ <php>echo $father_v['cname'];</php><php>if($father_v['ename'] != ''){ echo '/'.$father_v['ename'];}</php></div>
-	                        <input name="" type="button" class="but1" value="<?php echo $i==1?'收起':'展开'; ?>" />
-	                  </div>
-	                  <ul <?php if($i != 1){ echo "style='display:none;'"; }?>>
-	                  <?php
-	                  foreach($childList[$father_v['id']] as $child_k => $child_v){
-				  		?>
-	                      <li><input name="category[]" type="checkbox" value="<?php echo $child_v['id'];?>" <?php if(in_array($child_v['id'],$cidList)){ echo 'checked="checked"';} ?> /><p>{$child_v['cname']}{$child_v['ename']}</p></li>
-	                  <?php
-	                  }
-                  		?>
-	                  </ul>
-	                </div>
-	                <?php } ?>
-	                <?php
-	               }
-               		?>
-	               </div>
-                <div class="application-06 application-07">
-                    <div class="title-01">
-                            <div class="title-02">▪ <php>echo $fatherList[10]['cname'];</php><php>if($fatherList[10]['ename'] != ''){ echo '/'.$fatherList[10]['ename'];}</php>:
-                            <input class="text5" name="other_category" type="text" value="{$productInfo['other_category']}" /></div>
-                      </div>
-                </div>
-                
-               
-               
-            </div>
             <div class="dx_jieshao ">
                	<p>产品简介<span style="color:red;">*</span>：</p>
                </div>

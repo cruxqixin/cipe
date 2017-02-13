@@ -88,14 +88,10 @@ $(function(){
                                 	<ul>
                                     	<li><h1><?php echo ($onlineUser['company_cname']); ?></h1></li>
                                         <li><p>产品ID：<span> NO.<?php echo ($productInfo['id']); ?></span> </p></li>
-                                        <li><p>产品名称<span>：<?php echo ($productInfo['product_name']); ?></span></p></li>
-                                        <li><p>产品类别：</p></li>
-                                        <?php foreach($productTagList as $k => $v){ ?>
-                                        <li><font><?php echo ($fatherList[$categoryListKV[$v['cid']]['father']]['cname']); ?>—— <?php echo ($categoryListKV[$v['cid']]['cname']); ?></font></li>
-                                        <?php } ?>
-                                        <?php if($productInfo['other_category']){ ?>
-                                        <li><font>其他 —— <?php echo ($productInfo['other_category']); ?></font></li>
-                                        <?php } ?>
+                                        <li><p>产品中文名称<span>：<?php echo ($productInfo['product_cname']); ?></span></p></li>
+                                        <li><p>产品英文名称<span>：<?php echo ($productInfo['product_ename']); ?></span></p></li>
+                                        <li><p>产品关键字<span>：<?php echo ($productInfo['tag']); ?></span></p></li>
+
                                     </ul>
                                 </div>
                             </div>
