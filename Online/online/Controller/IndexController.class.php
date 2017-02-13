@@ -73,7 +73,8 @@ class IndexController extends BaseController {
         unset($getArray['fl']);
         $this->assign('flUrl',  U('index/index').'?'.http_build_query($getArray) );
         $this->display();
-        //分页参数待处理
+        //分页参数待处理?
+        
     }
 
     /**
