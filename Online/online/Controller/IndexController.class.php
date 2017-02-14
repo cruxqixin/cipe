@@ -40,6 +40,7 @@ class IndexController extends BaseController {
             $keyword = strip_tags($keyword);
             $keyword = inject_check($keyword);
             if($keyword != ''){
+                //展商关键字
                 $tempSql = "name like '%".$keyword."%'";
                 $tempSql .= " or exhibition_number like '%".$keyword."%'";
                 $tempSql .= " or company_cname like '%".$keyword."%'";
@@ -54,7 +55,28 @@ class IndexController extends BaseController {
         }
 
         $where['status'] = 1;
-        $userList = $userModel->where($where)->order('id desc')->findPage(15);
+        if($_GET['sType'] != 2){
+        	$userList = $userModel->where($where)->order('id desc')->findPage(15);//公司搜索
+        }else{
+            $userList = $userModel->where($where)->order('id desc')->select();//产品搜索
+            if(!empty($userList)){
+            	foreach($userList as $v){
+            		if(!in_array($v['uid'],$uidList)){$uidList[] = $v['uid'];}
+            	}
+            }
+            //展品关键字
+            $tempSqlProd = "product_cname like '%".$keyword."%'";
+            $tempSqlprod .= " or product_ename like '%".$keyword."%'";
+            $tempSqlprod .= " or product_info like '%".$keyword."%'";
+            $tagList = $productTagModel->where("tag like '%".$keyword."%'");
+            if(!empty($tagList)){
+                foreach($tagList as $v){
+                    if(!in_array($v['uid'],$uidList)){$uidList[] = $v['uid'];}
+                }
+            }
+            $whereProd[] = $tempSqlprod;
+            
+        }
 
         $this->assign('userList',$userList);
         $this->assign('industryList',$industryList);

@@ -80,6 +80,7 @@ $(function(){
 </style>
 <body>
 <include file="Online/online/View/partial/public_navbar.html"/>
+
 <div class="HH"></div>
  <div class="searchBox">
   <form action="" method="get" target="_self">
@@ -89,9 +90,9 @@ $(function(){
                 <img src="/images/Online/logo_40.jpg">
             </div>
             <div class="search-01" style="border:2px solid #990032;width:67px;margin-top: 5px;">
-            	<select name='type' class="txt_bg ">
-				  <option value ="1" selected="selected">展商</option>
-				  <option value ="2">展品</option>
+            	<select name='sType' class="txt_bg " onchange="self.location.href=changeURLArg('{$URI}', 'sType', options[selectedIndex].value  )">
+				  <option value ="1" <?php if ($_GET['sType'] != 2) { ?>selected="selected" <?php }?> >展商</option>
+				  <option value ="2" <?php if ($_GET['sType'] == 2) { ?>selected="selected" <?php }?> >展品</option>
 				</select>
             </div>
             <div class="logoMain">
@@ -218,7 +219,7 @@ $(function(){
        </div>
         </div>
         <!-- <div style="margin: 20px;"><h3 style="color:red;">欢迎明年再次使用，期待明年再相聚!</h3></div> -->
-        <?php if($_GET['type'] != 2){ ?>
+        <?php if($_GET['sType'] != 2){ ?>
         <div class="main-left-02">
         	<?php foreach($userList['data'] as $k => $v){ 
 				if($v['type'] == 2){
@@ -257,7 +258,29 @@ $(function(){
             </div>
         </div>
         <?php }else{ ?>
-        展品列表
+		<div class="main-left-02">
+        	<?php foreach($productList['data'] as $k => $v){ 
+        	?>
+        	<dl>
+            	<dd>
+                	<img src="{$v['pic']}" height="105" ><h1><a href="{:U('product/info/'.$v['id'])}">{$v['product_cname']}</a></h1>
+                    <span>发布时间：<?php echo date('Y-m-d',$v['add_time']);?></span>
+                </dd>
+                <dt><span>产品英文名称：</span>{$v['cooperation_offer']}
+                </dt>
+                <dt><span>所属公司：</span>{$v['cooperation_offer']}
+                </dt>
+                <dt><span>标签/关键字：</span>{$v['implemented_application']}
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="{:U('product/info/'.$v['uid'])}">详细信息>></a>
+                </dt>
+            </dl>
+            <?php 
+			}
+			?>
+            <div class="numBox" style="width:500px;">
+            	{$productList['html']}
+            </div>
+        </div>
         <?php } ?>
     </div>
     <div class="main-right">
