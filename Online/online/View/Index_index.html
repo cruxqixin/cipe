@@ -74,7 +74,9 @@ $(function(){
 .main-left-02 dl dd img{
 	float:left;
 	display:block;
-	height:50px;}
+	height:50px;
+	border:1px #9b9b9b solid;
+	margin-right:10px;}
 .main-left-02 dd h1	a{
 	line-height:50px;}
 </style>
@@ -193,7 +195,7 @@ $(function(){
 
                          	?>
                             <li>
-                               <div class="normal"  style="background:none;"><span <?php if($v['id'] == $_GET['tid']){?>class="curr"<?php }?>></span><a href="{$themeUrl}&tid={$v['id']}"  class="sub-link" target="_self" >&nbsp;&nbsp;<php>echo mb_substr($v['cname'],0,24);</php></a></div>
+                               <div class="normal"  style="background:none;"><span <?php if($v['id'] == $_GET['tid']){?>class="curr"<?php }?>></span><a href="{$themeUrl}&tid={$v['id']}"  class="sub-link" target="_self" >&nbsp;&nbsp;<php>echo mb_substr($v['cname'],0,12,'utf-8');</php></a></div>
                             </li>
                             <?php 
 							}
@@ -263,14 +265,19 @@ $(function(){
         	?>
         	<dl>
             	<dd>
-                	<img src="{$v['pic']}" height="105" ><h1><a href="{:U('product/info/'.$v['id'])}">{$v['product_cname']}</a></h1>
+                	<img src="<?php echo $v['pic'] ? $v['pic'] : '/images/Online/bz.jpg' ; ?>" height="105" ><h1> <a href="{:U('product/info/'.$v['id'])}">{$v['product_cname']}/{$v['product_ename']}</a></h1>
                     <span>发布时间：<?php echo date('Y-m-d',$v['add_time']);?></span>
                 </dd>
-                <dt><span>产品英文名称：</span>{$v['cooperation_offer']}
+                <dt><span>所属公司：</span>{$userListKV[$v['uid']]['company_cname']}
                 </dt>
-                <dt><span>所属公司：</span>{$v['cooperation_offer']}
-                </dt>
-                <dt><span>标签/关键字：</span>{$v['implemented_application']}
+                <dt><span>展品标签/关键字：</span>
+                <?php
+                foreach($tagListPid[$v['id']] as $tagInfo){
+					echo $tagInfo .'  ';
+				} 
+				?>
+				</dt>
+				<dt><span>产品介绍：</span><?php echo substr($v['product_info'],0,50); ?>
                 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="{:U('product/info/'.$v['uid'])}">详细信息>></a>
                 </dt>
             </dl>

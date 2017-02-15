@@ -16,73 +16,164 @@ class IndexController extends BaseController {
         $themeList = $themeModel->where(array('status'=>1,'year'=>2017))->select();
 
         //处理搜索参数
-        //展区
-        if($_GET['tid']>0){
-            $theme_id = intval($_GET['tid']);
-            $where['theme_id'] = $theme_id;
-        }
-        //首字母
-        if($_GET['fl']!=''){
-            $firstLetter = substr( $_GET['fl'], 0, 1 );
-            $firstLetterNum = ord($firstLetter);
-            if($firstLetterNum>64&&$firstLetterNum<91){
-                $where['first_letter'] = $firstLetter;
-            }
-        }
-        //行业
-        if($_GET['ind']>0){
-            $ind_id = intval($_GET['ind']);
-            $userIndustryList = $userIndustryModel->where('id='.$ind_id)->select();
-        }
-        //关键词
-        if($_GET['keyword'] != '' && $_GET['keyword'] != '请输入查询关键词'){
-            $keyword = trim($_GET['keyword']);
-            $keyword = strip_tags($keyword);
-            $keyword = inject_check($keyword);
-            if($keyword != ''){
-                //展商关键字
-                $tempSql = "name like '%".$keyword."%'";
-                $tempSql .= " or exhibition_number like '%".$keyword."%'";
-                $tempSql .= " or company_cname like '%".$keyword."%'";
-                $tempSql .= " or company_ename like '%".$keyword."%'";
-                $tempSql .= " or company_cinfo like '%".$keyword."%'";
-                $tempSql .= " or company_einfo like '%".$keyword."%'";
-                $tempSql .= " or cooperation_offer like '%".$keyword."%'";
-                $tempSql .= " or implemented_application like '%".$keyword."%'";
-                $tempSql .= " or cooperation_need like '%".$keyword."%'";
-                $where[] = $tempSql;
-            }
-        }
-
-        $where['status'] = 1;
         if($_GET['sType'] != 2){
-        	$userList = $userModel->where($where)->order('id desc')->findPage(15);//公司搜索
-        }else{
-            $userList = $userModel->where($where)->order('id desc')->select();//产品搜索
-            if(!empty($userList)){
-            	foreach($userList as $v){
-            		if(!in_array($v['uid'],$uidList)){$uidList[] = $v['uid'];}
-            	}
+            //展商搜索
+            //展区
+            if($_GET['tid']>0){
+                $theme_id = intval($_GET['tid']);
+                $where['theme_id'] = $theme_id;
             }
-            //展品关键字
-            $tempSqlProd = "product_cname like '%".$keyword."%'";
-            $tempSqlprod .= " or product_ename like '%".$keyword."%'";
-            $tempSqlprod .= " or product_info like '%".$keyword."%'";
-            $tagList = $productTagModel->where("tag like '%".$keyword."%'");
-            if(!empty($tagList)){
-                foreach($tagList as $v){
-                    if(!in_array($v['uid'],$uidList)){$uidList[] = $v['uid'];}
+            //首字母
+            if($_GET['fl']!=''){
+                $firstLetter = substr( $_GET['fl'], 0, 1 );
+                $firstLetterNum = ord($firstLetter);
+                if($firstLetterNum>64&&$firstLetterNum<91){
+                    $where['first_letter'] = $firstLetter;
                 }
             }
-            $whereProd[] = $tempSqlprod;
+            //行业
+            if($_GET['ind']>0){
+                $uidList = array();
+                $ind_id = intval($_GET['ind']);
+                $userIndustryList = $userIndustryModel->where('ind_id='.$ind_id)->group('uid')->field('uid')->select();
+                if(!empty($userIndustryList)){
+                    foreach($userIndustryList as $v){
+                        $uidList[] = $v['uid'];
+                    }
+                }
+            }
+            if(!empty($uidList)){
+                $where[] = "uid in (". implode(',',$uidList) .") ";
+            }
+            //关键词
+            if($_GET['keyword'] != '' && $_GET['keyword'] != '请输入查询关键词'){
+                $keyword = trim($_GET['keyword']);
+                $keyword = strip_tags($keyword);
+                $keyword = inject_check($keyword);
+                if($keyword != ''){
+                    //展商关键字
+                    $tempSql = "name like '%".$keyword."%'";
+                    $tempSql .= " or exhibition_number like '%".$keyword."%'";
+                    $tempSql .= " or company_cname like '%".$keyword."%'";
+                    $tempSql .= " or company_ename like '%".$keyword."%'";
+                    $tempSql .= " or company_cinfo like '%".$keyword."%'";
+                    $tempSql .= " or company_einfo like '%".$keyword."%'";
+                    $tempSql .= " or cooperation_offer like '%".$keyword."%'";
+                    $tempSql .= " or implemented_application like '%".$keyword."%'";
+                    $tempSql .= " or cooperation_need like '%".$keyword."%'";
+                    $where[] = $tempSql;
+                }
+            }
+            $where['status'] = 1;
+        	$userList = $userModel->where($where)->order('id desc')->findPage(15);//公司搜索
+        }else{
+            //展品搜索
+            //首字母
+            if($_GET['fl']!=''){
+                $firstLetter = substr( $_GET['fl'], 0, 1 );
+                $firstLetterNum = ord($firstLetter);
+                if($firstLetterNum>64&&$firstLetterNum<91){
+                    $whereProd1['first_letter'] = $firstLetter;
+                }
+            }
+            //关键词
+            if($_GET['keyword'] != '' && $_GET['keyword'] != '请输入查询关键词'){
+                $keyword = trim($_GET['keyword']);
+                $keyword = strip_tags($keyword);
+                $keyword = inject_check($keyword);
+                if($keyword != ''){
+                    //展品关键字
+		            $tempSqlProd = "product_cname like '%".$keyword."%'";
+		            $tempSqlProd .= " or product_ename like '%".$keyword."%'";
+		            $tempSqlProd .= " or product_info like '%".$keyword."%'";
+		            $whereProd2[] = $tempSqlProd;//product表搜索
+		            
+		            $tagList = $productTagModel->where("tag like '%".$keyword."%'")->group('pid')->select();//tag表搜索
+		            if(!empty($tagList)){
+		                $pidList = array();
+		                $tagListPid = array();
+		                foreach($tagList as $v){
+		                    $pidList[] = $v['pid'];
+		                    $tagListPid[$v['pid']][] = $v['tag']; 
+		                }
+		                if(!empty($pidList)){
+		                	$whereProd1[] = "id in (". implode(',',$pidList) .") ";
+		                }
+		            }
+                }
+            }
+            //user表begin
+            //展区
+            if($_GET['tid']>0){
+                $theme_id = intval($_GET['tid']);
+                $where['theme_id'] = $theme_id;
+            }
+            $where['status'] = 1;
+            //行业
+            if($_GET['ind']>0){
+                $ind_id = intval($_GET['ind']);
+                $userIndustryList = $userIndustryModel->where('ind_id='.$ind_id)->group('uid')->field('uid')->select();
+                print_r($userIndustryList);
+                if(!empty($userIndustryList)){
+                    foreach($userIndustryList as $v){
+                        $uidList[] = $v['uid'];
+                    }
+                }
+                if(!empty($uidList)){
+                    $where[] = "uid in (". implode(',',$uidList) .") ";
+                }else{
+                    $where[] = "1=0";
+                }
+            }
+            $userList = $userModel->where($where)->order('id desc')->select();//用户搜索
+            $uidList = array();
+            $userListKV = array();
+            if(!empty($userList)){
+                foreach($userList as $v){
+                    if(!in_array($v['uid'],$uidList)){$uidList[] = $v['uid'];}
+                    $userListKV[$v['uid']] = $v;
+                }
+            }
+            //user表end
             
+            if(!empty($uidList)){
+            	$whereProd1[] = "uid in (". implode(',',$uidList) .") ";	
+            }else{
+                $whereProd1[] = "1=0";
+            }
+            $whereProd1['status'] = 1;
+            if(empty($whereProd2)){
+                $whereProd = $whereProd1;
+            }else{
+	            $whereProd['_complex'] = array(
+			        $whereProd1,
+			        $whereProd2,
+			        '_logic' => 'or'
+			    );
+            }
+            $productList = $productModel->where($whereProd)->order('id desc')->findPage(15);//产品搜索
+            if(!empty($productList['data'])){
+                $pidArr = array();
+                foreach($productList['data'] as $v){
+                    if(!in_array($v['id'],$pidArr)){$pidArr[] = $v['id'];}
+            	}
+            	$whereTag[] =  "pid in (". implode(',',$pidArr) .") ";	
+            	$tagList = $productTagModel->where($whereTag)->select();//tag表搜索
+            	if(!empty($tagList)){
+            	    $tagListPid = array();
+            	    foreach($tagList as $v){
+            	        $tagListPid[$v['pid']][] = $v['tag'];
+            	    }
+            	}
+            }
         }
-
-        $this->assign('userList',$userList);
+        $this->assign('userList',$userList);//搜展商输出
+        $this->assign('productList',$productList);//搜展品输出
+        $this->assign('tagListPid',$tagListPid);//搜展品输出
+        $this->assign('userListKV',$userListKV);//搜展品输出
         $this->assign('industryList',$industryList);
         $this->assign('themeList',$themeList);
         $this->assign('keyword',$keyword);
-        
         $URI = 'http://'.$_SERVER["SERVER_NAME"].$_SERVER["REQUEST_URI"];
         $this->assign('URI',  $URI );
         
