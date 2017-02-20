@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<title>光电子·中国博览会_在线对接会_展商信息录入</title>
+<title>科济天下网_在线对接会_展商信息录入</title>
 <script type="text/javascript" src="/js/Online/jquery-1.7.2.min.js"></script>
 <link href="/css/Online/index.css" rel="stylesheet" type="text/css" />
 <link href="/css/Online/common.css" rel="stylesheet" type="text/css" />
@@ -212,7 +212,13 @@ $(function(){
 <include file="Online/online/View/partial/public_navbar.html"/>
 <div class="headbg">
 </div>
-
+<div class="navBox">
+	<ul>
+    	<li><a href="{:U('index')}" class="currentA" target="_self">首页</a></li>
+        <!-- <li><a href="#">会议申请</a></li>
+        <li><a href="#">在线会议室</a></li> -->
+    </ul>
+</div>
 <div class="mainBox">
     <h5>当前位置： <a href="{:U('index')}" target="_self">首页</a> ><span> 我的对接</span></h5>
     <div class="top-text">
@@ -278,7 +284,7 @@ $(function(){
 	        				<input type="hidden" name="pic" id="pic" class=" validate[required]" size="60" value="{$onlineUser['pic']}" />
         				</div>
         				<div class="logobox02" style="margin-top:11px;">
-        				<label ><input  type="button" id="uploadButton" value="上传图片" /></label>
+        				<label ><input  data-role="none" type="button" id="uploadButton" value="上传图片" /></label>
 			            	<!-- <span id="uploadButton">上传图片</span><input id="uploadButton"  type="button"  value="上传图片" /></label> -->
 			            </div>
             	</div>
