@@ -107,7 +107,7 @@ class WeixinController extends Controller {
     public function apply_c(){
         $uid = $this->kjtxLoginCheck();
         if(!$uid){
-            $this->error("请先登录科济天下网");
+            $this->error("请先登录光电子·中国博览会");
         }
         $userModel = M('2017_user');
         $categoryModel = M('category');
@@ -203,7 +203,7 @@ class WeixinController extends Controller {
     public function apply_b(){
         $uid = $this->kjtxLoginCheck();
         if(!$uid){
-            $this->error("请先登录科济天下网");
+            $this->error("请先登录光电子·中国博览会");
         }
         $userModel = M('2017_user');
         $categoryModel = M('category');

@@ -2,7 +2,7 @@
 <script type="text/javascript" src="/js/Online/common1.js" language="javascript"></script>
 
 
-<div class="topbg">
+<!--<div class="topbg">
   <div class="container">
       <div class="logo"><a href="http://www.kjtxw.com/"><img src="/images/Online/logo.jpg"></a></div>
       <div class="top_right">
@@ -10,7 +10,7 @@
              <div class="left">
 			 <if condition="$user['id'] eq ''">
 			 <a href="/online.php/index/login?returnurl=/online.php/index/detail" target="_self">登录</a><!-- <a href="{:U2('Keji/User/register')}?url=/online.php/index/detail" target="_self">免费注册</a> --></div>
-             <else/>
+            <!-- <else/>
 			  <a href="/online.php/index/detail">{$user['nickname']}</a><a href="/online.php/user/logout" target="_self">退出</a></div>
 			 </if>
 			 <div class="right"></div>
@@ -24,4 +24,287 @@
       <div class="clear"></div>
   </div>
 </div>
+ -->
+
  
+ 
+ 
+ 
+
+ 
+ 
+ <base target='_blank'/>
+<link rel="alternate" type="application/vnd.wap.xhtml+xml" media="handheld" href="http://www.cipeasia.com/Wxphone/"/>
+<script src="http://kzcdn.itc.cn/res/skin/js/uaredirect.js?v=4.7" type="text/javascript"></script>
+<script type="text/javascript">KZ.redirect("http://www.cipeasia.com/Wxphone/");</script>
+<script type="text/javascript" src="/js/common.js" language="javascript"></script>
+<style>
+.headerTop {
+    width: 100%;
+    height: 124px;
+    background: url(/images/1_01.jpg) no-repeat;
+    /* margin-bottom: 20px; */
+    overflow: hidden;
+}
+.header {
+    width: 100%;
+}
+.headerTOP01 .logo {
+    padding-top: 20px;
+    float: left;
+    overflow: hidden;
+}
+.headerTOP01 .logo p {
+    color: #c7000a;
+    font-size: 18px;
+    margin: 0;
+}
+.headerTOP01 .link01 {
+    float: right;
+    width: 350px;
+    overflow: hidden;
+}
+.headerTOP01 .link01 li {
+    float: left;
+}
+.headerTOP01 .link01 li a {
+    padding: 0 10px;
+    display: inline-block;
+	    text-decoration: none;
+    color: #333333;
+    font-size: 14px;
+    line-height: 40px;
+}
+.wei {
+    position: absolute;
+    top: 93px;
+    z-index: 999;
+    right: 152px;
+    display: none;
+}
+.navBoxvv {
+    width: 1150px;
+    margin: 0 auto;
+    background: #9b0d0d;
+}
+.navBoxvv ul {
+    width: 1150px;
+    height: 40px;
+    margin: 0;
+    position: relative;
+}
+.navBoxvv li {
+    float: left;
+    font-size: 14px;
+    line-height: 40px;
+}
+.navBoxvv li a {
+    color: #FFF;
+    font-size: 14px;
+ text-decoration: none;
+    margin: 9px 29px;
+}
+
+ul{
+    list-style: none;
+	margin:0;
+	padding:0;
+}
+li{
+    list-style: none;
+	margin:0;
+	padding:0;
+}
+.subnav {
+    position: absolute;
+    top: 40px;
+    left: 0px;
+    width: 1150px;
+    padding-bottom: 10px;
+    background-color: #6c0505;
+    display: none;
+    z-index: 10003;
+}
+.navBoxvv ul {
+    width: 1150px;
+    height: 40px;
+    margin: 0;
+    position: relative;
+}
+
+.navBoxvv li a:hover {
+	color:#efda25;
+}
+.navBoxvv li .currentA {
+	color:#003366;
+}
+.tuichu{
+overflow:hidden;
+margin-left:50px;
+margin-top:15px;}
+.tuichu a{
+font-size:14px;
+text-decoration: none;
+color:#333;
+display:block;}
+	
+</style>
+<div class="header">
+     <div class="headerTop" style="width:1150px; margin:0 auto;">
+     	<div class="headerTOP01" style="width:1150px;">
+			<div class="logo">
+             	<a href="/" target="_blank"><img style="width:648px; height:75px;" src="/images/LOGO(tt01).png" /></a>
+                <p style="color:#c7000a;font-size:14px; margin-left: 185px;">2017年6月6日-8日  中国国际展览中心（新馆） 北京顺义区天竺地区裕翔路88号 </p>
+                <!--<p style="color:#c7000a;font-size:14px; margin-left: 173px">Jun 6-8   China International Exhibition Center Beijing</p>-->
+            </div>
+			
+			<!--
+        	<div class="logo">
+             	<a href="/" target="_blank"><img src="/images/logo_02.jpg" /></a>
+            </div>			
+			<div class="logo" style="margin-top:70px;margin-left:100px;">
+             	<a href="/" target="_blank"><img src="/images/LO.png" /></a>
+            </div>-->
+            <div class="link01">
+            	<ul>
+                	<li>
+					<a href="#" id="weixin"><img src="/images/2_05.jpg" /></a>	
+					</li>
+                    <li><a href="http://weibo.com/u/3921420614?from=myfollow_all
+"><img src="/images/2_07.jpg" /></a></li>
+                    <li><a href="#">中文</a>|<a href="http://www.cipeasia.com/en/" target="_blank">English</a></li>
+                </ul><div class="clear"></div>
+                <!--<a href="http://www.cipeasia.com/News/8114.html"><img src="/images/BANNERSMALL.jpg" style="width: 280px; height: 99px; margin-left: 105px;"></a>-->
+				<img id="wei" class="wei" src="/images/weixin.jpg">
+				<div>
+				
+				</div>
+				<div class="tuichu">
+				<if condition="$user['id'] eq ''">
+			 <a href="/online.php/index/login?returnurl=/online.php/index/detail" target="_self">展商登录</a>
+            <else/>
+			  <a href="/online.php/index/detail">{$user['nickname']}</a><a href="/online.php/user/logout" target="_self">退出</a>
+			 </if></div>
+            </div>
+			<!--<div>	<img style="margin:0 auto; display: block;
+    padding-top: 11px;" src="/images/dx_88.png"></div>-->
+        </div>
+		<div class="clear"></div>
+     </div>
+     <div class="navBoxvv">
+
+        	<ul id="menu">
+            	<li><a href="/">首页</a></li>
+				
+				<if condition="$menulist[0]['type'] eq 1">
+                <li><a href="http://www.cipeasia.com/theme/{$menulist[0]['id']}.html">主题会展</a>
+				<else/>
+				
+					<if condition="$menulist[0]['id'] eq 27">
+					<li><a href="http://www.cipeasia.com/innovationtechnology.html">主题会展</a>
+					<else/>
+					<li><a href="http://www.cipeasia.com/theme2/{$menulist[0]['id']}.html">主题会展</a>
+					</if>
+				</if>
+				
+                    <div class="subnav">
+                        <div class="min">
+                            <div>
+                                <ul>
+								<volist name="menulist" id="me">
+								<if condition="$me['type'] eq 1">
+                                    <li><a  style="margin:9px  26px;" href="http://www.cipeasia.com/theme/{$me.id}.html">▪&nbsp;{$me.kind}</a></li>
+								
+								<else/>
+									<if condition="$me['id'] eq 25">
+									<li><a  style="margin:9px  26px;" href="http://www.cipeasia.com/opticalfiber.html" data-ajax='false'>▪&nbsp;{$me.kind}</a></li>
+									<elseif condition="$me['id'] eq 31"/>
+									<li><a  style="margin:9px  26px;" href="http://www.cipeasia.com/ciw.html">▪&nbsp;{$me.kind}</a></li>
+									<elseif condition="$me['id'] eq 27"/>
+									<li><a  style="margin:9px  26px;" href="http://www.cipeasia.com/innovationtechnology.html">▪&nbsp;{$me.kind}</a></li>
+									<elseif condition="$me['id'] eq 39"/>
+									<li><a  style="margin:9px  26px;" href="http://www.cipeasia.com/opticalinstrument.html">▪&nbsp;{$me.kind}</a></li>
+									<elseif condition="$me['id'] eq 29"/>
+									<li><a  style="margin:9px  26px;" href="http://www.cipeasia.com/laser.html">▪&nbsp;{$me.kind}</a></li>
+									<elseif condition="$me['id'] eq 30"/>
+									<li><a  style="margin:9px  26px;" href="http://www.cipeasia.com/optics.html">▪&nbsp;{$me.kind}</a></li>
+									<elseif condition="$me['id'] eq 36"/>
+									<li><a  style="margin:9px  26px;" href="http://www.cipeasia.com/infrared.html">▪&nbsp;{$me.kind}</a></li>
+									<elseif condition="$me['id'] eq 38"/>
+									<li><a  style="margin:9px  26px;" href="http://www.cipeasia.com/cameras.html">▪&nbsp;{$me.kind}</a></li>
+									<elseif condition="$me['id'] eq 33"/>
+									<li><a  style="margin:9px  26px;" href="http://www.cipeasia.com/3dprinting.html">▪&nbsp;{$me.kind}</a></li>
+									<elseif condition="$me['id'] eq 26"/>
+									<li><a  style="margin:9px  26px;" href="http://www.cipeasia.com/electronics.html">▪&nbsp;{$me.kind}</a></li>
+									<else/>
+										<li><a style="margin:9px  26px;" href="http://www.cipeasia.com/theme2/{$me.id}.html">▪&nbsp;{$me.kind}</a></li>
+									</if>
+								</if>
+                                    
+								</volist>
+							<!--	<li><a style="margin:9px  26px;" href="http://www.cipeasia.com/theme/16.html">▪&nbsp;创新技术展</a></li>
+								<li><a style="margin:9px  26px;" href="http://www.cipeasia.com/theme2/30.html">▪&nbsp;光学制造展</a></li>
+                                  <li><a style="margin:9px  26px;" href="http://www.cipeasia.com/theme/3.html">▪&nbsp;光学仪器展</a></li>
+                                    <li><a style="margin:9px  26px;" href="http://www.cipeasia.com/theme2/33.html">▪&nbsp;3D打印展</a></li>
+									<li><a  style="margin:9px  26px;"href="http://www.cipeasia.com/theme/14.html">▪&nbsp;智能安防展</a></li>
+
+                                    <li><a  style="margin:9px  26px;"href="http://www.cipeasia.com/theme/5.html">▪&nbsp;机器视觉展</a></li>
+                                    
+                                    <li><a  style="margin:9px  26px;"href="http://www.cipeasia.com/theme/9.html">▪&nbsp;智能制造展</a></li>
+                                    
+                                    
+                                    <li><a style="margin:9px  26px;" href="http://www.cipeasia.com/theme/18.html">▪&nbsp;智能电网展</a></li>
+									 
+									<li><a style="margin:9px  26px;" href="http://www.cipeasia.com/theme/20.html">▪&nbsp;云计算与大数据展</a></li>
+									<li><a  style="margin:9px  26px;"href="http://www.cipeasia.com/theme2/31.html">▪&nbsp;可穿戴设备与虚拟现实主题展</a></li>
+									<li><a style="margin:9px  26px;" href="http://www.cipeasia.com/theme/22.html">▪&nbsp;数控机床高端应用展</a></li>
+                                    <li><a  style="margin:9px  26px;"href="http://www.cipeasia.com/theme/23.html">▪&nbsp;LED与半导体展</a></li>
+									 
+									<li><a  style="margin:9px  26px;"href="http://www.cipeasia.com/theme/24.html">▪&nbsp;国防光电子展</a></li>
+                                   -->
+                                    
+                                    
+                                    
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </li>
+                <li><a href="http://www.cipeasia.com/register.html">参观指南</a>
+                    <div class="subnav">
+                        <div class="min">
+                            <div>
+                                <ul>
+                                    <li><a href="http://www.cipeasia.com/TrafficGuidance.html">▪&nbsp;交通指引</a></li>
+                                    <li><a href="http://www.cipeasia.com/LaunchTime.html">▪&nbsp;开展时间</a></li>
+                                    <li><a href="http://www.cipeasia.com/register.html">▪&nbsp;在线预登记</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div></li>
+                <li><a href="http://www.cipeasia.com/apply.html">参展指南</a>
+                    <div class="subnav">
+                        <div class="min">
+                            <div>
+                                <ul>
+                                    <li><a href="http://www.cipeasia.com/apply.html">▪&nbsp;申请参展</a></li>
+                                    <li><a href="http://www.cipeasia.com/manual.html">▪&nbsp;展商手册</a></li>
+                                    <li><a href="http://www.cipeasia.com/BoothMap.html">▪&nbsp;展位图</a></li>
+                                    <li><a href="http://www.cipeasia.com/directory.html">▪&nbsp;展商名录</a></li>
+                                    <li><a href="http://www.cipeasia.com/Consultation.html">▪&nbsp;广告咨询</a></li>
+                                    <li><a href="http://www.cipeasia.com/Build.html">▪&nbsp;搭建与租赁</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </li>
+				<li><a href="http://www.cipeasia.com/Activity.html">精彩活动</a></li>
+                <li><a href="http://www.cipeasia.com/Download.html">下载中心</a></li>
+                <li><a href="http://online.kjtxw.com/online.php">对接系统</a></li>
+                <li><a href="http://www.cipeasia.com/medias.html">合作媒体</a></li>
+                <li><a href="http://www.cipeasia.com/business.html">商旅中心</a></li>
+                <li><a href="http://www.cipeasia.com/about.html">关于我们</a></li>
+            </ul><div class="clear"></div>
+        </div>
+     
+  </div>

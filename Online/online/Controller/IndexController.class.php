@@ -196,7 +196,7 @@ class IndexController extends BaseController {
     public function apply_c(){
         $uid = $this->kjtxLoginCheck();
 //         if(!$uid){
-//             $this->error("请先登录科济天下网");
+//             $this->error("请先登录光电子·中国博览会");
 //         }
         $userModel = M('2017_user');
         $categoryModel = M('category');
@@ -295,7 +295,7 @@ class IndexController extends BaseController {
     public function apply_b(){
         $uid = $this->kjtxLoginCheck();
 //         if(!$uid){
-//             $this->error("请先登录科济天下网");
+//             @header("Location:http://".$_SERVER['HTTP_HOST'].'/online.php/index/login/?returnurl='.$_SERVER['PHP_SELF']);
 //         }
         $userModel = M('2017_user');
         $productTagModel = M('2017_product_tag');
@@ -303,7 +303,7 @@ class IndexController extends BaseController {
         $themeModel = M('theme');
         $userIndustryModel = M('2017_user_industry');
         $tkUserModel = M('passport');
-        $tkUser = $tkUserModel->where('id='.$uid)->find();
+        $tkUser = $tkUserModel->where(array('id' => $uid))->find();
         //行业分类
         $industryList = $industryModel->where('status=1')->select();
         //展区数据

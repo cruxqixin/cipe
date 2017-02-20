@@ -163,6 +163,7 @@ $(function(){
 
 
 
+
 $(function(){
     $(".menu-left04").click(function(){
         $(".menu-left4").show();
@@ -176,7 +177,32 @@ $(function(){
 
 
 
-
+$(function(){ 
+	$(window).scroll(function(){
+		 var scrolltop=$(window).scrollTop();
+		 $("[class=theme]").stop().animate({top:scrolltop-700});  
+	   })
+	$("#weixin").hover(function(){
+		$("#wei").show();
+	},function(){
+		$("#wei").hide();
+	})
+	$("#tab1 tr:odd").css("background","none");
+	$("#menu1 li:odd").css("padding-right","0");
+	$("#menu1 ul li").mousemove(function(){
+		  $(this).attr("class","current2").siblings().attr("class","");
+		  $(".active").hide();
+		  $(".showLi").show();
+		  $(this).find(".active").show(); 
+		  $(this).find(".showLi").hide(); 
+		  $(".server_07 .con").eq($(this).index()).show().siblings().hide();  
+		})
+	$(".title a").hover(function() {
+		$(this).css({'color' : '#c7000a'});
+		} , function() {
+			$(this).css({'color' : '#4c4c4c'});
+		})
+	})
 
 
 
